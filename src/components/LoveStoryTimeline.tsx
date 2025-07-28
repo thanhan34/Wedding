@@ -2,94 +2,361 @@
 
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
-import { Heart, Calendar, MapPin, Gem } from 'lucide-react';
+import { Heart, Calendar, MapPin, Gem, Star, Coffee, Plane } from 'lucide-react';
+import Image from 'next/image';
 
 interface TimelineEvent {
   date: string;
   title: string;
   description: string;
   icon: React.ReactNode;
+  color: string;
+  image?: string;
 }
 
 const timelineEvents: TimelineEvent[] = [
   {
     date: "Tháng 1, 2020",
     title: "Lần đầu gặp gỡ",
-    description: "Chúng tôi gặp nhau lần đầu tại một quán cà phê nhỏ. Ánh mắt anh khiến em không thể quên.",
-    icon: <Heart className="w-6 h-6" />
+    description: "Chúng tôi gặp nhau lần đầu tại một quán cà phê nhỏ. Ánh mắt anh khiến em không thể quên. Đó là khoảnh khắc định mệnh, khi hai trái tim bắt đầu đập cùng nhịp.",
+    icon: <Coffee className="w-6 h-6" />,
+    color: "from-[#fc5d01] to-[#fd7f33]",
+    image: "/Wedding/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg"
   },
   {
     date: "Tháng 6, 2020",
     title: "Hẹn hò đầu tiên",
-    description: "Buổi hẹn hò đầu tiên tại công viên, chúng tôi đã trò chuyện suốt cả ngày mà không biết mệt.",
-    icon: <Calendar className="w-6 h-6" />
+    description: "Buổi hẹn hò đầu tiên tại công viên, chúng tôi đã trò chuyện suốt cả ngày mà không biết mệt. Những tiếng cười giòn tan và ánh mắt lung linh đã làm nên kỷ niệm đẹp nhất.",
+    icon: <Heart className="w-6 h-6" />,
+    color: "from-[#fd7f33] to-[#ffac7b]",
+    image: "/Wedding/z6735567871021_9e4913b6410c10f10977be2780d2f3f7.jpg"
   },
   {
     date: "Tháng 12, 2022",
     title: "Chuyến du lịch đáng nhớ",
-    description: "Chuyến du lịch Đà Lạt lãng mạn, nơi chúng tôi hiểu rằng mình là dành cho nhau.",
-    icon: <MapPin className="w-6 h-6" />
+    description: "Chuyến du lịch Đà Lạt lãng mạn, nơi chúng tôi hiểu rằng mình là dành cho nhau. Giữa khung cảnh thơ mộng của thành phố ngàn hoa, tình yêu chúng tôi đã thăng hoa.",
+    icon: <Plane className="w-6 h-6" />,
+    color: "from-[#ffac7b] to-[#fdbc94]",
+    image: "/Wedding/z6735567882402_9def3cf5b873424e21da131c35e3aae9.jpg"
   },
   {
     date: "Tháng 2, 2024",
     title: "Lời cầu hôn",
-    description: "Anh đã quỳ gối cầu hôn em trong một buổi hoàng hôn tuyệt đẹp. Em đã nói 'Có' với đầy hạnh phúc.",
-    icon: <Gem className="w-6 h-6" />
+    description: "Anh đã quỳ gối cầu hôn em trong một buổi hoàng hôn tuyệt đẹp. Em đã nói 'Có' với đầy hạnh phúc. Đó là khoảnh khắc thiêng liêng nhất, khi chúng tôi hứa sẽ yêu nhau mãi mãi.",
+    icon: <Gem className="w-6 h-6" />,
+    color: "from-[#fdbc94] to-[#fedac2]",
+    image: "/Wedding/z6735567894036_260ccd39a6a62711ab29b072eb173369.jpg"
   }
 ];
 
 export default function LoveStoryTimeline() {
   return (
-    <div className="max-w-4xl mx-auto px-4">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-bold text-center mb-12 wedding-text-gradient"
-      >
-        Chuyện Tình Yêu Của Chúng Tôi
-      </motion.h2>
-
-      <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#fc5d01] to-[#fedac2]"></div>
-
-        {timelineEvents.map((event, index) => (
+    <div className="relative">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Floating Hearts */}
+        {[...Array(8)].map((_, i) => (
           <motion.div
-            key={index}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            className={`relative flex items-center mb-8 ${
-              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-            }`}
+            key={i}
+            className="absolute text-[#fc5d01]/10"
+            style={{
+              left: `${5 + i * 12}%`,
+              top: `${10 + (i % 4) * 25}%`,
+            }}
+            animate={{
+              y: [-15, -25, -15],
+              x: [-8, 8, -8],
+              opacity: [0.1, 0.3, 0.1],
+              scale: [0.8, 1.3, 0.8],
+              rotate: [0, 360]
+            }}
+            transition={{
+              duration: 6 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+              ease: "easeInOut"
+            }}
           >
-            {/* Timeline dot */}
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-[#fc5d01] rounded-full border-4 border-white shadow-lg z-10"></div>
-
-            {/* Content */}
-            <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-              <Card className="wedding-card wedding-shadow p-6">
-                <div className="flex items-center mb-3">
-                  <div className="p-2 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] rounded-full text-white mr-3">
-                    {event.icon}
-                  </div>
-                  <div>
-                    <div className="text-sm text-[#fc5d01] font-semibold">
-                      {event.date}
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800">
-                      {event.title}
-                    </h3>
-                  </div>
-                </div>
-                <p className="text-gray-600 leading-relaxed">
-                  {event.description}
-                </p>
-              </Card>
-            </div>
+            <Heart className="w-6 h-6 fill-current" />
           </motion.div>
         ))}
+
+        {/* Sparkle Effects */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={`sparkle-${i}`}
+            className="absolute text-[#ffac7b]/20"
+            style={{
+              left: `${10 + i * 8}%`,
+              top: `${15 + (i % 3) * 30}%`,
+            }}
+            animate={{
+              scale: [0, 1.5, 0],
+              rotate: [0, 180, 360],
+              opacity: [0, 0.6, 0]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut"
+            }}
+          >
+            <Star className="w-3 h-3 fill-current" />
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            animate={{ 
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-8"
+          >
+            <Heart className="w-10 h-10 text-white fill-current" />
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-5xl font-light text-[#fc5d01] mb-6">
+            Chuyện Tình Yêu Của Chúng Tôi
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Mỗi khoảnh khắc đều là một trang sách trong câu chuyện tình yêu của chúng tôi. 
+            Hãy cùng lật từng trang để khám phá hành trình từ lần gặp đầu tiên đến ngày hạnh phúc nhất.
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-6"></div>
+        </motion.div>
+
+        {/* Timeline Container */}
+        <div className="relative">
+          {/* Main Timeline Line */}
+          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#fc5d01] via-[#fd7f33] to-[#fedac2] rounded-full shadow-lg"></div>
+
+          {/* Timeline Events */}
+          {timelineEvents.map((event, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, y: 50 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.2,
+                type: "spring",
+                stiffness: 100
+              }}
+              className={`relative flex items-center mb-16 ${
+                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+              }`}
+            >
+              {/* Timeline Dot with Animation */}
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+                className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 z-20"
+              >
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 360]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity,
+                    delay: index * 0.5,
+                    ease: "easeInOut"
+                  }}
+                  className={`w-16 h-16 bg-gradient-to-br ${event.color} rounded-full border-4 border-white shadow-xl flex items-center justify-center`}
+                >
+                  <div className="text-white">
+                    {event.icon}
+                  </div>
+                </motion.div>
+                
+                {/* Pulse Effect */}
+                <motion.div
+                  animate={{ 
+                    scale: [1, 2, 1],
+                    opacity: [0.5, 0, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    delay: index * 0.7,
+                    ease: "easeInOut"
+                  }}
+                  className={`absolute inset-0 bg-gradient-to-br ${event.color} rounded-full opacity-20`}
+                />
+              </motion.div>
+
+              {/* Content Card */}
+              <div className={`ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -5,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <Card className="relative overflow-hidden bg-white border border-[#fedac2]/30 shadow-xl hover:shadow-2xl transition-all duration-500 group">
+                    {/* Background Gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${event.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                    
+                    {/* Image Section */}
+                    {event.image && (
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={event.image}
+                          alt={event.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        
+                        {/* Date Badge */}
+                        <div className={`absolute top-4 right-4 bg-gradient-to-r ${event.color} text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg`}>
+                          {event.date}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Content */}
+                    <div className="p-6 relative z-10">
+                      <div className="flex items-center mb-4">
+                        <motion.div
+                          animate={{ 
+                            rotate: [0, 10, -10, 0]
+                          }}
+                          transition={{ 
+                            duration: 3, 
+                            repeat: Infinity,
+                            delay: index * 0.5,
+                            ease: "easeInOut"
+                          }}
+                          className={`p-3 bg-gradient-to-r ${event.color} rounded-full text-white mr-4 shadow-lg`}
+                        >
+                          {event.icon}
+                        </motion.div>
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-800 mb-1">
+                            {event.title}
+                          </h3>
+                          {!event.image && (
+                            <div className="text-sm text-[#fc5d01] font-semibold">
+                              {event.date}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <p className="text-gray-600 leading-relaxed text-base">
+                        {event.description}
+                      </p>
+
+                      {/* Decorative Elements */}
+                      <div className="flex items-center justify-end mt-4 space-x-2">
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5]
+                          }}
+                          transition={{ 
+                            duration: 2, 
+                            repeat: Infinity,
+                            delay: index * 0.3,
+                            ease: "easeInOut"
+                          }}
+                          className="w-2 h-2 bg-[#fc5d01] rounded-full"
+                        />
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.3, 1],
+                            opacity: [0.5, 1, 0.5]
+                          }}
+                          transition={{ 
+                            duration: 2.5, 
+                            repeat: Infinity,
+                            delay: index * 0.3 + 0.2,
+                            ease: "easeInOut"
+                          }}
+                          className="w-3 h-3 bg-[#fd7f33] rounded-full"
+                        />
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                            opacity: [0.5, 1, 0.5]
+                          }}
+                          transition={{ 
+                            duration: 2, 
+                            repeat: Infinity,
+                            delay: index * 0.3 + 0.4,
+                            ease: "easeInOut"
+                          }}
+                          className="w-2 h-2 bg-[#ffac7b] rounded-full"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Corner Decorations */}
+                    <div className="absolute top-3 left-3 w-3 h-3 bg-[#fc5d01]/20 rounded-full"></div>
+                    <div className="absolute bottom-3 right-3 w-3 h-3 bg-[#fd7f33]/20 rounded-full"></div>
+                  </Card>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center mt-16"
+        >
+          <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-3xl p-8 border border-[#fedac2]/30 max-w-3xl mx-auto">
+            <motion.div
+              animate={{ 
+                scale: [1, 1.2, 1],
+                rotate: [0, 360]
+              }}
+              transition={{ 
+                duration: 5, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="text-5xl mb-6"
+            >
+              💕
+            </motion.div>
+            <h3 className="text-2xl font-light text-[#fc5d01] mb-4">
+              Và Câu Chuyện Vẫn Tiếp Tục...
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed italic">
+              "Từ những khoảnh khắc đầu tiên đến ngày hôm nay, mỗi bước đi trong hành trình tình yêu 
+              đều dẫn chúng tôi đến với nhau. Và giờ đây, chúng tôi sẵn sàng viết tiếp câu chuyện 
+              với tư cách là vợ chồng, cùng nhau tạo nên những kỷ niệm đẹp mới."
+            </p>
+            <div className="flex items-center justify-center space-x-3 mt-6">
+              <Heart className="w-5 h-5 fill-current text-[#fc5d01]" />
+              <span className="text-[#fc5d01] font-medium text-lg">Thanh An & Thanh Ngân</span>
+              <Heart className="w-5 h-5 fill-current text-[#fc5d01]" />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

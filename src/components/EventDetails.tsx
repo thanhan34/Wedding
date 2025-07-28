@@ -178,7 +178,7 @@ export default function EventDetails() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <span className="relative z-10 text-elegant">Thiệp Mời Cưới</span>
+            <span className="relative z-10 text-elegant">Thiệp Mời</span>
             <motion.div
               className="absolute -inset-4 bg-gradient-to-r from-[#fedac2]/20 via-[#fdbc94]/20 to-[#fedac2]/20 rounded-2xl -z-10"
               initial={{ scaleX: 0 }}

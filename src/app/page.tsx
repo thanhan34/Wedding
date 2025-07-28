@@ -14,10 +14,11 @@ import FallingHearts from '../components/FallingHearts';
 import WeddingGallery from '../components/WeddingGallery';
 import ChineseDecorations from '../components/ChineseDecorations';
 import WeddingInvitation from '../components/WeddingInvitation';
+import RandomHeroImage from '../components/RandomHeroImage';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
-  const weddingDate = "2024-12-15T18:00:00";
+  const weddingDate = "2025-11-30T18:00:00";
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { weddingData, loading } = useWeddingData();
@@ -243,50 +244,8 @@ export default function Home() {
                 </motion.div>
               ))}
 
-              {/* Main Hero Image */}
-              <div className="relative w-80 h-96 md:w-96 md:h-[28rem] lg:w-[26rem] lg:h-[32rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm">
-                <Image
-                  src="/Wedding/z6735568048498_05b7b7a4be9b803d3a635bddaa5d9e2a.jpg"
-                  alt="Thanh An & Thanh Ngân - Wedding Hero"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                
-                {/* Image Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                
-                {/* Decorative Corner Elements */}
-                <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/60 rounded-tl-lg"></div>
-                <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/60 rounded-tr-lg"></div>
-                <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/60 rounded-bl-lg"></div>
-                <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/60 rounded-br-lg"></div>
-              </div>
-
-              {/* Sparkle Effects */}
-              {[...Array(4)].map((_, i) => (
-                <motion.div
-                  key={`sparkle-${i}`}
-                  className="absolute text-[#ffac7b] text-2xl"
-                  style={{
-                    left: `${20 + i * 25}%`,
-                    top: `${10 + (i % 2) * 80}%`,
-                  }}
-                  animate={{
-                    scale: [0, 1.5, 0],
-                    rotate: [0, 180, 360],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    delay: i * 0.6,
-                    ease: "easeInOut"
-                  }}
-                >
-                  ✨
-                </motion.div>
-              ))}
+              {/* Random Hero Image Component */}
+              <RandomHeroImage />
             </motion.div>
           </div>
         </div>
@@ -316,268 +275,626 @@ export default function Home() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 bg-gradient-to-br from-[#fedac2]/10 to-[#fdbc94]/10 chinese-background-pattern">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-[#fedac2]/10 to-[#fdbc94]/10 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Floating Hearts */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-[#fc5d01]/5"
+              style={{
+                left: `${10 + i * 25}%`,
+                top: `${15 + (i % 2) * 50}%`,
+              }}
+              animate={{
+                y: [-10, -15, -10],
+                opacity: [0.05, 0.1, 0.05],
+                scale: [0.8, 1.1, 0.8],
+                rotate: [0, 360]
+              }}
+              transition={{
+                duration: 8 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "easeInOut"
+              }}
+            >
+              <Heart className="w-4 h-4 fill-current" />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
+            <motion.div
+              animate={{ 
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-8"
+            >
+              <Calendar className="w-10 h-10 text-white" />
+            </motion.div>
+            
             <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-4">Timeline</h2>
-            <p className="text-lg text-gray-600">Sự hiện diện của Quý vị là niềm vinh hạnh của Gia đình chúng tôi!</p>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Sự hiện diện của Quý vị là niềm vinh hạnh của Gia đình chúng tôi! 
+              Hãy cùng chúng tôi tạo nên những khoảnh khắc đáng nhớ nhất.
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-6"></div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          {/* Countdown Integration */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-16"
+          >
+            <Countdown targetDate={weddingDate} />
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-stretch">
             {/* Nhà Trai Timeline */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="bg-white rounded-lg shadow-xl p-8 border border-[#fedac2]/30"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative group"
             >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-light text-[#fc5d01] mb-2">Nhà Trai</h3>
-                <p className="text-3xl font-light text-gray-800 mb-4">
-                  {loading ? '14 . 07 . 2024' : weddingData.weddingDates.groomSide.split('.').join(' . ')}
-                </p>
-                <p className="text-lg text-gray-600 mb-2">
-                  {loading ? 'Khách Sạn Anh Thanh Đô' : weddingData.venues.groomSide.name}
-                </p>
-                <p className="text-base text-gray-500">
-                  {loading ? 'Khu Đô Thị Vườn Xanh - TT. Đô Lương - Nghệ An' : weddingData.venues.groomSide.address}
-                </p>
-              </div>
+              {/* Decorative Background Elements */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#fc5d01]/10 via-[#fd7f33]/5 to-[#ffac7b]/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-br from-[#fedac2]/20 to-[#fdbc94]/20 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               
-              <div className="space-y-6">
-                {loading ? (
-                  // Loading skeleton
-                  [1, 2, 3, 4].map((index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-[#fedac2]/30 rounded-full animate-pulse"></div>
-                      <div className="flex-1">
-                        <div className="h-4 bg-[#fedac2]/30 rounded animate-pulse"></div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  weddingData.timeline.groomSide.map((event, index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-[#fc5d01] rounded-full flex items-center justify-center text-white font-medium text-sm">
-                        {event.time}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">{event.event}</p>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
+              <motion.div
+                whileHover={{ 
+                  scale: 1.03,
+                  y: -8,
+                  transition: { duration: 0.4, type: "spring", stiffness: 300 }
+                }}
+                className="bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 border-2 border-[#fedac2]/20 hover:border-[#fc5d01]/30 relative overflow-hidden backdrop-blur-sm"
+              >
+                {/* Animated Background Gradient */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-[#fc5d01]/3 via-[#fd7f33]/2 to-[#ffac7b]/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  animate={{
+                    background: [
+                      "linear-gradient(135deg, rgba(252,93,1,0.03) 0%, rgba(253,127,51,0.02) 50%, rgba(255,172,123,0.03) 100%)",
+                      "linear-gradient(135deg, rgba(255,172,123,0.03) 0%, rgba(252,93,1,0.02) 50%, rgba(253,127,51,0.03) 100%)",
+                      "linear-gradient(135deg, rgba(252,93,1,0.03) 0%, rgba(253,127,51,0.02) 50%, rgba(255,172,123,0.03) 100%)"
+                    ]
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                
+                {/* Decorative Corner Elements */}
+                <div className="absolute top-6 right-6 w-4 h-4 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute bottom-6 left-6 w-3 h-3 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute top-12 right-12 w-2 h-2 bg-[#ffac7b] rounded-full opacity-30"></div>
+                <div className="absolute bottom-12 left-12 w-2 h-2 bg-[#fc5d01] rounded-full opacity-30"></div>
 
-              <div className="mt-8 pt-6 border-t border-[#fedac2]">
-                <p className="text-center text-base text-gray-600 mb-4">Dress Code</p>
-                <div className="flex justify-center space-x-4">
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-red-500 rounded-full mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Đỏ</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-black rounded-full mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Đen</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-white border border-gray-300 rounded-full mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Trắng</p>
-                  </div>
+                {/* Header Section */}
+                <div className="text-center mb-10 relative z-10">
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 360],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-6 relative"
+                  >
+                    <Heart className="w-10 h-10 text-white fill-current" />
+                    
+                    {/* Pulse Ring */}
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.8, 1],
+                        opacity: [0.6, 0, 0.6]
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="absolute inset-0 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full"
+                    />
+                  </motion.div>
+                  
+                  <motion.h3 
+                    className="text-4xl font-light text-[#fc5d01] mb-4 relative"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Nhà Trai
+                    <motion.div
+                      className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: 64 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    />
+                  </motion.h3>
+                  
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.02, 1]
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="bg-gradient-to-r from-[#fedac2]/30 via-[#ffac7b]/20 to-[#fedac2]/30 rounded-2xl p-6 mb-6 border border-[#fedac2]/40"
+                  >
+                    <motion.p
+                      className="text-5xl font-light text-gray-800 mb-3"
+                      animate={{ 
+                        textShadow: [
+                          "0 0 0px rgba(252,93,1,0)",
+                          "0 0 10px rgba(252,93,1,0.3)",
+                          "0 0 0px rgba(252,93,1,0)"
+                        ]
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {loading ? '14 . 07 . 2024' : weddingData.weddingDates.groomSide.split('.').join(' . ')}
+                    </motion.p>
+                    <p className="text-xl text-gray-600 mb-2 font-semibold">
+                      {loading ? 'Khách Sạn Anh Thanh Đô' : weddingData.venues.groomSide.name}
+                    </p>
+                    <p className="text-base text-gray-500 leading-relaxed">
+                      {loading ? 'Khu Đô Thị Vườn Xanh - TT. Đô Lương - Nghệ An' : weddingData.venues.groomSide.address}
+                    </p>
+                  </motion.div>
                 </div>
-              </div>
+                
+                {/* Timeline Events */}
+                <div className="space-y-4 relative z-10 mb-10">
+                  {loading ? (
+                    // Loading skeleton
+                    [1, 2, 3, 4].map((index) => (
+                      <div key={index} className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-[#fedac2]/30 rounded-full animate-pulse"></div>
+                        <div className="flex-1">
+                          <div className="h-4 bg-[#fedac2]/30 rounded animate-pulse"></div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    weddingData.timeline.groomSide.map((event, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        whileHover={{ 
+                          scale: 1.02,
+                          x: 8,
+                          transition: { duration: 0.3 }
+                        }}
+                        className="flex items-center space-x-5 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-[#fedac2]/10 hover:to-[#ffac7b]/10 transition-all duration-400 border border-transparent hover:border-[#fedac2]/30 group/item"
+                      >
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                            rotate: [0, 8, -8, 0]
+                          }}
+                          transition={{ 
+                            duration: 4, 
+                            repeat: Infinity,
+                            delay: index * 0.3,
+                            ease: "easeInOut"
+                          }}
+                          className="relative"
+                        >
+                          <div className="w-18 h-18 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-2xl flex items-center justify-center text-white font-bold text-sm shadow-xl group-hover/item:shadow-2xl transition-shadow duration-300">
+                            {event.time}
+                          </div>
+                          
+                          {/* Glow Effect */}
+                          <motion.div
+                            animate={{ 
+                              scale: [1, 1.3, 1],
+                              opacity: [0, 0.4, 0]
+                            }}
+                            transition={{ 
+                              duration: 2, 
+                              repeat: Infinity,
+                              delay: index * 0.4,
+                              ease: "easeInOut"
+                            }}
+                            className="absolute inset-0 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-2xl blur-md"
+                          />
+                        </motion.div>
+                        
+                        <div className="flex-1">
+                          <motion.p 
+                            className="font-semibold text-gray-800 text-lg group-hover/item:text-[#fc5d01] transition-colors duration-300"
+                            whileHover={{ x: 5 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {event.event}
+                          </motion.p>
+                        </div>
+                        
+                        {/* Arrow Indicator */}
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          whileHover={{ opacity: 1, x: 0 }}
+                          className="text-[#fc5d01] opacity-0 group-hover/item:opacity-100 transition-all duration-300"
+                        >
+                          →
+                        </motion.div>
+                      </motion.div>
+                    ))
+                  )}
+                </div>
+
+                {/* Dress Code Section */}
+                <motion.div 
+                  className="pt-8 border-t-2 border-gradient-to-r from-[#fedac2] via-[#ffac7b] to-[#fedac2] relative z-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <div className="text-center mb-8">
+                    <motion.h4 
+                      className="text-2xl font-light text-[#fc5d01] mb-2"
+                      animate={{ 
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      Dress Code
+                    </motion.h4>
+                    <div className="w-16 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full"></div>
+                  </div>
+                  
+                  <div className="flex justify-center space-x-8">
+                    {[
+                      { color: 'bg-red-500', label: 'Đỏ', shadow: 'shadow-red-200' },
+                      { color: 'bg-black', label: 'Đen', shadow: 'shadow-gray-300' },
+                      { color: 'bg-white border-2 border-gray-300', label: 'Trắng', shadow: 'shadow-gray-200' }
+                    ].map((item, index) => (
+                      <motion.div
+                        key={item.label}
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={{ 
+                          scale: 1.15,
+                          y: -5,
+                          transition: { duration: 0.3, type: "spring", stiffness: 300 }
+                        }}
+                        className="text-center group/color cursor-pointer"
+                      >
+                        <motion.div 
+                          className={`w-14 h-14 ${item.color} ${item.shadow} rounded-2xl mx-auto mb-4 shadow-xl group-hover/color:shadow-2xl transition-all duration-300 relative overflow-hidden`}
+                          whileHover={{ rotate: [0, -5, 5, 0] }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          {/* Shine Effect */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                            animate={{ x: [-100, 100] }}
+                            transition={{ 
+                              duration: 2, 
+                              repeat: Infinity, 
+                              repeatDelay: 3,
+                              ease: "easeInOut"
+                            }}
+                          />
+                        </motion.div>
+                        <motion.p 
+                          className="text-sm text-gray-600 font-semibold group-hover/color:text-[#fc5d01] transition-colors duration-300"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          {item.label}
+                        </motion.p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
 
             {/* Nhà Gái Timeline */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="bg-white rounded-lg shadow-xl p-8 border border-[#fedac2]/30"
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative group"
             >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-light text-[#fc5d01] mb-2">Nhà Gái</h3>
-                <p className="text-3xl font-light text-gray-800 mb-4">
-                  {loading ? '15 . 07 . 2024' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
-                </p>
-                <p className="text-lg text-gray-600 mb-2">
-                  {loading ? 'Sảnh 5 - Tầng 2 - Diamond Palace' : weddingData.venues.brideSide.name}
-                </p>
-                <p className="text-base text-gray-500">
-                  {loading ? 'Khách Sạn Giao Tế - Số 9, Hồ Tùng Mậu, TP. Vinh, Nghệ An' : weddingData.venues.brideSide.address}
-                </p>
-              </div>
+              {/* Decorative Background Elements */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#fd7f33]/10 via-[#ffac7b]/5 to-[#fdbc94]/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-br from-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               
-              <div className="space-y-6">
-                {loading ? (
-                  // Loading skeleton
-                  [1, 2, 3, 4].map((index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-[#fedac2]/30 rounded-full animate-pulse"></div>
-                      <div className="flex-1">
-                        <div className="h-4 bg-[#fedac2]/30 rounded animate-pulse"></div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  weddingData.timeline.brideSide.map((event, index) => (
-                    <div key={index} className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-[#fc5d01] rounded-full flex items-center justify-center text-white font-medium text-sm">
-                        {event.time}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">{event.event}</p>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
+              <motion.div
+                whileHover={{ 
+                  scale: 1.03,
+                  y: -8,
+                  transition: { duration: 0.4, type: "spring", stiffness: 300 }
+                }}
+                className="bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 border-2 border-[#fedac2]/20 hover:border-[#fd7f33]/30 relative overflow-hidden backdrop-blur-sm"
+              >
+                {/* Animated Background Gradient */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-[#fd7f33]/3 via-[#ffac7b]/2 to-[#fdbc94]/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  animate={{
+                    background: [
+                      "linear-gradient(135deg, rgba(253,127,51,0.03) 0%, rgba(255,172,123,0.02) 50%, rgba(253,188,148,0.03) 100%)",
+                      "linear-gradient(135deg, rgba(253,188,148,0.03) 0%, rgba(253,127,51,0.02) 50%, rgba(255,172,123,0.03) 100%)",
+                      "linear-gradient(135deg, rgba(253,127,51,0.03) 0%, rgba(255,172,123,0.02) 50%, rgba(253,188,148,0.03) 100%)"
+                    ]
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                
+                {/* Decorative Corner Elements */}
+                <div className="absolute top-6 left-6 w-4 h-4 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute bottom-6 right-6 w-3 h-3 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute top-12 left-12 w-2 h-2 bg-[#fdbc94] rounded-full opacity-30"></div>
+                <div className="absolute bottom-12 right-12 w-2 h-2 bg-[#fd7f33] rounded-full opacity-30"></div>
 
-              <div className="mt-8 pt-6 border-t border-[#fedac2]">
-                <p className="text-center text-base text-gray-600 mb-4">Dress Code</p>
-                <div className="flex justify-center space-x-4">
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-red-500 rounded-full mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Đỏ</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-black rounded-full mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Đen</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-white border border-gray-300 rounded-full mx-auto mb-2"></div>
-                    <p className="text-sm text-gray-600">Trắng</p>
-                  </div>
+                {/* Header Section */}
+                <div className="text-center mb-10 relative z-10">
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, -360],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 4.5, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-full shadow-xl mb-6 relative"
+                  >
+                    <Heart className="w-10 h-10 text-white fill-current" />
+                    
+                    {/* Pulse Ring */}
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.8, 1],
+                        opacity: [0.6, 0, 0.6]
+                      }}
+                      transition={{ 
+                        duration: 3.5, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="absolute inset-0 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-full"
+                    />
+                  </motion.div>
+                  
+                  <motion.h3 
+                    className="text-4xl font-light text-[#fc5d01] mb-4 relative"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Nhà Gái
+                    <motion.div
+                      className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#fd7f33] to-[#ffac7b] rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: 64 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    />
+                  </motion.h3>
+                  
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.02, 1]
+                    }}
+                    transition={{ 
+                      duration: 4.5, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="bg-gradient-to-r from-[#ffac7b]/30 via-[#fdbc94]/20 to-[#ffac7b]/30 rounded-2xl p-6 mb-6 border border-[#ffac7b]/40"
+                  >
+                    <motion.p
+                      className="text-5xl font-light text-gray-800 mb-3"
+                      animate={{ 
+                        textShadow: [
+                          "0 0 0px rgba(253,127,51,0)",
+                          "0 0 10px rgba(253,127,51,0.3)",
+                          "0 0 0px rgba(253,127,51,0)"
+                        ]
+                      }}
+                      transition={{ 
+                        duration: 3.5, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {loading ? '15 . 07 . 2024' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
+                    </motion.p>
+                    <p className="text-xl text-gray-600 mb-2 font-semibold">
+                      {loading ? 'Sảnh 5 - Tầng 2 - Diamond Palace' : weddingData.venues.brideSide.name}
+                    </p>
+                    <p className="text-base text-gray-500 leading-relaxed">
+                      {loading ? 'Khách Sạn Giao Tế - Số 9, Hồ Tùng Mậu, TP. Vinh, Nghệ An' : weddingData.venues.brideSide.address}
+                    </p>
+                  </motion.div>
                 </div>
-              </div>
+                
+                {/* Timeline Events */}
+                <div className="space-y-4 relative z-10 mb-10">
+                  {loading ? (
+                    // Loading skeleton
+                    [1, 2, 3, 4].map((index) => (
+                      <div key={index} className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-[#fedac2]/30 rounded-full animate-pulse"></div>
+                        <div className="flex-1">
+                          <div className="h-4 bg-[#fedac2]/30 rounded animate-pulse"></div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    weddingData.timeline.brideSide.map((event, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        whileHover={{ 
+                          scale: 1.02,
+                          x: -8,
+                          transition: { duration: 0.3 }
+                        }}
+                        className="flex items-center space-x-5 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-[#ffac7b]/10 hover:to-[#fdbc94]/10 transition-all duration-400 border border-transparent hover:border-[#ffac7b]/30 group/item"
+                      >
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                            rotate: [0, -8, 8, 0]
+                          }}
+                          transition={{ 
+                            duration: 4.2, 
+                            repeat: Infinity,
+                            delay: index * 0.3,
+                            ease: "easeInOut"
+                          }}
+                          className="relative"
+                        >
+                          <div className="w-18 h-18 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-2xl flex items-center justify-center text-white font-bold text-sm shadow-xl group-hover/item:shadow-2xl transition-shadow duration-300">
+                            {event.time}
+                          </div>
+                          
+                          {/* Glow Effect */}
+                          <motion.div
+                            animate={{ 
+                              scale: [1, 1.3, 1],
+                              opacity: [0, 0.4, 0]
+                            }}
+                            transition={{ 
+                              duration: 2.2, 
+                              repeat: Infinity,
+                              delay: index * 0.4,
+                              ease: "easeInOut"
+                            }}
+                            className="absolute inset-0 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-2xl blur-md"
+                          />
+                        </motion.div>
+                        
+                        <div className="flex-1">
+                          <motion.p 
+                            className="font-semibold text-gray-800 text-lg group-hover/item:text-[#fd7f33] transition-colors duration-300"
+                            whileHover={{ x: -5 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {event.event}
+                          </motion.p>
+                        </div>
+                        
+                        {/* Arrow Indicator */}
+                        <motion.div
+                          initial={{ opacity: 0, x: 10 }}
+                          whileHover={{ opacity: 1, x: 0 }}
+                          className="text-[#fd7f33] opacity-0 group-hover/item:opacity-100 transition-all duration-300"
+                        >
+                          ←
+                        </motion.div>
+                      </motion.div>
+                    ))
+                  )}
+                </div>
+
+                {/* Dress Code Section */}
+                <motion.div 
+                  className="pt-8 border-t-2 border-gradient-to-r from-[#ffac7b] via-[#fdbc94] to-[#ffac7b] relative z-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <div className="text-center mb-8">
+                    <motion.h4 
+                      className="text-2xl font-light text-[#fc5d01] mb-2"
+                      animate={{ 
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ 
+                        duration: 3.5, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      Dress Code
+                    </motion.h4>
+                    <div className="w-16 h-1 bg-gradient-to-r from-[#fd7f33] to-[#ffac7b] mx-auto rounded-full"></div>
+                  </div>
+                  
+                  <div className="flex justify-center space-x-8">
+                    {[
+                      { color: 'bg-red-500', label: 'Đỏ', shadow: 'shadow-red-200' },
+                      { color: 'bg-black', label: 'Đen', shadow: 'shadow-gray-300' },
+                      { color: 'bg-white border-2 border-gray-300', label: 'Trắng', shadow: 'shadow-gray-200' }
+                    ].map((item, index) => (
+                      <motion.div
+                        key={item.label}
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={{ 
+                          scale: 1.15,
+                          y: -5,
+                          transition: { duration: 0.3, type: "spring", stiffness: 300 }
+                        }}
+                        className="text-center group/color cursor-pointer"
+                      >
+                        <motion.div 
+                          className={`w-14 h-14 ${item.color} ${item.shadow} rounded-2xl mx-auto mb-4 shadow-xl group-hover/color:shadow-2xl transition-all duration-300 relative overflow-hidden`}
+                          whileHover={{ rotate: [0, 5, -5, 0] }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          {/* Shine Effect */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                            animate={{ x: [-100, 100] }}
+                            transition={{ 
+                              duration: 2.2, 
+                              repeat: Infinity, 
+                              repeatDelay: 3,
+                              ease: "easeInOut"
+                            }}
+                          />
+                        </motion.div>
+                        <motion.p 
+                          className="text-sm text-gray-600 font-semibold group-hover/color:text-[#fd7f33] transition-colors duration-300"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          {item.label}
+                        </motion.p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* Love Story Section */}
-      <section id="love-story" className="py-20 bg-white relative">
-        {/* Chinese Decorative Images */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div
-            initial={{ opacity: 0, rotate: -20 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="absolute top-20 left-10 w-16 h-16 opacity-40"
-          >
-            <img
-              src="/weddingchinese/m2i8A0H7K9H7m2N4.png"
-              alt="Chinese decoration 1"
-              className="w-full h-full object-contain drop-shadow-lg"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, rotate: 20 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="absolute top-20 right-10 w-16 h-16 opacity-40"
-          >
-            <img
-              src="/weddingchinese/kisspng-wedding-invitation-chinese-marriage-bridegroom-cartoon-bride-and-groom-5a8841a6ba1bb4.9223908115188791427623.png"
-              alt="Chinese decoration 2"
-              className="w-full h-full object-contain drop-shadow-lg"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.9 }}
-            className="absolute bottom-20 left-1/4 w-18 h-18 opacity-35"
-          >
-            <img
-              src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
-              alt="Chinese decoration"
-              className="w-full h-full object-contain drop-shadow-lg"
-            />
-          </motion.div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-8">Love Story</h2>
-            <p className="text-lg text-gray-600 leading-relaxed italic">
-              "Trăm triệu hạt mưa rơi, không hạt nào rơi nhầm chỗ. Tất cả người ta từng gặp, không một người nào là ngẫu nhiên, 
-              người đến bởi nợ đầy, người đi bởi duyên cạn, mọi thứ đều là duyên phận an bài, 
-              chúng ta trở thành vợ chồng cũng chính là vì đủ duyên"
-            </p>
-          </motion.div>
-
-          <div className="space-y-16">
-            {/* Thanh An */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8"
-            >
-              <div className="w-48 h-48 rounded-full overflow-hidden shadow-xl border-4 border-[#fedac2]">
-                <Image
-                  src="/Wedding/z6735567906204_6be847502f4b9d7e3f2a695bdc41a4bd.jpg"
-                  alt="Thanh An"
-                  width={192}
-                  height={192}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-3xl font-light text-[#fc5d01] mb-4">
-                  {loading ? 'Thanh An' : weddingData.loveStory.groom.name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  {loading ? 'Thanh An, chàng trai nhẹ nhàng, tình cảm' : weddingData.loveStory.groom.description}
-                </p>
-                <p className="text-gray-600 leading-relaxed italic">
-                  "{loading ? 'Mỗi ngày thức dậy bạn nghĩ đến 1 ai đó, trước khi đi ngủ bạn nghĩ đến 1 ai đó… Đó là 1 ngày trọn vẹn. Cảm ơn vì đã gặp được em "Thanh Ngân", anh mong sau này, dù có thế nào, chúng ta cũng mãi yêu thương nhau, mãi nắm tay nhau đi đến hết con đường còn lại em nhé !!' : weddingData.loveStory.groom.quote}"
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Thanh Ngân */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col md:flex-row-reverse items-center space-y-6 md:space-y-0 md:space-x-8 md:space-x-reverse"
-            >
-              <div className="w-48 h-48 rounded-full overflow-hidden shadow-xl border-4 border-[#fedac2]">
-                <Image
-                  src="/Wedding/z6735567917740_1a81acc6ac24e1836c441ae42a93c0a6.jpg"
-                  alt="Thanh Ngân"
-                  width={192}
-                  height={192}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="flex-1 text-center md:text-right">
-                <h3 className="text-3xl font-light text-[#fc5d01] mb-4">
-                  {loading ? 'Thanh Ngân' : weddingData.loveStory.bride.name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  {loading ? 'Thanh Ngân, cô gái xinh tươi vui vẻ.' : weddingData.loveStory.bride.description}
-                </p>
-                <p className="text-gray-600 leading-relaxed italic">
-                  "{loading ? 'Cái gọi là duyên phận, chính là trong ngàn vạn người gặp được người cần gặp là anh, trong ngàn vạn năm, giữa mênh mông hoang hoải vô tận của thời gian, không sớm một bước cũng không muộn một bước. Mong rằng cuộc sống sau này sẽ đối xử tốt với em, để vui vẻ, hạnh phúc luôn cạnh em' : weddingData.loveStory.bride.quote}"
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Album Section */}
       <section id="album" className="py-20 bg-gradient-to-br from-[#fedac2]/10 to-[#fdbc94]/10 chinese-double-happiness relative">

@@ -70,11 +70,140 @@ interface WeddingGalleryProps {
   showAll?: boolean;
 }
 
+// Heart Photo Component for random rotation
+function HeartPhoto({ 
+  photo, 
+  index, 
+  position, 
+  displayPhotos, 
+  openLightbox 
+}: { 
+  photo: string; 
+  index: number; 
+  position: any; 
+  displayPhotos: string[]; 
+  openLightbox: (index: number) => void; 
+}) {
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(index);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhotoIndex(prev => {
+        // Tìm ảnh mới khác với ảnh hiện tại
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * displayPhotos.length);
+        } while (newIndex === prev && displayPhotos.length > 1);
+        return newIndex;
+      });
+    }, 5000 + Math.random() * 3000); // Random interval between 5-8 seconds
+    
+    return () => clearInterval(interval);
+  }, [displayPhotos.length]);
+
+  return (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, scale: 0, rotate: -180 }}
+      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.1,
+        type: "spring",
+        bounce: 0.4
+      }}
+      className="absolute group cursor-pointer"
+      style={{
+        left: position.left,
+        top: position.top,
+        width: position.width,
+        height: position.height,
+        transform: `translate(-50%, -50%) rotate(${position.rotate})`,
+        zIndex: 20 - index
+      }}
+      onClick={() => openLightbox(currentPhotoIndex)}
+      whileHover={{ 
+        scale: 1.1, 
+        zIndex: 999,
+        rotate: `${parseFloat(position.rotate) + (Math.random() - 0.5) * 10}deg`,
+        transition: { duration: 0.3 }
+      }}
+    >
+      <div className="relative w-full h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm border-2 border-white/30 shadow-xl hover:shadow-2xl hover:shadow-[#fc5d01]/30 transition-all duration-500">
+        <motion.div
+          key={currentPhotoIndex}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full h-full"
+        >
+          <Image
+            src={displayPhotos[currentPhotoIndex]}
+            alt={`Wedding photo ${currentPhotoIndex + 1}`}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="120px"
+          />
+        </motion.div>
+        
+        {/* Heart Glow Effect */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#fc5d01]/20 via-pink-500/10 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        
+        {/* Floating Hearts */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          {[...Array(2)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 text-[#fc5d01]"
+              initial={{ scale: 0, x: '50%', y: '50%' }}
+              animate={{
+                scale: [0, 1, 0],
+                x: [0, Math.random() * 60 - 30],
+                y: [0, -30 - Math.random() * 20],
+                opacity: [0, 1, 0]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: i * 0.3,
+                repeatDelay: 1
+              }}
+              style={{
+                left: '50%',
+                top: '50%'
+              }}
+            >
+              <Heart className="w-full h-full fill-current" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Subtle Border Glow */}
+        <motion.div
+          className="absolute inset-0 rounded-2xl border border-[#fc5d01]/50 opacity-0 group-hover:opacity-100"
+          animate={{
+            boxShadow: [
+              '0 0 0px rgba(252, 93, 1, 0)',
+              '0 0 20px rgba(252, 93, 1, 0.3)',
+              '0 0 0px rgba(252, 93, 1, 0)'
+            ]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+
 export default function WeddingGallery({ showAll = false }: WeddingGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [showAllPhotos, setShowAllPhotos] = useState(showAll);
-  const [viewMode, setViewMode] = useState<'masonry' | 'grid' | 'magazine'>('masonry');
-  const [filter, setFilter] = useState<'all' | 'ceremony' | 'reception' | 'portraits'>('all');
+  const [viewMode, setViewMode] = useState<'heart'|'masonry' | 'grid' | 'magazine'  >('heart');  
   const [searchTerm, setSearchTerm] = useState('');
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -145,19 +274,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
         </div>
 
         <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-8"
-          >
-            <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] bg-clip-text text-transparent mb-4 tracking-tight">
-              LOVE.GALLERY
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 font-light tracking-wide">
-              AI-Powered Wedding Photography Experience
-            </p>
-          </motion.div>
+         
 
           {/* Advanced Control Panel */}
           <motion.div
@@ -166,24 +283,16 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
             transition={{ delay: 0.5 }}
             className="flex flex-col items-center space-y-6"
           >
-            {/* Search Bar */}
-            <div className="relative w-full max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-              <input
-                type="text"
-                placeholder="Search memories..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white/60 backdrop-blur-xl border border-orange-200 rounded-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#fc5d01] focus:border-transparent shadow-lg"
-              />
-            </div>
+           
 
             {/* View Mode Selector */}
             <div className="flex flex-wrap justify-center gap-3">
               {[
+                { mode: 'heart', icon: Heart, label: 'Heart' },
                 { mode: 'masonry', icon: LayoutGrid, label: 'Masonry' },
                 { mode: 'grid', icon: Grid3X3, label: 'Grid' },
-                { mode: 'magazine', icon: Layers, label: 'Magazine' }
+                { mode: 'magazine', icon: Layers, label: 'Magazine' },
+                
               ].map(({ mode, icon: Icon, label }) => (
                 <motion.button
                   key={mode}
@@ -209,30 +318,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
                   )}
                 </motion.button>
               ))}
-            </div>
-
-            {/* Filter Buttons */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {[
-                { key: 'all', label: 'All', icon: Camera },
-                { key: 'ceremony', label: 'Ceremony', icon: Heart },
-                { key: 'reception', label: 'Reception', icon: Sparkles },
-                { key: 'portraits', label: 'Portraits', icon: Eye }
-              ].map(({ key, label, icon: Icon }) => (
-                <button
-                  key={key}
-                  onClick={() => setFilter(key as any)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    filter === key
-                      ? 'bg-[#fc5d01] text-white shadow-lg'
-                      : 'bg-white/50 text-gray-600 hover:bg-white/70 border border-orange-200 shadow-md'
-                  }`}
-                >
-                  <Icon className="w-4 h-4 inline mr-2" />
-                  {label}
-                </button>
-              ))}
-            </div>
+            </div>          
           </motion.div>
         </div>
       </motion.div>
@@ -432,6 +518,116 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
               ))}
             </motion.div>
           )}
+
+          {viewMode === 'heart' && (
+            <motion.div
+              key="heart"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="relative w-full max-w-5xl mx-auto"
+            >
+              {/* Heart Shape Collage Container */}
+              <div className="relative w-full h-[600px] md:h-[700px] lg:h-[800px]">
+                {/* Heart Shape Layout - Fixed positions like in the image */}
+                {displayPhotos.slice(0, 20).map((photo, index) => {
+                  // Predefined positions to create heart shape collage
+                  const heartPositions = [
+                    // Top left curve
+                    { left: '15%', top: '20%', width: '80px', height: '80px', rotate: '-5deg' },
+                    { left: '25%', top: '15%', width: '100px', height: '100px', rotate: '3deg' },
+                    { left: '35%', top: '25%', width: '90px', height: '90px', rotate: '-2deg' },
+                    
+                    // Top right curve  
+                    { left: '65%', top: '25%', width: '90px', height: '90px', rotate: '4deg' },
+                    { left: '75%', top: '15%', width: '100px', height: '100px', rotate: '-3deg' },
+                    { left: '85%', top: '20%', width: '80px', height: '80px', rotate: '5deg' },
+                    
+                    // Left side
+                    { left: '10%', top: '35%', width: '70px', height: '70px', rotate: '2deg' },
+                    { left: '20%', top: '45%', width: '110px', height: '110px', rotate: '-4deg' },
+                    { left: '15%', top: '60%', width: '85px', height: '85px', rotate: '3deg' },
+                    
+                    // Right side
+                    { left: '90%', top: '35%', width: '70px', height: '70px', rotate: '-2deg' },
+                    { left: '80%', top: '45%', width: '110px', height: '110px', rotate: '4deg' },
+                    { left: '85%', top: '60%', width: '85px', height: '85px', rotate: '-3deg' },
+                    
+                    // Center area
+                    { left: '45%', top: '40%', width: '120px', height: '120px', rotate: '0deg' },
+                    { left: '55%', top: '50%', width: '95px', height: '95px', rotate: '2deg' },
+                    
+                    // Bottom part forming the point
+                    { left: '30%', top: '70%', width: '75px', height: '75px', rotate: '-3deg' },
+                    { left: '45%', top: '75%', width: '90px', height: '90px', rotate: '1deg' },
+                    { left: '60%', top: '70%', width: '75px', height: '75px', rotate: '3deg' },
+                    { left: '50%', top: '85%', width: '80px', height: '80px', rotate: '-1deg' },
+                    
+                    // Additional photos to fill gaps
+                    { left: '40%', top: '55%', width: '65px', height: '65px', rotate: '4deg' },
+                    { left: '65%', top: '40%', width: '75px', height: '75px', rotate: '-2deg' }
+                  ];
+
+                  const position = heartPositions[index] || heartPositions[index % heartPositions.length];
+
+                  return (
+                    <HeartPhoto
+                      key={index}
+                      photo={photo}
+                      index={index}
+                      position={position}
+                      displayPhotos={displayPhotos}
+                      openLightbox={openLightbox}
+                    />
+                  );
+                })}
+
+                {/* Background Hearts */}
+                {[...Array(15)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute text-[#fc5d01]/5"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{
+                      opacity: [0, 0.2, 0],
+                      scale: [0, 1, 0],
+                      rotate: [0, 360]
+                    }}
+                    transition={{
+                      duration: Math.random() * 6 + 4,
+                      repeat: Infinity,
+                      delay: Math.random() * 3,
+                      repeatDelay: Math.random() * 4
+                    }}
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      fontSize: `${Math.random() * 15 + 8}px`
+                    }}
+                  >
+                    <Heart className="fill-current" />
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Heart Layout Info */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2 }}
+                className="text-center mt-12"
+              >
+                <h3 className="text-2xl font-bold text-[#fc5d01] mb-4">
+                  💕 Trái Tim Kỷ Niệm 💕
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  Mỗi bức ảnh là một khoảnh khắc đáng nhớ trong hành trình tình yêu của chúng tôi, 
+                  được sắp xếp thành hình trái tim và tự động thay đổi theo thời gian để mang đến những bất ngờ thú vị.
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
+
         </AnimatePresence>
       </div>
 

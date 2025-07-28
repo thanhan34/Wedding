@@ -10,6 +10,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
 import { Send, Users, MessageCircle, Heart, Check, X, User, Phone, Calendar, MapPin, Sparkles, Gift, Star, Crown } from 'lucide-react';
+import { GuestInfo } from '../lib/guestData';
 
 interface RSVPData {
   name: string;
@@ -17,15 +18,21 @@ interface RSVPData {
   guestCount: number;
   event: string;
   attending: boolean;
+  guestSlug?: string;
 }
 
-export default function RSVPForm() {
+interface RSVPFormProps {
+  guestInfo?: GuestInfo;
+}
+
+export default function RSVPForm({ guestInfo }: RSVPFormProps) {
   const [formData, setFormData] = useState<RSVPData>({
-    name: '',
+    name: guestInfo?.name || '',
     phone: '',
     guestCount: 1,
     event: 'both',
     attending: true,
+    guestSlug: guestInfo?.slug,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -48,6 +55,8 @@ export default function RSVPForm() {
     try {
       await addDoc(collection(db, 'rsvp'), {
         ...formData,
+        guestTitle: guestInfo?.title,
+        guestRelationship: guestInfo?.relationship,
         createdAt: new Date(),
       });
 
@@ -55,11 +64,12 @@ export default function RSVPForm() {
       
       // Reset form
       setFormData({
-        name: '',
+        name: guestInfo?.name || '',
         phone: '',
         guestCount: 1,
         event: 'both',
         attending: true,
+        guestSlug: guestInfo?.slug,
       });
       setCurrentStep(0);
     } catch (error) {
@@ -656,8 +666,9 @@ export default function RSVPForm() {
                             type="text"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            placeholder="Nhập họ tên của bạn"
+                            placeholder={guestInfo ? `${guestInfo.title} ${guestInfo.name}` : "Nhập họ tên của bạn"}
                             className="w-full pl-12 pr-4 py-4 text-base rounded-xl border-2 border-[#fedac2] focus:border-[#fc5d01] focus:ring-[#fc5d01] transition-all duration-300"
+                            readOnly={!!guestInfo}
                             required
                           />
                           <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#fc5d01]" />
