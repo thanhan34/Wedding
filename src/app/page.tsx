@@ -13,6 +13,7 @@ import WeddingGallery from '../components/WeddingGallery';
 import ChineseDecorations from '../components/ChineseDecorations';
 import WeddingInvitation from '../components/WeddingInvitation';
 import RandomHeroImage from '../components/RandomHeroImage';
+import WeddingMusic from '../components/WeddingMusic';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
@@ -225,8 +226,8 @@ export default function Home() {
                   key={i}
                   className="absolute text-[#fc5d01]/40"
                   style={{
-                    left: `${-10 + Math.random() * 120}%`,
-                    top: `${-10 + Math.random() * 120}%`,
+                    left: `${-10 + (i * 20)}%`,
+                    top: `${-10 + (i * 15)}%`,
                   }}
                   animate={{
                     y: [-10, -20, -10],
@@ -236,11 +237,12 @@ export default function Home() {
                     rotate: [0, 360]
                   }}
                   transition={{
-                    duration: 4 + Math.random() * 2,
+                    duration: 4 + (i * 0.5),
                     repeat: Infinity,
-                    delay: Math.random() * 3,
+                    delay: i * 0.5,
                     ease: "easeInOut"
                   }}
+                  suppressHydrationWarning
                 >
                   <Heart className="w-6 h-6 fill-current" />
                 </motion.div>
@@ -1419,6 +1421,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Wedding Music Player */}
+      <WeddingMusic />
 
       {/* Enhanced Footer */}
       <footer className="relative bg-gradient-to-br from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] text-white overflow-hidden">

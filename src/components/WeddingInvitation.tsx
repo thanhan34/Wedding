@@ -14,22 +14,23 @@ export default function WeddingInvitation() {
             key={i}
             className="absolute"
             initial={{ 
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+              x: (i * 60) % 1200,
+              y: (i * 40) % 800,
               opacity: 0 
             }}
             animate={{ 
-              y: [null, Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800)],
-              x: [null, Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200)],
+              y: [null, ((i * 40) % 800) + 100],
+              x: [null, ((i * 60) % 1200) + 50],
               opacity: [0, 0.1, 0],
               rotate: [0, 360]
             }}
             transition={{
-              duration: 25 + Math.random() * 15,
+              duration: 25 + (i * 2),
               repeat: Infinity,
-              delay: Math.random() * 10,
+              delay: i * 0.5,
               ease: "linear"
             }}
+            suppressHydrationWarning
           >
             {i % 5 === 0 ? (
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#fedac2] to-[#fdbc94] opacity-20" />

@@ -105,11 +105,8 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
     
     setIsChanging(true);
     
-    // Chọn ảnh khác với ảnh hiện tại
-    let newIndex;
-    do {
-      newIndex = Math.floor(Math.random() * weddingImages.length);
-    } while (newIndex === currentImageIndex && weddingImages.length > 1);
+    // Chọn ảnh tiếp theo theo thứ tự
+    const newIndex = (currentImageIndex + 1) % weddingImages.length;
     
     // Load kích thước ảnh mới
     loadImageDimensions(weddingImages[newIndex]);
@@ -122,11 +119,11 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
 
   // Random ảnh ban đầu
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * weddingImages.length);
+    const randomIndex = 0; // Bắt đầu từ ảnh đầu tiên để tránh random
     setCurrentImageIndex(randomIndex);
     // Load kích thước ảnh đầu tiên
     loadImageDimensions(weddingImages[randomIndex]);
-  }, [weddingImages]);
+  }, []);
 
   // Auto change ảnh mỗi 5 giây
   useEffect(() => {
@@ -137,7 +134,7 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [autoChange, currentImageIndex, changeToRandomImage]);
+  }, [autoChange, currentImageIndex]);
 
   const handleImageClick = () => {
     changeToRandomImage();
@@ -156,8 +153,8 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
           key={i}
           className="absolute text-[#fc5d01]/40"
           style={{
-            left: `${-10 + Math.random() * 120}%`,
-            top: `${-10 + Math.random() * 120}%`,
+            left: `${-10 + (i * 20)}%`,
+            top: `${-10 + (i * 15)}%`,
           }}
           animate={{
             y: [-10, -20, -10],
@@ -167,11 +164,12 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
             rotate: [0, 360]
           }}
           transition={{
-            duration: 4 + Math.random() * 2,
+            duration: 4 + (i * 0.5),
             repeat: Infinity,
-            delay: Math.random() * 3,
+            delay: i * 0.5,
             ease: "easeInOut"
           }}
+          suppressHydrationWarning
         >
           <Heart className="w-6 h-6 fill-current" />
         </motion.div>
