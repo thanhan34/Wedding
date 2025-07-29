@@ -175,7 +175,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
                   >
-                    Sunday, 14 July, 2024
+                    Saturday, 29 November, 2025
                   </motion.p>
                   
                   <motion.p 
@@ -184,7 +184,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
                   >
-                    Chủ Nhật, ngày 14.07.2024 (14.06 Giáp Thìn)
+                    Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)
                   </motion.p>
                 </div>
 
@@ -193,10 +193,10 @@ export default function WeddingInvitation() {
                   whileHover={{ scale: 1.02 }}
                 >
                   <p className="text-lg font-semibold text-gray-800">
-                    Tại: Khách Sạn Anh Thanh Đô
+                    Tại: Nhà Hàng Thắng Lợi 1
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    Khu Đô Thị Vuôn Xanh - TT. Đô Lương - Nghệ An
+                    Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang
                   </p>
                 </motion.div>
 
@@ -293,7 +293,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
                   >
-                    Monday, 15 July, 2024
+                    Saturday, 30 November, 2025
                   </motion.p>
                   
                   <motion.p 
@@ -302,7 +302,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 }}
                   >
-                    Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)
+                    Thứ 7, ngày 30.11.2025 (11.10 Ất Tỵ)
                   </motion.p>
                 </div>
 

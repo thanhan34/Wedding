@@ -50,12 +50,28 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
     setIsSubmitting(true);
 
     try {
-      await addDoc(collection(db, 'rsvp'), {
-        ...formData,
-        guestTitle: guestInfo?.title,
-        guestRelationship: guestInfo?.relationship,
+      // Tạo object dữ liệu chỉ với các trường có giá trị
+      const rsvpData: any = {
+        name: formData.name,
+        phone: formData.phone,
+        guestCount: formData.guestCount,
+        event: formData.event,
+        attending: formData.attending,
         createdAt: new Date(),
-      });
+      };
+
+      // Chỉ thêm các trường optional nếu có giá trị
+      if (guestInfo?.slug) {
+        rsvpData.guestSlug = guestInfo.slug;
+      }
+      if (guestInfo?.title) {
+        rsvpData.guestTitle = guestInfo.title;
+      }
+      if (guestInfo?.relationship) {
+        rsvpData.guestRelationship = guestInfo.relationship;
+      }
+
+      await addDoc(collection(db, 'rsvp'), rsvpData);
 
       toast.success('Cảm ơn bạn đã xác nhận tham dự! 💕');
       
@@ -410,13 +426,28 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           
                           setIsSubmitting(true);
                           try {
-                            await addDoc(collection(db, 'rsvp'), {
-                              ...formData,
+                            // Tạo object dữ liệu chỉ với các trường có giá trị
+                            const rsvpData: any = {
+                              name: formData.name,
+                              phone: formData.phone,
+                              guestCount: formData.guestCount,
+                              event: formData.event,
                               attending: false,
-                              guestTitle: guestInfo?.title,
-                              guestRelationship: guestInfo?.relationship,
                               createdAt: new Date(),
-                            });
+                            };
+
+                            // Chỉ thêm các trường optional nếu có giá trị
+                            if (guestInfo?.slug) {
+                              rsvpData.guestSlug = guestInfo.slug;
+                            }
+                            if (guestInfo?.title) {
+                              rsvpData.guestTitle = guestInfo.title;
+                            }
+                            if (guestInfo?.relationship) {
+                              rsvpData.guestRelationship = guestInfo.relationship;
+                            }
+
+                            await addDoc(collection(db, 'rsvp'), rsvpData);
 
                             toast.success('Cảm ơn bạn đã phản hồi! 💕');
                             
@@ -538,7 +569,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                     
                     <div className="grid md:grid-cols-3 gap-4">
                       {[
-                        { key: 'nha-trai', title: 'Nhà Trai', date: '14.07.2024', location: 'Đô Lương, Nghệ An', icon: MapPin, color: 'from-blue-500 to-blue-600' },
+                        { key: 'nha-trai', title: 'Nhà Trai', date: '29.11.2025', location: 'Long Xuyên, An Giang', icon: MapPin, color: 'from-blue-500 to-blue-600' },
                         { key: 'nha-gai', title: 'Nhà Gái', date: '15.07.2024', location: 'Vinh, Nghệ An', icon: MapPin, color: 'from-pink-500 to-pink-600' },
                         { key: 'both', title: 'Cả Hai Ngày', date: '14 & 15.07.2024', location: 'Nghệ An', icon: Heart, color: 'from-[#fc5d01] to-[#fd7f33]' }
                       ].map((event, index) => (

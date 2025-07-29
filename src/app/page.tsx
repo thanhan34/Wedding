@@ -17,7 +17,7 @@ import WeddingMusic from '../components/WeddingMusic';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
-  const weddingDate = "2024-07-14T10:00:00";
+  const weddingDate = "2025-11-29T10:00:00";
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { weddingData, loading } = useWeddingData();
@@ -191,7 +191,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-lg md:text-xl text-gray-600 mb-8 font-light"
             >
-              {loading ? '14.07.2024 Nhà Trai - 15.07.2024 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
+              {loading ? '29.11.2025 Nhà Trai - 30.11.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
             </motion.p>
 
             <motion.div
@@ -458,13 +458,13 @@ export default function Home() {
                         ease: "easeInOut"
                       }}
                     >
-                      {loading ? '14 . 07 . 2024' : weddingData.weddingDates.groomSide.split('.').join(' . ')}
+                      {loading ? '29 . 11 . 2025' : weddingData.weddingDates.groomSide.split('.').join(' . ')}
                     </motion.p>
                     <p className="text-xl text-gray-600 mb-2 font-semibold">
-                      {loading ? 'Khách Sạn Anh Thanh Đô' : weddingData.venues.groomSide.name}
+                      {loading ? 'Nhà Hàng Thắng Lợi 1' : weddingData.venues.groomSide.name}
                     </p>
                     <p className="text-base text-gray-500 leading-relaxed">
-                      {loading ? 'Khu Đô Thị Vườn Xanh - TT. Đô Lương - Nghệ An' : weddingData.venues.groomSide.address}
+                      {loading ? 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang' : weddingData.venues.groomSide.address}
                     </p>
                   </motion.div>
                 </div>
@@ -731,7 +731,7 @@ export default function Home() {
                         ease: "easeInOut"
                       }}
                     >
-                      {loading ? '15 . 07 . 2024' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
+                      {loading ? '15 . 07 . 2025' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
                     </motion.p>
                     <p className="text-xl text-gray-600 mb-2 font-semibold">
                       {loading ? 'Sảnh 5 - Tầng 2 - Diamond Palace' : weddingData.venues.brideSide.name}
@@ -1526,11 +1526,11 @@ export default function Home() {
                 <div className="space-y-3 text-white/90 font-light">
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Trai</p>
-                    <p className="text-lg">14.07.2024</p>
+                    <p className="text-lg">29.11.2025</p>
                   </div>
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Gái</p>
-                    <p className="text-lg">15.07.2024</p>
+                    <p className="text-lg">30.11.2025</p>
                   </div>
                 </div>
               </motion.div>
@@ -1644,7 +1644,7 @@ export default function Home() {
               <div className="pt-8 border-t border-white/20">
                 <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
                   <p className="text-sm text-white/70 font-light">
-                    © 2024 Wedding Website. Made with ❤️ for our special day
+                    © 2025 Wedding Website. Made with ❤️ for our special day
                   </p>
                   <div className="flex items-center space-x-4">
                     <motion.div

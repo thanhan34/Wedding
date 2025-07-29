@@ -193,7 +193,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.2 }}
                     >
-                      Chủ Nhật, ngày 14.07.2024 (14.06 Giáp Thìn)
+                      Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)
                     </motion.p>
                   </div>
 
@@ -202,10 +202,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                     whileHover={{ scale: 1.02 }}
                   >
                     <p className="text-lg font-semibold text-gray-800">
-                      Tại: Khách Sạn Anh Thanh Đô
+                      Tại: Nhà Hàng Thắng Lợi 1
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      Khu Đô Thị Vuôn Xanh - TT. Đô Lương - Nghệ An
+                      Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang
                     </p>
                   </motion.div>
 

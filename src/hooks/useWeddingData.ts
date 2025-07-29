@@ -64,15 +64,15 @@ const defaultWeddingData: WeddingData = {
     bride: 'Thanh Ngân'
   },
   weddingDates: {
-    groomSide: '14.07.2024',
+    groomSide: '29.11.2025',
     brideSide: '15.07.2024'
   },
   venues: {
     groomSide: {
       name: 'Khách Sạn Anh Thanh Đô',
-      address: 'Khu Đô Thị Vườn Xanh - TT. Đô Lương - Nghệ An',
-      date: 'Sunday, 14 July, 2024',
-      vietnameseDate: 'Chủ Nhật, ngày 14.07.2024 (14.06 Giáp Thìn)'
+      address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
+      date: 'Saturday, 29 November, 2025',
+      vietnameseDate: 'Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)'
     },
     brideSide: {
       name: 'Sảnh 5 - Tầng 2 - Diamond Palace',
