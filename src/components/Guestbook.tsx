@@ -4,19 +4,17 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
-import { Send, MessageSquare, User, Clock, Heart, Sparkles, Gift, Users, MessageCircle, Check, X } from 'lucide-react';
+import { Send, MessageSquare, User, Clock, Heart, Sparkles, Users, MessageCircle } from 'lucide-react';
 
 interface GuestMessage {
   id: string;
   name: string;
   message: string;
   relationship: string;
-  createdAt: any;
+  createdAt: Date | { toDate: () => Date };
 }
 
 export default function Guestbook() {
@@ -78,9 +76,9 @@ export default function Guestbook() {
     }
   };
 
-  const formatDate = (timestamp: any) => {
+  const formatDate = (timestamp: Date | { toDate: () => Date } | null | undefined) => {
     if (!timestamp) return '';
-    const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+    const date = typeof timestamp === 'object' && 'toDate' in timestamp ? timestamp.toDate() : new Date(timestamp as Date);
     return date.toLocaleDateString('vi-VN', {
       day: '2-digit',
       month: '2-digit',
@@ -593,7 +591,7 @@ export default function Guestbook() {
                       <div className="relative">
                         <div className="absolute -left-2 top-0 w-1 h-full bg-gradient-to-b from-[#fc5d01] to-[#fd7f33] rounded-full"></div>
                         <p className="text-gray-700 leading-relaxed font-light text-lg pl-6 italic">
-                          "{message.message}"
+                          &ldquo;{message.message}&rdquo;
                         </p>
                       </div>
                     </div>

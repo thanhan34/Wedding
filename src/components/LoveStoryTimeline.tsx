@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
-import { Heart, Calendar, MapPin, Gem, Star, Coffee, Plane } from 'lucide-react';
+import { Heart, Gem, Star, Coffee, Plane } from 'lucide-react';
 import Image from 'next/image';
 
 interface TimelineEvent {
@@ -346,9 +346,9 @@ export default function LoveStoryTimeline() {
               Và Câu Chuyện Vẫn Tiếp Tục...
             </h3>
             <p className="text-lg text-gray-700 leading-relaxed italic">
-              "Từ những khoảnh khắc đầu tiên đến ngày hôm nay, mỗi bước đi trong hành trình tình yêu 
+              &ldquo;Từ những khoảnh khắc đầu tiên đến ngày hôm nay, mỗi bước đi trong hành trình tình yêu 
               đều dẫn chúng tôi đến với nhau. Và giờ đây, chúng tôi sẵn sàng viết tiếp câu chuyện 
-              với tư cách là vợ chồng, cùng nhau tạo nên những kỷ niệm đẹp mới."
+              với tư cách là vợ chồng, cùng nhau tạo nên những kỷ niệm đẹp mới.&rdquo;
             </p>
             <div className="flex items-center justify-center space-x-3 mt-6">
               <Heart className="w-5 h-5 fill-current text-[#fc5d01]" />

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Save, Edit, Eye, EyeOff, Lock } from 'lucide-react';
+import { Save, Eye, EyeOff, Lock } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -174,13 +174,13 @@ export default function AdminPage() {
     setLoading(false);
   };
 
-  const updateNestedData = (path: string[], value: any) => {
+  const updateNestedData = (path: string[], value: unknown) => {
     setWeddingData(prev => {
       const newData = { ...prev };
-      let current: any = newData;
+      let current: Record<string, unknown> = newData as Record<string, unknown>;
       
       for (let i = 0; i < path.length - 1; i++) {
-        current = current[path[i]];
+        current = current[path[i]] as Record<string, unknown>;
       }
       
       current[path[path.length - 1]] = value;

@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Calendar, MapPin, Gift, MessageSquare, Users, Play, Pause, Music } from 'lucide-react';
+import { Heart, Calendar, Gift, Play, Pause } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import Countdown from '../../components/Countdown';
 import RSVPForm from '../../components/RSVPForm';
 import QRPayment from '../../components/QRPayment';
 import Guestbook from '../../components/Guestbook';
@@ -20,7 +20,6 @@ import { getGuestInfo, GuestInfo } from '../../lib/guestData';
 export default function PersonalizedWeddingPage() {
   const params = useParams();
   const guestSlug = params.guest as string;
-  const weddingDate = "2024-12-15T18:00:00";
   const [isPlaying, setIsPlaying] = useState(false);
   const [guestInfo, setGuestInfo] = useState<GuestInfo | null>(null);
   const [guestLoading, setGuestLoading] = useState(true);
@@ -98,12 +97,12 @@ export default function PersonalizedWeddingPage() {
             <p className="text-gray-600 mb-6">
               Chúng tôi không tìm thấy thông tin lời mời của bạn.
             </p>
-            <a 
+            <Link 
               href="/"
               className="bg-[#fc5d01] hover:bg-[#e55401] text-white font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Về trang chính
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
@@ -184,17 +183,19 @@ export default function PersonalizedWeddingPage() {
           
           {/* Chinese Decorative Elements */}
           <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-60 rotate-12">
-            <img
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
               alt="Chinese decoration"
-              className="w-full h-full object-contain drop-shadow-lg"
+              fill
+              className="object-contain drop-shadow-lg"
             />
           </div>
           <div className="absolute top-1/3 right-1/4 w-28 h-28 opacity-60 -rotate-12">
-            <img
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807515.png"
               alt="Chinese decoration"
-              className="w-full h-full object-contain drop-shadow-lg"
+              fill
+              className="object-contain drop-shadow-lg"
             />
           </div>
         </div>
@@ -513,9 +514,9 @@ export default function PersonalizedWeddingPage() {
               >
                 <div className="max-w-4xl mx-auto">
                   <blockquote className="text-xl md:text-2xl font-light text-gray-700 leading-relaxed italic mb-8">
-                    "Cảm ơn {guestInfo.title} {guestInfo.name} đã là một phần quan trọng trong hành trình tình yêu của chúng tôi. 
+                    &ldquo;Cảm ơn {guestInfo.title} {guestInfo.name} đã là một phần quan trọng trong hành trình tình yêu của chúng tôi. 
                     Sự hiện diện, lời chúc phúc và tình cảm của {guestInfo.title} đã làm cho ngày đặc biệt này trở nên 
-                    ý nghĩa và trọn vẹn hơn bao giờ hết."
+                    ý nghĩa và trọn vẹn hơn bao giờ hết.&rdquo;
                   </blockquote>
                   
                   <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-8 border border-[#fedac2]/30">
@@ -731,8 +732,8 @@ export default function PersonalizedWeddingPage() {
                   💕
                 </motion.div>
                 <blockquote className="text-xl font-light italic text-white/95 max-w-3xl mx-auto leading-relaxed">
-                  "Tình yêu không chỉ là nhìn vào mắt nhau, mà là cùng nhau nhìn về một hướng. 
-                  Hạnh phúc không phải là điểm đến, mà là cách chúng ta đi cùng nhau."
+                  &ldquo;Tình yêu không chỉ là nhìn vào mắt nhau, mà là cùng nhau nhìn về một hướng. 
+                  Hạnh phúc không phải là điểm đến, mà là cách chúng ta đi cùng nhau.&rdquo;
                 </blockquote>
               </div>
 

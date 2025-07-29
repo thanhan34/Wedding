@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, RefreshCw, Shuffle } from 'lucide-react';
+import { Heart, Shuffle } from 'lucide-react';
 
 interface RandomHeroImageProps {
   className?: string;
@@ -74,27 +74,8 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
-  const [autoChange, setAutoChange] = useState(true);
+  const [autoChange] = useState(true);
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
-
-  // Random ảnh ban đầu
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * weddingImages.length);
-    setCurrentImageIndex(randomIndex);
-    // Load kích thước ảnh đầu tiên
-    loadImageDimensions(weddingImages[randomIndex]);
-  }, []);
-
-  // Auto change ảnh mỗi 5 giây
-  useEffect(() => {
-    if (!autoChange) return;
-
-    const interval = setInterval(() => {
-      changeToRandomImage();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [autoChange, currentImageIndex]);
 
   // Function để load ảnh và lấy kích thước
   const loadImageDimensions = (imageSrc: string) => {
@@ -139,13 +120,29 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
     }, 300);
   };
 
+  // Random ảnh ban đầu
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * weddingImages.length);
+    setCurrentImageIndex(randomIndex);
+    // Load kích thước ảnh đầu tiên
+    loadImageDimensions(weddingImages[randomIndex]);
+  }, [weddingImages]);
+
+  // Auto change ảnh mỗi 5 giây
+  useEffect(() => {
+    if (!autoChange) return;
+
+    const interval = setInterval(() => {
+      changeToRandomImage();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [autoChange, currentImageIndex, changeToRandomImage]);
+
   const handleImageClick = () => {
     changeToRandomImage();
   };
 
-  const toggleAutoChange = () => {
-    setAutoChange(!autoChange);
-  };
 
   return (
     <div className={`relative ${className}`}>

@@ -1,12 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Calendar, MapPin, Gift, MessageSquare, Users, Play, Pause, Music } from 'lucide-react';
+import { Heart, Calendar, Gift, Play, Pause } from 'lucide-react';
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Countdown from '../components/Countdown';
-import LoveStoryTimeline from '../components/LoveStoryTimeline';
-import EventDetails from '../components/EventDetails';
 import RSVPForm from '../components/RSVPForm';
 import QRPayment from '../components/QRPayment';
 import Guestbook from '../components/Guestbook';
@@ -18,7 +16,7 @@ import RandomHeroImage from '../components/RandomHeroImage';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
-  const weddingDate = "2025-11-30T18:00:00";
+  const weddingDate = "2024-07-14T10:00:00";
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { weddingData, loading } = useWeddingData();
@@ -115,16 +113,20 @@ export default function Home() {
           
           {/* Chinese Decorative Elements */}
           <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-60 rotate-12">
-            <img
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
               alt="Chinese decoration"
+              width={128}
+              height={128}
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </div>
           <div className="absolute top-1/3 right-1/4 w-28 h-28 opacity-60 -rotate-12">
-            <img
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807515.png"
               alt="Chinese decoration"
+              width={112}
+              height={112}
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </div>
@@ -980,9 +982,11 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
             className="absolute top-10 left-1/4 w-18 h-18 opacity-45"
           >
-            <img
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
               alt="Chinese decoration"
+              width={72}
+              height={72}
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </motion.div>
@@ -992,9 +996,11 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.7 }}
             className="absolute top-10 right-1/4 w-18 h-18 opacity-45"
           >
-            <img
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807515.png"
               alt="Chinese decoration"
+              width={72}
+              height={72}
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </motion.div>
@@ -1004,9 +1010,11 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.9 }}
             className="absolute bottom-20 left-10 w-16 h-16 opacity-40"
           >
-            <img
+            <Image
               src="/weddingchinese/m2i8A0H7K9H7m2N4.png"
               alt="Chinese decoration 3"
+              width={64}
+              height={64}
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </motion.div>
@@ -1016,9 +1024,11 @@ export default function Home() {
             transition={{ duration: 1, delay: 1.1 }}
             className="absolute bottom-20 right-10 w-16 h-16 opacity-40"
           >
-            <img
+            <Image
               src="/weddingchinese/kisspng-wedding-invitation-chinese-marriage-bridegroom-cartoon-bride-and-groom-5a8841a6ba1bb4.9223908115188791427623.png"
               alt="Chinese decoration 4"
+              width={64}
+              height={64}
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </motion.div>
@@ -1302,9 +1312,9 @@ export default function Home() {
               >
                 <div className="max-w-4xl mx-auto">
                   <blockquote className="text-xl md:text-2xl font-light text-gray-700 leading-relaxed italic mb-8">
-                    "Cảm ơn bạn đã là một phần quan trọng trong hành trình tình yêu của chúng tôi. 
+                    &ldquo;Cảm ơn bạn đã là một phần quan trọng trong hành trình tình yêu của chúng tôi. 
                     Sự hiện diện, lời chúc phúc và tình cảm của bạn đã làm cho ngày đặc biệt này trở nên 
-                    ý nghĩa và trọn vẹn hơn bao giờ hết."
+                    ý nghĩa và trọn vẹn hơn bao giờ hết.&rdquo;
                   </blockquote>
                   
                   <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-8 border border-[#fedac2]/30">
@@ -1598,8 +1608,8 @@ export default function Home() {
                   💕
                 </motion.div>
                 <blockquote className="text-xl font-light italic text-white/95 max-w-3xl mx-auto leading-relaxed">
-                  "Tình yêu không chỉ là nhìn vào mắt nhau, mà là cùng nhau nhìn về một hướng. 
-                  Hạnh phúc không phải là điểm đến, mà là cách chúng ta đi cùng nhau."
+                  &ldquo;Tình yêu không chỉ là nhìn vào mắt nhau, mà là cùng nhau nhìn về một hướng. 
+                  Hạnh phúc không phải là điểm đến, mà là cách chúng ta đi cùng nhau.&rdquo;
                 </blockquote>
               </div>
 

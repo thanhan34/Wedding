@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
-import { Button } from './ui/button';
 import { Calendar, MapPin, Clock, Car, Shirt, Phone, Heart, Star, Sparkles, Crown, Gift } from 'lucide-react';
 
 interface EventInfo {

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
-import { Calendar, MapPin, Clock, Heart, Star, Sparkles, Crown } from 'lucide-react';
+import { Heart, Star, Sparkles } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
 
 interface PersonalizedWeddingInvitationProps {

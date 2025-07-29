@@ -241,8 +241,8 @@ export default function Countdown({ targetDate }: CountdownProps) {
             💕
           </motion.div>
           <p className="text-lg text-gray-700 leading-relaxed italic">
-            "Mỗi giây trôi qua đều đưa chúng ta đến gần hơn với ngày hạnh phúc nhất. 
-            Cảm ơn bạn đã đồng hành cùng chúng tôi trong hành trình tình yêu này!"
+            &ldquo;Mỗi giây trôi qua đều đưa chúng ta đến gần hơn với ngày hạnh phúc nhất. 
+            Cảm ơn bạn đã đồng hành cùng chúng tôi trong hành trình tình yêu này!&rdquo;
           </p>
           <div className="flex items-center justify-center space-x-2 mt-4">
             <Heart className="w-4 h-4 fill-current text-[#fc5d01]" />

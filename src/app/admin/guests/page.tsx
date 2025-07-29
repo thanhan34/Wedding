@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Plus, Edit, Trash2, Copy, ExternalLink, Users, Search, Filter, AlertTriangle, Loader2 } from 'lucide-react';
+import { Heart, Plus, Edit, Trash2, Copy, ExternalLink, Users, Search, Filter, Loader2 } from 'lucide-react';
 import { Card } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
@@ -21,8 +21,7 @@ import {
 import { 
   messageTemplates, 
   getAllCategories, 
-  getTemplatesByCategory,
-  MessageTemplate 
+  getTemplatesByCategory
 } from '../../../lib/messageTemplates';
 
 export default function GuestManagementPage() {
@@ -128,9 +127,9 @@ export default function GuestManagementPage() {
       });
       setShowAddForm(false);
       toast.success('Đã thêm khách mời thành công!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error adding guest:', error);
-      toast.error(error.message || 'Lỗi khi thêm khách mời');
+      toast.error(error instanceof Error ? error.message : 'Lỗi khi thêm khách mời');
     } finally {
       setSubmitting(false);
     }
@@ -168,9 +167,9 @@ export default function GuestManagementPage() {
         specialNotes: ''
       });
       toast.success('Đã cập nhật khách mời thành công!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error updating guest:', error);
-      toast.error(error.message || 'Lỗi khi cập nhật khách mời');
+      toast.error(error instanceof Error ? error.message : 'Lỗi khi cập nhật khách mời');
     } finally {
       setSubmitting(false);
     }
@@ -187,9 +186,9 @@ export default function GuestManagementPage() {
       await deleteGuest(guest.id);
       await loadGuests(); // Reload data
       toast.success('Đã xóa khách mời thành công!');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error deleting guest:', error);
-      toast.error(error.message || 'Lỗi khi xóa khách mời');
+      toast.error(error instanceof Error ? error.message : 'Lỗi khi xóa khách mời');
     }
   };
 
@@ -282,7 +281,7 @@ export default function GuestManagementPage() {
                 <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <select
                   value={filterBy}
-                  onChange={(e) => setFilterBy(e.target.value as any)}
+                  onChange={(e) => setFilterBy(e.target.value as 'all' | 'both' | 'groom' | 'bride')}
                   className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fc5d01] focus:border-[#fc5d01]"
                 >
                   <option value="all">Tất cả</option>
@@ -380,7 +379,7 @@ export default function GuestManagementPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Được mời tham dự</label>
                       <select
                         value={newGuest.invitedTo}
-                        onChange={(e) => setNewGuest({ ...newGuest, invitedTo: e.target.value as any })}
+                        onChange={(e) => setNewGuest({ ...newGuest, invitedTo: e.target.value as 'both' | 'groom' | 'bride' })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fc5d01] focus:border-[#fc5d01]"
                       >
                         <option value="both">Cả hai ngày</option>
@@ -579,7 +578,7 @@ export default function GuestManagementPage() {
 
                     <div className="bg-gray-50 rounded-lg p-4 mb-4">
                       <p className="text-sm text-gray-700 italic">
-                        "{guest.personalMessage}"
+                        &ldquo;{guest.personalMessage}&rdquo;
                       </p>
                     </div>
 

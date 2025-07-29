@@ -4,12 +4,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
-import { Send, Users, MessageCircle, Heart, Check, X, User, Phone, Calendar, MapPin, Sparkles, Gift, Star, Crown } from 'lucide-react';
+import { Send, Users, Heart, X, User, Phone, Calendar, MapPin, Sparkles } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
 
 interface RSVPData {
@@ -408,9 +405,37 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                       {/* No Button - Enhanced */}
                       <motion.button
                         type="button"
-                        onClick={() => {
+                        onClick={async () => {
                           setFormData({ ...formData, attending: false });
-                          handleSubmit(new Event('submit') as any);
+                          
+                          setIsSubmitting(true);
+                          try {
+                            await addDoc(collection(db, 'rsvp'), {
+                              ...formData,
+                              attending: false,
+                              guestTitle: guestInfo?.title,
+                              guestRelationship: guestInfo?.relationship,
+                              createdAt: new Date(),
+                            });
+
+                            toast.success('Cảm ơn bạn đã phản hồi! 💕');
+                            
+                            // Reset form
+                            setFormData({
+                              name: guestInfo?.name || '',
+                              phone: '',
+                              guestCount: 1,
+                              event: 'both',
+                              attending: true,
+                              guestSlug: guestInfo?.slug,
+                            });
+                            setCurrentStep(0);
+                          } catch (error) {
+                            console.error('Error submitting RSVP:', error);
+                            toast.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                          } finally {
+                            setIsSubmitting(false);
+                          }
                         }}
                         whileHover={{ scale: 1.03, y: -5 }}
                         whileTap={{ scale: 0.97 }}

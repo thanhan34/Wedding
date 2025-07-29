@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function ChineseDecorations() {
   const [petals, setPetals] = useState<Array<{ id: number; x: number; delay: number }>>([]);
@@ -55,11 +56,12 @@ export default function ChineseDecorations() {
           transition={{ duration: 1, delay: 0.5 }}
           className="absolute top-4 left-4"
         >
-          <div className="w-24 h-24 opacity-80">
-            <img
+          <div className="w-24 h-24 opacity-80 relative">
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
               alt="Chinese decoration"
-              className="w-full h-full object-contain drop-shadow-lg"
+              fill
+              className="object-contain drop-shadow-lg"
             />
           </div>
         </motion.div>
@@ -71,11 +73,12 @@ export default function ChineseDecorations() {
           transition={{ duration: 1, delay: 0.7 }}
           className="absolute top-4 right-4"
         >
-          <div className="w-24 h-24 opacity-80">
-            <img
+          <div className="w-24 h-24 opacity-80 relative">
+            <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807515.png"
               alt="Chinese decoration"
-              className="w-full h-full object-contain drop-shadow-lg"
+              fill
+              className="object-contain drop-shadow-lg"
             />
           </div>
         </motion.div>
@@ -87,11 +90,12 @@ export default function ChineseDecorations() {
           transition={{ duration: 1, delay: 0.9 }}
           className="absolute bottom-4 left-4"
         >
-          <div className="w-20 h-20 opacity-70 rounded-full overflow-hidden shadow-lg">
-            <img
+          <div className="w-20 h-20 opacity-70 rounded-full overflow-hidden shadow-lg relative">
+            <Image
               src="/weddingchinese/m2i8A0H7K9H7m2N4.png"
               alt="Chinese pattern"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </motion.div>
@@ -103,11 +107,12 @@ export default function ChineseDecorations() {
           transition={{ duration: 1, delay: 1.1 }}
           className="absolute bottom-4 right-4"
         >
-          <div className="w-20 h-20 opacity-70 rounded-full overflow-hidden shadow-lg">
-            <img
+          <div className="w-20 h-20 opacity-70 rounded-full overflow-hidden shadow-lg relative">
+            <Image
               src="/weddingchinese/kisspng-wedding-invitation-chinese-marriage-bridegroom-cartoon-bride-and-groom-5a8841a6ba1bb4.9223908115188791427623.png"
               alt="Chinese pattern"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </motion.div>

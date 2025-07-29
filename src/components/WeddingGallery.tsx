@@ -3,7 +3,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Heart, Sparkles, Camera, Eye, Download, Share2, Grid3X3, LayoutGrid, Maximize2, Search, Star, Zap, Layers, Play, Pause } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Heart, Sparkles, Camera, Download, Share2, Grid3X3, LayoutGrid, Maximize2, Star, Layers } from 'lucide-react';
 
 const weddingPhotos = [
   '/Wedding/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg',
@@ -71,8 +71,15 @@ interface WeddingGalleryProps {
 }
 
 // Heart Photo Component for random rotation
+interface HeartPosition {
+  left: string;
+  top: string;
+  width: string;
+  height: string;
+  rotate: string;
+}
+
 function HeartPhoto({ 
-  photo, 
   index, 
   position, 
   displayPhotos, 
@@ -80,7 +87,7 @@ function HeartPhoto({
 }: { 
   photo: string; 
   index: number; 
-  position: any; 
+  position: HeartPosition; 
   displayPhotos: string[]; 
   openLightbox: (index: number) => void; 
 }) {
@@ -204,7 +211,6 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [showAllPhotos, setShowAllPhotos] = useState(showAll);
   const [viewMode, setViewMode] = useState<'heart'|'masonry' | 'grid' | 'magazine'  >('heart');  
-  const [searchTerm, setSearchTerm] = useState('');
   
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
@@ -296,7 +302,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
               ].map(({ mode, icon: Icon, label }) => (
                 <motion.button
                   key={mode}
-                  onClick={() => setViewMode(mode as any)}
+                  onClick={() => setViewMode(mode as 'heart'|'masonry' | 'grid' | 'magazine')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`group relative px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
