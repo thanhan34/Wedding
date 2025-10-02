@@ -221,16 +221,16 @@ export default function BaoHy() {
                 >
                   <Gift className="w-6 h-6" />
                 </motion.div>
-                <h3 className="text-2xl font-medium text-gray-800 mb-3">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">
                   {baoHyEvent.title}
                 </h3>
-                <h4 className="text-xl font-semibold text-[#fc5d01] mb-4">
+                <h4 className="text-base font-semibold text-[#fc5d01] mb-3">
                   {baoHyEvent.coupleNames}
                 </h4>
-                <p className="text-lg font-medium text-gray-700 mb-2">
+                <p className="text-sm font-medium text-gray-700 mb-1">
                   {baoHyEvent.date}
                 </p>
-                <p className="text-gray-600 text-sm mb-6">
+                <p className="text-gray-600 text-xs mb-4">
                   {baoHyEvent.vietnameseDate}
                 </p>
               </div>
@@ -238,66 +238,66 @@ export default function BaoHy() {
               {/* Event Details */}
               <div className="space-y-8 relative z-10 mb-8">
                 <div className="text-center">
-                  <div className="flex items-center justify-center space-x-3 mb-4">
-                    <MapPin className="w-8 h-8 text-[#fc5d01]" />
-                    <p className="text-gray-700 font-semibold text-2xl">Tại: {baoHyEvent.location}</p>
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <MapPin className="w-5 h-5 text-[#fc5d01]" />
+                    <p className="text-gray-700 font-semibold text-base">Tại: {baoHyEvent.location}</p>
                   </div>
-                  <p className="text-gray-600 text-xl leading-relaxed">{baoHyEvent.address}</p>
+                  <p className="text-gray-600 text-sm leading-snug">{baoHyEvent.address}</p>
                 </div>
                 
                 {/* Time Details */}
                 <motion.div 
-                  className="bg-gradient-to-r from-[#fedac2]/20 to-[#fdbc94]/20 rounded-3xl p-8 border-2 border-[#fedac2]/30"
+                  className="bg-gradient-to-r from-[#fedac2]/20 to-[#fdbc94]/20 rounded-2xl p-4 border-2 border-[#fedac2]/30"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="flex items-center justify-center space-x-4 mb-4">
-                    <Clock className="w-10 h-10 text-[#fc5d01]" />
-                    <p className="text-2xl font-bold text-gray-800">Thời gian: {baoHyEvent.time}</p>
+                  <div className="flex items-center justify-center space-x-3 mb-2">
+                    <Clock className="w-5 h-5 text-[#fc5d01]" />
+                    <p className="text-base font-bold text-gray-800">Thời gian: {baoHyEvent.time}</p>
                   </div>
                   <div className="flex items-center justify-center space-x-2 text-gray-600">
-                    <Star className="w-5 h-5 text-[#fc5d01]" />
-                    <p className="text-lg text-center">
+                    <Star className="w-4 h-4 text-[#fc5d01]" />
+                    <p className="text-sm text-center">
                       Chương trình bắt đầu đúng giờ
                     </p>
-                    <Star className="w-5 h-5 text-[#fc5d01]" />
+                    <Star className="w-4 h-4 text-[#fc5d01]" />
                   </div>
                 </motion.div>
 
                 {/* Dress Code Section */}
                 <motion.div 
-                  className="bg-gradient-to-r from-pink-50/80 to-white/80 rounded-3xl p-8 border-2 border-pink-200/50"
+                  className="bg-gradient-to-r from-pink-50/80 to-white/80 rounded-2xl p-5 border-2 border-pink-200/50"
                   whileHover={{ scale: 1.02 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  <div className="text-center space-y-6">
-                    <div className="flex items-center justify-center space-x-3 mb-4">
+                  <div className="text-center space-y-4">
+                    <div className="flex items-center justify-center space-x-2 mb-3">
                       <motion.div
                         className="flex items-center space-x-2"
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                       >
-                        <Sparkles className="w-8 h-8 text-pink-500" />
-                        <h5 className="text-2xl font-bold text-gray-800">Dress Code</h5>
-                        <Sparkles className="w-8 h-8 text-pink-500" />
+                        <Sparkles className="w-5 h-5 text-pink-500" />
+                        <h5 className="text-base font-bold text-gray-800">Dress Code</h5>
+                        <Sparkles className="w-5 h-5 text-pink-500" />
                       </motion.div>
                     </div>
                     
-                    <div className="flex items-center justify-center space-x-8">
+                    <div className="flex items-center justify-center space-x-6">
                       <motion.div 
-                        className="flex flex-col items-center space-y-3"
+                        className="flex flex-col items-center space-y-2"
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center border-4 border-gray-100">
-                          <div className="w-8 h-8 bg-white rounded-full shadow-inner"></div>
+                        <div className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center border-3 border-gray-100">
+                          <div className="w-6 h-6 bg-white rounded-full shadow-inner"></div>
                         </div>
-                        <p className="text-xl font-semibold text-gray-700">Trắng</p>
+                        <p className="text-sm font-semibold text-gray-700">Trắng</p>
                       </motion.div>
                       
                       <motion.div
-                        className="text-3xl font-light text-pink-400"
+                        className="text-2xl font-light text-pink-400"
                         animate={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 4, repeat: Infinity }}
                       >
@@ -305,29 +305,29 @@ export default function BaoHy() {
                       </motion.div>
                       
                       <motion.div 
-                        className="flex flex-col items-center space-y-3"
+                        className="flex flex-col items-center space-y-2"
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full shadow-lg flex items-center justify-center border-4 border-pink-50">
-                          <div className="w-8 h-8 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full shadow-inner"></div>
+                        <div className="w-12 h-12 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full shadow-lg flex items-center justify-center border-3 border-pink-50">
+                          <div className="w-6 h-6 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full shadow-inner"></div>
                         </div>
-                        <p className="text-xl font-semibold text-gray-700">Hồng Pastel</p>
+                        <p className="text-sm font-semibold text-gray-700">Hồng Pastel</p>
                       </motion.div>
                     </div>
                     
                     <motion.div 
-                      className="bg-gradient-to-r from-pink-100/50 to-white/50 rounded-2xl p-4 border border-pink-200/30"
+                      className="bg-gradient-to-r from-pink-100/50 to-white/50 rounded-xl p-3 border border-pink-200/30"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.8, delay: 0.5 }}
                     >
-                      <div className="flex items-center justify-center space-x-2 mb-2">
-                        <Heart className="w-5 h-5 text-pink-500" />
-                        <p className="text-lg font-medium text-gray-700">Trang phục gợi ý</p>
-                        <Heart className="w-5 h-5 text-pink-500" />
+                      <div className="flex items-center justify-center space-x-2 mb-1">
+                        <Heart className="w-4 h-4 text-pink-500" />
+                        <p className="text-sm font-medium text-gray-700">Trang phục gợi ý</p>
+                        <Heart className="w-4 h-4 text-pink-500" />
                       </div>
-                      <p className="text-gray-600 text-center">
+                      <p className="text-gray-600 text-xs text-center">
                         Hãy diện những trang phục màu trắng hoặc hồng để hòa mình vào không khí lễ hội nhé! 🌸
                       </p>
                     </motion.div>

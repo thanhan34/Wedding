@@ -275,7 +275,7 @@ export default function EventDetails() {
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="group"
               >
-                <Card className="bg-white/90 backdrop-blur-sm border-2 border-[#fedac2]/30 rounded-3xl p-8 h-full hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+                <Card className="bg-white/90 backdrop-blur-sm border-2 border-[#fedac2]/30 rounded-3xl p-5 h-full hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
                   {/* Background Gradient */}
                   <motion.div
                     className={`absolute inset-0 bg-gradient-to-br ${event.color} opacity-0 group-hover:opacity-5`}
@@ -283,73 +283,75 @@ export default function EventDetails() {
                   />
                   
                   {/* Header */}
-                  <div className="text-center mb-8 relative z-10">
+                  <div className="text-center mb-4 relative z-10">
                     <motion.div 
-                      className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br ${event.color} rounded-full text-white mb-6 shadow-xl`}
+                      className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${event.color} rounded-full text-white mb-3 shadow-xl`}
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.8 }}
                     >
-                      {event.icon}
+                      <div className="scale-75">
+                        {event.icon}
+                      </div>
                     </motion.div>
-                    <h3 className="text-2xl font-medium text-gray-800 mb-3">
+                    <h3 className="text-lg font-medium text-gray-800 mb-2">
                       {event.title}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-xs leading-snug">
                       {event.description}
                     </p>
                   </div>
 
                   {/* Event Details */}
-                  <div className="space-y-6 relative z-10">
+                  <div className="space-y-3 relative z-10">
                     <motion.div 
-                      className="flex items-start space-x-4 p-4 rounded-2xl bg-gradient-to-r from-[#fedac2]/10 to-[#fdbc94]/10"
+                      className="flex items-start space-x-3 p-3 rounded-2xl bg-gradient-to-r from-[#fedac2]/10 to-[#fdbc94]/10"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <Calendar className="w-6 h-6 text-[#fc5d01] mt-1 flex-shrink-0" />
+                      <Calendar className="w-4 h-4 text-[#fc5d01] mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-800 text-lg">{event.date}</p>
+                        <p className="font-semibold text-gray-800 text-sm">{event.date}</p>
                       </div>
                     </motion.div>
 
                     <motion.div 
-                      className="flex items-start space-x-4 p-4 rounded-2xl bg-gradient-to-r from-[#fedac2]/10 to-[#fdbc94]/10"
+                      className="flex items-start space-x-3 p-3 rounded-2xl bg-gradient-to-r from-[#fedac2]/10 to-[#fdbc94]/10"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <Clock className="w-6 h-6 text-[#fc5d01] mt-1 flex-shrink-0" />
+                      <Clock className="w-4 h-4 text-[#fc5d01] mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-800 text-lg">{event.time}</p>
+                        <p className="font-semibold text-gray-800 text-sm">{event.time}</p>
                       </div>
                     </motion.div>
 
                     <motion.div 
-                      className="flex items-start space-x-4 p-4 rounded-2xl bg-gradient-to-r from-[#fedac2]/10 to-[#fdbc94]/10"
+                      className="flex items-start space-x-3 p-3 rounded-2xl bg-gradient-to-r from-[#fedac2]/10 to-[#fdbc94]/10"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <MapPin className="w-6 h-6 text-[#fc5d01] mt-1 flex-shrink-0" />
+                      <MapPin className="w-4 h-4 text-[#fc5d01] mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="font-semibold text-gray-800 text-lg mb-1">{event.location}</p>
-                        <p className="text-gray-600 leading-relaxed">{event.address}</p>
+                        <p className="font-semibold text-gray-800 text-sm mb-1">{event.location}</p>
+                        <p className="text-gray-600 text-xs leading-snug">{event.address}</p>
                       </div>
                     </motion.div>
                   </div>
 
                   {/* Map Button */}
-                  <div className="mt-8 relative z-10">
+                  <div className="mt-4 relative z-10">
                     <motion.button
                       onClick={() => openMap(event.mapUrl)}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="group w-full bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] hover:from-[#e55401] hover:to-[#e56f2d] text-white font-medium py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                      className="group w-full bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] hover:from-[#e55401] hover:to-[#e56f2d] text-white font-medium py-3 px-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                     >
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100"
                         transition={{ duration: 0.3 }}
                       />
-                      <div className="flex items-center justify-center relative z-10">
-                        <MapPin className="w-5 h-5 mr-3" />
+                      <div className="flex items-center justify-center relative z-10 text-sm">
+                        <MapPin className="w-4 h-4 mr-2" />
                         <span>Xem Bản Đồ</span>
                         <motion.div
-                          className="ml-3"
+                          className="ml-2"
                           animate={{ x: [0, 5, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
                         >

@@ -113,7 +113,7 @@ export default function LoveStoryTimeline() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <motion.div
             animate={{ 
@@ -125,19 +125,19 @@ export default function LoveStoryTimeline() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-8"
+            className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-4"
           >
-            <Heart className="w-10 h-10 text-white fill-current" />
+            <Heart className="w-7 h-7 text-white fill-current" />
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-light text-[#fc5d01] mb-6">
+          <h2 className="text-2xl md:text-3xl font-light text-[#fc5d01] mb-3">
             Chuyện Tình Yêu Của Chúng Tôi
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto leading-snug">
             Mỗi khoảnh khắc đều là một trang sách trong câu chuyện tình yêu của chúng tôi. 
             Hãy cùng lật từng trang để khám phá hành trình từ lần gặp đầu tiên đến ngày hạnh phúc nhất.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-6"></div>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-4"></div>
         </motion.div>
 
         {/* Timeline Container */}
@@ -157,7 +157,7 @@ export default function LoveStoryTimeline() {
                 type: "spring",
                 stiffness: 100
               }}
-              className={`relative flex items-center mb-16 ${
+              className={`relative flex items-center mb-10 ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
@@ -179,9 +179,9 @@ export default function LoveStoryTimeline() {
                     delay: index * 0.5,
                     ease: "easeInOut"
                   }}
-                  className={`w-16 h-16 bg-gradient-to-br ${event.color} rounded-full border-4 border-white shadow-xl flex items-center justify-center`}
+                  className={`w-12 h-12 bg-gradient-to-br ${event.color} rounded-full border-3 border-white shadow-xl flex items-center justify-center`}
                 >
-                  <div className="text-white">
+                  <div className="text-white scale-75">
                     {event.icon}
                   </div>
                 </motion.div>
@@ -217,7 +217,7 @@ export default function LoveStoryTimeline() {
                     
                     {/* Image Section */}
                     {event.image && (
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative h-32 overflow-hidden">
                         <Image
                           src={event.image}
                           alt={event.title}
@@ -227,15 +227,15 @@ export default function LoveStoryTimeline() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         
                         {/* Date Badge */}
-                        <div className={`absolute top-4 right-4 bg-gradient-to-r ${event.color} text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg`}>
+                        <div className={`absolute top-2 right-2 bg-gradient-to-r ${event.color} text-white px-2 py-0.5 rounded-full text-xs font-medium shadow-lg`}>
                           {event.date}
                         </div>
                       </div>
                     )}
 
                     {/* Content */}
-                    <div className="p-6 relative z-10">
-                      <div className="flex items-center mb-4">
+                    <div className="p-4 relative z-10">
+                      <div className="flex items-center mb-2">
                         <motion.div
                           animate={{ 
                             rotate: [0, 10, -10, 0]
@@ -246,28 +246,28 @@ export default function LoveStoryTimeline() {
                             delay: index * 0.5,
                             ease: "easeInOut"
                           }}
-                          className={`p-3 bg-gradient-to-r ${event.color} rounded-full text-white mr-4 shadow-lg`}
+                          className={`p-2 bg-gradient-to-r ${event.color} rounded-full text-white mr-3 shadow-lg scale-75`}
                         >
                           {event.icon}
                         </motion.div>
                         <div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-1">
+                          <h3 className="text-base font-bold text-gray-800 mb-0.5">
                             {event.title}
                           </h3>
                           {!event.image && (
-                            <div className="text-sm text-[#fc5d01] font-semibold">
+                            <div className="text-xs text-[#fc5d01] font-semibold">
                               {event.date}
                             </div>
                           )}
                         </div>
                       </div>
                       
-                      <p className="text-gray-600 leading-relaxed text-base">
+                      <p className="text-gray-600 leading-snug text-xs">
                         {event.description}
                       </p>
 
                       {/* Decorative Elements */}
-                      <div className="flex items-center justify-end mt-4 space-x-2">
+                      <div className="flex items-center justify-end mt-2 space-x-1.5">
                         <motion.div
                           animate={{ 
                             scale: [1, 1.2, 1],
@@ -279,7 +279,7 @@ export default function LoveStoryTimeline() {
                             delay: index * 0.3,
                             ease: "easeInOut"
                           }}
-                          className="w-2 h-2 bg-[#fc5d01] rounded-full"
+                          className="w-1.5 h-1.5 bg-[#fc5d01] rounded-full"
                         />
                         <motion.div
                           animate={{ 
@@ -292,7 +292,7 @@ export default function LoveStoryTimeline() {
                             delay: index * 0.3 + 0.2,
                             ease: "easeInOut"
                           }}
-                          className="w-3 h-3 bg-[#fd7f33] rounded-full"
+                          className="w-2 h-2 bg-[#fd7f33] rounded-full"
                         />
                         <motion.div
                           animate={{ 
@@ -305,7 +305,7 @@ export default function LoveStoryTimeline() {
                             delay: index * 0.3 + 0.4,
                             ease: "easeInOut"
                           }}
-                          className="w-2 h-2 bg-[#ffac7b] rounded-full"
+                          className="w-1.5 h-1.5 bg-[#ffac7b] rounded-full"
                         />
                       </div>
                     </div>
@@ -325,9 +325,9 @@ export default function LoveStoryTimeline() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-16"
+          className="text-center mt-10"
         >
-          <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-3xl p-8 border border-[#fedac2]/30 max-w-3xl mx-auto">
+          <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-5 border border-[#fedac2]/30 max-w-3xl mx-auto">
             <motion.div
               animate={{ 
                 scale: [1, 1.2, 1],
@@ -338,22 +338,22 @@ export default function LoveStoryTimeline() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="text-5xl mb-6"
+              className="text-3xl mb-3"
             >
               💕
             </motion.div>
-            <h3 className="text-2xl font-light text-[#fc5d01] mb-4">
+            <h3 className="text-lg font-light text-[#fc5d01] mb-2">
               Và Câu Chuyện Vẫn Tiếp Tục...
             </h3>
-            <p className="text-lg text-gray-700 leading-relaxed italic">
+            <p className="text-sm text-gray-700 leading-snug italic">
               &ldquo;Từ những khoảnh khắc đầu tiên đến ngày hôm nay, mỗi bước đi trong hành trình tình yêu 
               đều dẫn chúng tôi đến với nhau. Và giờ đây, chúng tôi sẵn sàng viết tiếp câu chuyện 
               với tư cách là vợ chồng, cùng nhau tạo nên những kỷ niệm đẹp mới.&rdquo;
             </p>
-            <div className="flex items-center justify-center space-x-3 mt-6">
-              <Heart className="w-5 h-5 fill-current text-[#fc5d01]" />
-              <span className="text-[#fc5d01] font-medium text-lg">Thanh An & Thanh Ngân</span>
-              <Heart className="w-5 h-5 fill-current text-[#fc5d01]" />
+            <div className="flex items-center justify-center space-x-2 mt-4">
+              <Heart className="w-4 h-4 fill-current text-[#fc5d01]" />
+              <span className="text-[#fc5d01] font-medium text-sm">Thanh An & Thanh Ngân</span>
+              <Heart className="w-4 h-4 fill-current text-[#fc5d01]" />
             </div>
           </div>
         </motion.div>
