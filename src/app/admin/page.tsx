@@ -113,18 +113,18 @@ export default function AdminPage() {
         vietnameseDate: 'Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)'
       },
       brideSide: {
-        name: 'Sảnh 5 - Tầng 2 - Diamond Palace',
-        address: 'Khách Sạn Giao Tế - Số 9, Hồ Tùng Mậu, TP. Vinh, Nghệ An',
+        name: 'Nhà Hàng Restaurant',
+        address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
         date: 'Monday, 15 July, 2024',
         vietnameseDate: 'Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)'
       }
     },
     timeline: {
       groomSide: [
-        { time: '09:30', event: 'Đón khách' },
+        { time: '12:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' },
         { time: '10:00', event: 'Lễ Thành Hôn' },
         { time: '10:30', event: 'Khai tiệc' },
-        { time: '12:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' }
+        
       ],
       brideSide: [
         { time: '09:30', event: 'Đón khách' },

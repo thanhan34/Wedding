@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
-import { Heart, Star, Sparkles } from 'lucide-react';
+import { Heart, Star, Sparkles, Gift } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
 
 interface PersonalizedWeddingInvitationProps {
@@ -119,7 +119,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
         </motion.div>
 
         {/* Wedding Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {/* Nhà Trai Card - Luôn hiển thị cho tất cả khách mời */}
           <motion.div
             initial={{ opacity: 0, x: -100, rotate: -5 }}
@@ -302,7 +302,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.2 }}
                     >
-                      Monday, 15 July, 2024
+                      Friday, 28 November, 2025
                     </motion.p>
                     
                     <motion.p 
@@ -311,7 +311,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.4 }}
                     >
-                      Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)
+                      Thứ 6, ngày 28.11.2025 (09.10 Ất Tỵ)
                     </motion.p>
                   </div>
 
@@ -320,10 +320,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                     whileHover={{ scale: 1.02 }}
                   >
                     <p className="text-lg font-semibold text-gray-800">
-                      Tại: Sảnh 5 - Tầng 2 - Diamond Palace
+                      Tại: Nhà Hàng Thanh Tâm
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      Khách Sạn Giao Tế - Số 9, Hồ Tùng Mậu, TP. Vinh, Nghệ An
+                      97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng
                     </p>
                   </motion.div>
 
@@ -352,6 +352,124 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
                   <Star className="w-6 h-6 text-[#fc5d01] opacity-30 fill-current" />
+                </motion.div>
+              </Card>
+          </motion.div>
+
+          {/* Tiệc Báo Hỷ Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 50, rotate: 0 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ duration: 1, delay: 0.9, type: "spring", stiffness: 100 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="relative group"
+          >
+              {/* Gift Decoration */}
+              <motion.div
+                className="absolute -top-4 -left-4 z-20"
+                animate={{ 
+                  rotate: [0, 15, -15, 0],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{ duration: 4, repeat: Infinity, repeatDelay: 1, delay: 2 }}
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                  <Gift className="w-6 h-6 text-white" />
+                </div>
+              </motion.div>
+
+              <Card className="bg-gradient-to-br from-white via-[#fff8f5] to-[#fedac2]/20 border-2 border-[#fc5d01]/30 rounded-3xl p-10 shadow-2xl relative overflow-hidden group-hover:shadow-3xl transition-all duration-500">
+                {/* Glow Effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-[#fc5d01]/5 via-transparent to-[#fd7f33]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={false}
+                />
+                
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute top-4 right-4 w-20 h-20 border-2 border-[#fc5d01] rounded-full" />
+                  <div className="absolute bottom-4 left-4 w-16 h-16 border-2 border-[#fd7f33] rounded-full" />
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-[#ffac7b] rounded-full" />
+                </div>
+
+                {/* Corner Decorations */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#fc5d01]/10 to-transparent rounded-bl-full" />
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#fd7f33]/10 to-transparent rounded-tr-full" />
+
+                <div className="relative z-10 text-center space-y-6">
+                  <motion.h2 
+                    className="text-4xl font-light text-[#fc5d01] mb-6"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Tiệc Báo Hỷ
+                  </motion.h2>
+
+                  <div className="space-y-4">
+                    <motion.h3 
+                      className="text-2xl font-medium text-gray-800"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.2 }}
+                    >
+                      Thanh Ngân & Thanh An
+                    </motion.h3>
+                    
+                    <motion.p 
+                      className="text-lg text-gray-600 font-medium"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.4 }}
+                    >
+                      Sunday, 14 December, 2025
+                    </motion.p>
+                    
+                    <motion.p 
+                      className="text-gray-600"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.6 }}
+                    >
+                      Chủ Nhật, ngày 14.12.2025 (25.10 Ất Tỵ)
+                    </motion.p>
+                  </div>
+
+                  <motion.div 
+                    className="bg-gradient-to-r from-[#fc5d01]/10 to-[#fd7f33]/10 rounded-2xl p-6 space-y-3"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <p className="text-lg font-semibold text-gray-800">
+                      Tại: Victoria Resort Cần Thơ
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      Cái Khế, Ninh Kiều, Cần Thơ
+                    </p>
+                  </motion.div>
+
+                  <motion.div 
+                    className="border-t-2 border-[#fedac2] pt-6 space-y-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.9 }}
+                  >
+                    <p className="text-xl font-medium text-[#fc5d01]">
+                      TRÂN TRỌNG KÍNH MỜI
+                    </p>
+                    <p className="text-gray-700 leading-relaxed">
+                      Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng tôi
+                    </p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {guestInfo.title} {guestInfo.name}
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Decorative Elements */}
+                <motion.div
+                  className="absolute bottom-4 right-4"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                >
+                  <Gift className="w-6 h-6 text-[#fc5d01] opacity-30" />
                 </motion.div>
               </Card>
           </motion.div>

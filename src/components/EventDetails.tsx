@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
 import { Calendar, MapPin, Clock, Car, Shirt, Phone, Heart, Star, Sparkles, Crown, Gift } from 'lucide-react';
+import { useWeddingData } from '../hooks/useWeddingData';
 
 interface EventInfo {
   title: string;
@@ -16,41 +17,31 @@ interface EventInfo {
   description: string;
 }
 
-const events: EventInfo[] = [
-  {
-    title: "Lễ Vu Quy",
-    date: "Chủ Nhật, 14/07/2024",
-    time: "08:00 - 10:00",
-    location: "Nhà Cô Dâu",
-    address: "Vinh, Nghệ An",
-    mapUrl: "https://maps.google.com/?q=Vinh+Nghe+An",
-    icon: <Heart className="w-6 h-6" />,
-    color: "from-pink-500 to-pink-600",
-    description: "Lễ vu quy tại nhà cô dâu với sự hiện diện của hai họ"
-  },
-  {
-    title: "Lễ Thành Hôn",
-    date: "Thứ Hai, 15/07/2024", 
-    time: "11:00 - 13:00",
-    location: "Nhà Chú Rể",
-    address: "Đô Lương, Nghệ An",
-    mapUrl: "https://maps.google.com/?q=Do+Luong+Nghe+An",
-    icon: <Crown className="w-6 h-6" />,
-    color: "from-[#fc5d01] to-[#fd7f33]",
-    description: "Lễ thành hôn trang trọng tại nhà chú rể"
-  },
-  {
-    title: "Tiệc Cưới",
-    date: "Thứ Hai, 15/07/2024",
-    time: "18:00 - 21:00", 
-    location: "Nhà Hàng Tiệc Cưới",
-    address: "Đô Lương, Nghệ An",
-    mapUrl: "https://maps.google.com/?q=Do+Luong+Nghe+An",
-    icon: <Gift className="w-6 h-6" />,
-    color: "from-purple-500 to-purple-600",
-    description: "Tiệc cưới ấm cúng cùng gia đình và bạn bè"
+const getEventIcon = (type: string) => {
+  switch (type) {
+    case 'engagement':
+      return <Gift className="w-6 h-6" />;
+    case 'wedding':
+      return <Crown className="w-6 h-6" />;
+    case 'reception':
+      return <Heart className="w-6 h-6" />;
+    default:
+      return <Heart className="w-6 h-6" />;
   }
-];
+};
+
+const getEventColor = (type: string) => {
+  switch (type) {
+    case 'engagement':
+      return "from-[#fc5d01] to-[#fd7f33]";
+    case 'wedding':
+      return "from-[#fc5d01] to-[#fd7f33]";
+    case 'reception':
+      return "from-pink-500 to-pink-600";
+    default:
+      return "from-[#fc5d01] to-[#fd7f33]";
+  }
+};
 
 const additionalInfo = [
   {
@@ -74,9 +65,56 @@ const additionalInfo = [
 ];
 
 export default function EventDetails() {
+  const { weddingData, loading, error } = useWeddingData();
+  
   const openMap = (mapUrl: string) => {
     window.open(mapUrl, '_blank');
   };
+
+  if (loading) {
+    return (
+      <div className="py-20 px-4 bg-gradient-to-br from-[#fedac2]/10 via-white to-[#fdbc94]/10 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#fc5d01] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#fc5d01] text-lg">Đang tải thông tin sự kiện...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="py-20 px-4 bg-gradient-to-br from-[#fedac2]/10 via-white to-[#fdbc94]/10 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-500 text-lg">Có lỗi xảy ra khi tải dữ liệu: {error}</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Check if weddingData and events exist before mapping
+  if (!weddingData || !weddingData.events) {
+    return (
+      <div className="py-20 px-4 bg-gradient-to-br from-[#fedac2]/10 via-white to-[#fdbc94]/10 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#fc5d01] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#fc5d01] text-lg">Đang tải dữ liệu sự kiện...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const events = weddingData.events.map(event => ({
+    title: event.title,
+    date: event.date,
+    time: event.time,
+    location: event.location,
+    address: event.address,
+    mapUrl: event.mapUrl,
+    icon: getEventIcon(event.type),
+    color: getEventColor(event.type),
+    description: event.description
+  }));
 
   return (
     <div className="py-20 px-4 bg-gradient-to-br from-[#fedac2]/10 via-white to-[#fdbc94]/10 relative overflow-hidden">

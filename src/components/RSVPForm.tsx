@@ -6,8 +6,9 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
-import { Send, Users, Heart, X, User, Phone, Calendar, MapPin, Sparkles } from 'lucide-react';
+import { Send, Users, Heart, X, User, Phone, Calendar, MapPin, Sparkles, Gift } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
+import QRPayment from './QRPayment';
 
 interface RSVPData {
   name: string;
@@ -33,6 +34,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [showGiftSection, setShowGiftSection] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -421,52 +423,9 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                       {/* No Button - Enhanced */}
                       <motion.button
                         type="button"
-                        onClick={async () => {
+                        onClick={() => {
                           setFormData({ ...formData, attending: false });
-                          
-                          setIsSubmitting(true);
-                          try {
-                            // Tạo object dữ liệu chỉ với các trường có giá trị
-                            const rsvpData: any = {
-                              name: formData.name,
-                              phone: formData.phone,
-                              guestCount: formData.guestCount,
-                              event: formData.event,
-                              attending: false,
-                              createdAt: new Date(),
-                            };
-
-                            // Chỉ thêm các trường optional nếu có giá trị
-                            if (guestInfo?.slug) {
-                              rsvpData.guestSlug = guestInfo.slug;
-                            }
-                            if (guestInfo?.title) {
-                              rsvpData.guestTitle = guestInfo.title;
-                            }
-                            if (guestInfo?.relationship) {
-                              rsvpData.guestRelationship = guestInfo.relationship;
-                            }
-
-                            await addDoc(collection(db, 'rsvp'), rsvpData);
-
-                            toast.success('Cảm ơn bạn đã phản hồi! 💕');
-                            
-                            // Reset form
-                            setFormData({
-                              name: guestInfo?.name || '',
-                              phone: '',
-                              guestCount: 1,
-                              event: 'both',
-                              attending: true,
-                              guestSlug: guestInfo?.slug,
-                            });
-                            setCurrentStep(0);
-                          } catch (error) {
-                            console.error('Error submitting RSVP:', error);
-                            toast.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
-                          } finally {
-                            setIsSubmitting(false);
-                          }
+                          setShowGiftSection(true);
                         }}
                         whileHover={{ scale: 1.03, y: -5 }}
                         whileTap={{ scale: 0.97 }}
@@ -569,9 +528,9 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                     
                     <div className="grid md:grid-cols-3 gap-4">
                       {[
-                        { key: 'nha-trai', title: 'Nhà Trai', date: '29.11.2025', location: 'Long Xuyên, An Giang', icon: MapPin, color: 'from-blue-500 to-blue-600' },
-                        { key: 'nha-gai', title: 'Nhà Gái', date: '15.07.2024', location: 'Vinh, Nghệ An', icon: MapPin, color: 'from-pink-500 to-pink-600' },
-                        { key: 'both', title: 'Cả Hai Ngày', date: '14 & 15.07.2024', location: 'Nghệ An', icon: Heart, color: 'from-[#fc5d01] to-[#fd7f33]' }
+                        { key: 'nha-gai', title: 'Nhà Gái', date: '28.11.2025', location: 'Sóc Trăng, Cần Thơ', icon: MapPin, color: 'from-pink-500 to-pink-600' },
+                        { key: 'nha-trai', title: 'Nhà Trai', date: '29.11.2025', location: 'Long Xuyên, An Giang', icon: MapPin, color: 'from-blue-500 to-blue-600' },                        
+                        { key: 'both', title: 'Tiệc Báo Hỷ', date: '14.12.2025', location: 'Cần Thơ', icon: Heart, color: 'from-[#fc5d01] to-[#fd7f33]' }
                       ].map((event, index) => (
                         <motion.button
                           key={event.key}
@@ -803,28 +762,255 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
           </div>
         </motion.div>
 
-        {/* Thank You Message */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="text-center mt-12"
-        >
-          <motion.p 
-            className="text-lg text-gray-600 flex items-center justify-center"
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            Cảm ơn bạn đã dành thời gian cho chúng tôi
-            <motion.span
-              className="ml-3"
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+        {/* Gift Section - Appears when user can't attend */}
+        <AnimatePresence>
+          {showGiftSection && (
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 50, scale: 0.9 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+              className="mt-12"
             >
-              ❤️
-            </motion.span>
-          </motion.p>
-        </motion.div>
+              {/* Heartfelt Message */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="max-w-3xl mx-auto mb-8"
+              >
+                <div className="bg-gradient-to-br from-[#fedac2]/20 via-white to-[#fdbc94]/20 rounded-3xl shadow-xl border border-[#fedac2]/30 p-8 relative overflow-hidden">
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#fc5d01]/10 to-transparent rounded-full -translate-x-16 -translate-y-16" />
+                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-[#fd7f33]/10 to-transparent rounded-full translate-x-16 translate-y-16" />
+                  
+                  {/* Floating Hearts */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {[...Array(5)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute"
+                        initial={{ 
+                          x: Math.random() * 100 + '%',
+                          y: '100%',
+                          opacity: 0,
+                          scale: 0
+                        }}
+                        animate={{ 
+                          y: '-20%',
+                          opacity: [0, 0.3, 0],
+                          scale: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          delay: i * 0.8,
+                          ease: "easeOut"
+                        }}
+                      >
+                        <Heart className="w-4 h-4 text-[#fc5d01] fill-current opacity-20" />
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <div className="relative z-10 text-center space-y-6">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                      className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-4"
+                    >
+                      <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        🤗
+                      </motion.div>
+                    </motion.div>
+
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="text-2xl md:text-3xl font-light text-gray-800 mb-4"
+                    >
+                      Chúng mình hiểu mà! 💕
+                    </motion.h3>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                      className="space-y-4 text-gray-600 leading-relaxed"
+                    >
+                      <p className="text-lg">
+                        Dù không thể có mặt trong ngày trọng đại này, nhưng tình cảm của bạn 
+                        dành cho chúng mình vẫn luôn được trân trọng.
+                      </p>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.9 }}
+                        className="bg-gradient-to-r from-[#fc5d01]/10 via-[#fd7f33]/5 to-[#fc5d01]/10 rounded-2xl p-6 border border-[#fedac2]/30"
+                      >
+                        <p className="text-base text-gray-700 italic">
+                          "Nếu bạn muốn gửi lời chúc phước và một chút quà nhỏ đến đôi uyên ương, 
+                          chúng mình sẽ vô cùng biết ơn và hạnh phúc! 🎁"
+                        </p>
+                      </motion.div>
+                    </motion.div>
+
+                    {/* Call to Action */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.1 }}
+                      className="pt-4"
+                    >
+                      <motion.div
+                        className="inline-flex items-center space-x-2 text-[#fc5d01] font-medium"
+                        animate={{ 
+                          y: [0, -3, 0],
+                          scale: [1, 1.02, 1]
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <Gift className="w-5 h-5" />
+                        <span>Gửi quà cưới bên dưới</span>
+                        <motion.div
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          ↓
+                        </motion.div>
+                      </motion.div>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* QR Payment Component */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                <QRPayment />
+              </motion.div>
+
+              {/* Close Button */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="text-center mt-8"
+              >
+                <motion.button
+                  onClick={async () => {
+                    // Submit the "not attending" response
+                    setIsSubmitting(true);
+                    try {
+                      const rsvpData: any = {
+                        name: formData.name || 'Khách mời',
+                        phone: formData.phone || '',
+                        guestCount: 1,
+                        event: 'both',
+                        attending: false,
+                        createdAt: new Date(),
+                      };
+
+                      if (guestInfo?.slug) {
+                        rsvpData.guestSlug = guestInfo.slug;
+                      }
+                      if (guestInfo?.title) {
+                        rsvpData.guestTitle = guestInfo.title;
+                      }
+                      if (guestInfo?.relationship) {
+                        rsvpData.guestRelationship = guestInfo.relationship;
+                      }
+
+                      await addDoc(collection(db, 'rsvp'), rsvpData);
+                      toast.success('Cảm ơn bạn đã gửi lời chúc! 💕');
+                      
+                      // Reset everything
+                      setShowGiftSection(false);
+                      setFormData({
+                        name: guestInfo?.name || '',
+                        phone: '',
+                        guestCount: 1,
+                        event: 'both',
+                        attending: true,
+                        guestSlug: guestInfo?.slug,
+                      });
+                      setCurrentStep(0);
+                    } catch (error) {
+                      console.error('Error submitting RSVP:', error);
+                      toast.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                    } finally {
+                      setIsSubmitting(false);
+                    }
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  disabled={isSubmitting}
+                  className="group bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] hover:from-[#e55401] hover:to-[#e55401] text-white font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center relative z-10">
+                      <motion.div
+                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      Đang gửi...
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center relative z-10">
+                      <Heart className="w-5 h-5 mr-2 fill-current" />
+                      Hoàn tất
+                      <Send className="w-4 h-4 ml-2" />
+                    </div>
+                  )}
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Thank You Message - Only show when not showing gift section */}
+        {!showGiftSection && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="text-center mt-12"
+          >
+            <motion.p 
+              className="text-lg text-gray-600 flex items-center justify-center"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              Cảm ơn bạn đã dành thời gian cho chúng tôi
+              <motion.span
+                className="ml-3"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+              >
+                ❤️
+              </motion.span>
+            </motion.p>
+          </motion.div>
+        )}
       </div>
     </div>
   );

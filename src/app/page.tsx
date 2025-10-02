@@ -12,8 +12,11 @@ import FallingHearts from '../components/FallingHearts';
 import WeddingGallery from '../components/WeddingGallery';
 import ChineseDecorations from '../components/ChineseDecorations';
 import WeddingInvitation from '../components/WeddingInvitation';
+import BaoHy from '../components/BaoHy';
 import RandomHeroImage from '../components/RandomHeroImage';
 import WeddingMusic from '../components/WeddingMusic';
+import BrideGroomIntroduction from '../components/BrideGroomIntroduction';
+import DetailedEventCards from '../components/DetailedEventCards';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
@@ -53,6 +56,24 @@ export default function Home() {
         <source src="/wedding-music.mp3" type="audio/mpeg" />
       </audio>
 
+      {/* Logo Header */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5 }}
+        className="fixed top-6 left-6 z-50"
+      >
+        <div className="bg-white/90 backdrop-blur-sm border border-[#fedac2] rounded-2xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <Image
+            src="/orange-logo.png"
+            alt="Wedding Logo"
+            width={60}
+            height={60}
+            className="w-12 h-12 md:w-15 md:h-15 object-contain"
+          />
+        </div>
+      </motion.div>
+
       {/* Music Control */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -81,7 +102,7 @@ export default function Home() {
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-32 h-32 chinese-frame overflow-hidden opacity-20 rotate-12">
             <Image
-              src="/Wedding/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg"
+              src="/Wedding/Doc/KTIU0157.jpg"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -89,7 +110,7 @@ export default function Home() {
           </div>
           <div className="absolute top-20 right-20 w-40 h-40 chinese-frame overflow-hidden opacity-15 -rotate-12">
             <Image
-              src="/Wedding/z6735567871021_9e4913b6410c10f10977be2780d2f3f7.jpg"
+              src="/Wedding/Doc/KTIU0256.jpg"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -97,7 +118,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-32 left-32 w-28 h-28 chinese-frame overflow-hidden opacity-20 rotate-45">
             <Image
-              src="/Wedding/z6735567882402_9def3cf5b873424e21da131c35e3aae9.jpg"
+              src="/Wedding/Doc/KTIU0370.jpg"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -105,7 +126,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-20 right-32 w-36 h-36 chinese-frame overflow-hidden opacity-15 -rotate-45">
             <Image
-              src="/Wedding/z6735567894036_260ccd39a6a62711ab29b072eb173369.jpg"
+              src="/Wedding/Doc/KTIU8198.JPG"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -191,7 +212,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-lg md:text-xl text-gray-600 mb-8 font-light"
             >
-              {loading ? '29.11.2025 Nhà Trai - 30.11.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
+              {loading ? '29.11.2025 Nhà Trai - 28.11.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
             </motion.p>
 
             <motion.div
@@ -258,6 +279,16 @@ export default function Home() {
       {/* Wedding Invitation Cards */}
       <section id="invitation">
         <WeddingInvitation />
+      </section>
+
+      {/* Bride and Groom Introduction */}
+      <section id="bride-groom-intro">
+        <BrideGroomIntroduction />
+      </section>
+
+      {/* Báo Hỷ Section */}
+      <section id="bao-hy">
+        <BaoHy />
       </section>
 
       {/* RSVP Section */}
@@ -349,7 +380,7 @@ export default function Home() {
             <Countdown targetDate={weddingDate} />
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-stretch">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {/* Nhà Trai Timeline */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -731,13 +762,13 @@ export default function Home() {
                         ease: "easeInOut"
                       }}
                     >
-                      {loading ? '15 . 07 . 2025' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
+                      {loading ? '28 . 11 . 2025' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
                     </motion.p>
                     <p className="text-xl text-gray-600 mb-2 font-semibold">
-                      {loading ? 'Sảnh 5 - Tầng 2 - Diamond Palace' : weddingData.venues.brideSide.name}
+                      {loading ? 'Nhà Hàng Thanh Tâm' : weddingData.venues.brideSide.name}
                     </p>
                     <p className="text-base text-gray-500 leading-relaxed">
-                      {loading ? 'Khách Sạn Giao Tế - Số 9, Hồ Tùng Mậu, TP. Vinh, Nghệ An' : weddingData.venues.brideSide.address}
+                      {loading ? '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng' : weddingData.venues.brideSide.address}
                     </p>
                   </motion.div>
                 </div>
@@ -895,10 +926,275 @@ export default function Home() {
                 </motion.div>
               </motion.div>
             </motion.div>
+
+            {/* Báo Hỷ Timeline */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="relative group"
+            >
+              {/* Decorative Background Elements */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#ffac7b]/10 via-[#fdbc94]/5 to-[#fedac2]/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-br from-[#fdbc94]/20 to-[#fedac2]/20 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+              
+              <motion.div
+                whileHover={{ 
+                  scale: 1.03,
+                  y: -8,
+                  transition: { duration: 0.4, type: "spring", stiffness: 300 }
+                }}
+                className="bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 border-2 border-[#fedac2]/20 hover:border-[#ffac7b]/30 relative overflow-hidden backdrop-blur-sm"
+              >
+                {/* Animated Background Gradient */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-[#ffac7b]/3 via-[#fdbc94]/2 to-[#fedac2]/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  animate={{
+                    background: [
+                      "linear-gradient(135deg, rgba(255,172,123,0.03) 0%, rgba(253,188,148,0.02) 50%, rgba(254,218,194,0.03) 100%)",
+                      "linear-gradient(135deg, rgba(254,218,194,0.03) 0%, rgba(255,172,123,0.02) 50%, rgba(253,188,148,0.03) 100%)",
+                      "linear-gradient(135deg, rgba(255,172,123,0.03) 0%, rgba(253,188,148,0.02) 50%, rgba(254,218,194,0.03) 100%)"
+                    ]
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                
+                {/* Decorative Corner Elements */}
+                <div className="absolute top-6 right-6 w-4 h-4 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute bottom-6 left-6 w-3 h-3 bg-gradient-to-br from-[#fdbc94] to-[#fedac2] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute top-12 right-12 w-2 h-2 bg-[#fedac2] rounded-full opacity-30"></div>
+                <div className="absolute bottom-12 left-12 w-2 h-2 bg-[#ffac7b] rounded-full opacity-30"></div>
+
+                {/* Header Section */}
+                <div className="text-center mb-10 relative z-10">
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 360],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 35, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-full shadow-xl mb-6 relative"
+                  >
+                    <Gift className="w-10 h-10 text-white" />
+                    
+                    {/* Pulse Ring */}
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.8, 1],
+                        opacity: [0.6, 0, 0.6]
+                      }}
+                      transition={{ 
+                        duration: 4, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="absolute inset-0 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-full"
+                    />
+                  </motion.div>
+                  
+                  <motion.h3 
+                    className="text-4xl font-light text-[#fc5d01] mb-4 relative"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Báo Hỷ
+                    <motion.div
+                      className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#ffac7b] to-[#fdbc94] rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: 64 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    />
+                  </motion.h3>
+                  
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.02, 1]
+                    }}
+                    transition={{ 
+                      duration: 5, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="bg-gradient-to-r from-[#fdbc94]/30 via-[#fedac2]/20 to-[#fdbc94]/30 rounded-2xl p-6 mb-6 border border-[#fdbc94]/40"
+                  >
+                    <motion.p
+                      className="text-5xl font-light text-gray-800 mb-3"
+                      animate={{ 
+                        textShadow: [
+                          "0 0 0px rgba(255,172,123,0)",
+                          "0 0 10px rgba(255,172,123,0.3)",
+                          "0 0 0px rgba(255,172,123,0)"
+                        ]
+                      }}
+                      transition={{ 
+                        duration: 4, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      14 . 12 . 2025
+                    </motion.p>
+                    <p className="text-xl text-gray-600 mb-2 font-semibold">
+                      Victoria Resort Cần Thơ
+                    </p>
+                    <p className="text-base text-gray-500 leading-relaxed">
+                      Cái Khế, Ninh Kiều, Cần Thơ
+                    </p>
+                  </motion.div>
+                </div>
+                
+                {/* Timeline Events */}
+                <div className="space-y-4 relative z-10 mb-10">
+                  {[
+                    { time: '15:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' },
+                    { time: '15:30', event: 'Hôn Lễ Bái Đấu' },
+                    { time: '16:00', event: 'Khai tiệc' },
+                    { time: '18:00', event: 'Kết thúc tiệc' }
+                  ].map((event, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      whileHover={{ 
+                        scale: 1.02,
+                        y: -4,
+                        transition: { duration: 0.3 }
+                      }}
+                      className="flex items-center space-x-5 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-[#fdbc94]/10 hover:to-[#fedac2]/10 transition-all duration-400 border border-transparent hover:border-[#fdbc94]/30 group/item"
+                    >
+                      <motion.div
+                        animate={{ 
+                          scale: [1, 1.1, 1],
+                          rotate: [0, 12, -12, 0]
+                        }}
+                        transition={{ 
+                          duration: 4.5, 
+                          repeat: Infinity,
+                          delay: index * 0.3,
+                          ease: "easeInOut"
+                        }}
+                        className="relative"
+                      >
+                        <div className="w-18 h-18 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-2xl flex items-center justify-center text-white font-bold text-sm shadow-xl group-hover/item:shadow-2xl transition-shadow duration-300">
+                          {event.time}
+                        </div>
+                        
+                        {/* Glow Effect */}
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.3, 1],
+                            opacity: [0, 0.4, 0]
+                          }}
+                          transition={{ 
+                            duration: 2.5, 
+                            repeat: Infinity,
+                            delay: index * 0.4,
+                            ease: "easeInOut"
+                          }}
+                          className="absolute inset-0 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-2xl blur-md"
+                        />
+                      </motion.div>
+                      
+                      <div className="flex-1">
+                        <motion.p 
+                          className="font-semibold text-gray-800 text-lg group-hover/item:text-[#ffac7b] transition-colors duration-300"
+                          whileHover={{ y: -2 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {event.event}
+                        </motion.p>
+                      </div>
+                      
+                      {/* Arrow Indicator */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileHover={{ opacity: 1, scale: 1 }}
+                        className="text-[#ffac7b] opacity-0 group-hover/item:opacity-100 transition-all duration-300"
+                      >
+                        ↗
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Dress Code Section */}
+                <motion.div 
+                  className="pt-8 border-t-2 border-gradient-to-r from-[#fdbc94] via-[#fedac2] to-[#fdbc94] relative z-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <div className="text-center mb-8">
+                    <motion.h4 
+                      className="text-2xl font-light text-[#fc5d01] mb-2"
+                      animate={{ 
+                        scale: [1, 1.02, 1]
+                      }}
+                      transition={{ 
+                        duration: 4, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      Dress Code
+                    </motion.h4>
+                    <div className="w-16 h-1 bg-gradient-to-r from-[#ffac7b] to-[#fdbc94] mx-auto rounded-full"></div>
+                  </div>
+                  
+                  <div className="flex justify-center space-x-8">
+                    {[
+                      { color: 'bg-red-500', label: 'Đỏ', shadow: 'shadow-red-200' },
+                      { color: 'bg-black', label: 'Đen', shadow: 'shadow-gray-300' },
+                      { color: 'bg-white border-2 border-gray-300', label: 'Trắng', shadow: 'shadow-gray-200' }
+                    ].map((item, index) => (
+                      <motion.div
+                        key={item.label}
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={{ 
+                          scale: 1.15,
+                          y: -5,
+                          transition: { duration: 0.3, type: "spring", stiffness: 300 }
+                        }}
+                        className="text-center group/color cursor-pointer"
+                      >
+                        <motion.div 
+                          className={`w-14 h-14 ${item.color} ${item.shadow} rounded-2xl mx-auto mb-4 shadow-xl group-hover/color:shadow-2xl transition-all duration-300 relative overflow-hidden`}
+                          whileHover={{ rotate: [0, 8, -8, 0] }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          {/* Shine Effect */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                            animate={{ x: [-100, 100] }}
+                            transition={{ 
+                              duration: 2.5, 
+                              repeat: Infinity, 
+                              repeatDelay: 3,
+                              ease: "easeInOut"
+                            }}
+                          />
+                        </motion.div>
+                        <motion.p 
+                          className="text-sm text-gray-600 font-semibold group-hover/color:text-[#ffac7b] transition-colors duration-300"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          {item.label}
+                        </motion.p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
-     
 
       {/* Album Section */}
       <section id="album" className="py-20 bg-gradient-to-br from-[#fedac2]/10 to-[#fdbc94]/10 chinese-double-happiness relative">
@@ -1100,7 +1396,7 @@ export default function Home() {
               className="absolute top-16 left-16 w-32 h-32 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm"
             >
               <Image
-                src="/Wedding/z6735567927961_c7b35df35d192ed05609826ff9940a4c.jpg"
+                src="/Wedding/Doc/KTIU0256.jpg"
                 alt="Wedding memory"
                 fill
                 className="object-cover"
@@ -1114,7 +1410,7 @@ export default function Home() {
               className="absolute top-24 right-16 w-28 h-28 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm"
             >
               <Image
-                src="/Wedding/z6735567939132_6f69d0c6e9fc1d92dc18868639c2c99f.jpg"
+                src="/Wedding/Doc/KTIU0370.jpg"
                 alt="Wedding memory"
                 fill
                 className="object-cover"
@@ -1128,7 +1424,7 @@ export default function Home() {
               className="absolute bottom-24 left-20 w-36 h-36 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm"
             >
               <Image
-                src="/Wedding/z6735567951291_6900097c7a503aa5cf3befa46a85cd47.jpg"
+                src="/Wedding/Doc/KTIU8198.JPG"
                 alt="Wedding memory"
                 fill
                 className="object-cover"
@@ -1142,7 +1438,7 @@ export default function Home() {
               className="absolute bottom-16 right-20 w-30 h-30 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm"
             >
               <Image
-                src="/Wedding/z6735567975547_767583a942095144b0aeb707a866ce8d.jpg"
+                src="/Wedding/Doc/KTIU9199.JPG"
                 alt="Wedding memory"
                 fill
                 className="object-cover"
@@ -1238,7 +1534,7 @@ export default function Home() {
                   
                   <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-2xl border-6 border-white">
                     <Image
-                      src="/Wedding/z6735567987748_d7077417fb671d31654fd0bf9ae6ed0b.jpg"
+                      src="/Wedding/Doc/z6735567987748_d7077417fb671d31654fd0bf9ae6ed0b.jpg"
                       alt="Thanh An & Thanh Ngân"
                       width={160}
                       height={160}
@@ -1486,9 +1782,15 @@ export default function Home() {
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                    className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30"
+                    className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 p-2"
                   >
-                    <Heart className="w-8 h-8 fill-current" />
+                    <Image
+                      src="/orange-logo.png"
+                      alt="Wedding Logo"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-contain"
+                    />
                   </motion.div>
                 </div>
                 <h3 className="text-2xl font-light mb-4">
@@ -1530,7 +1832,7 @@ export default function Home() {
                   </div>
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Gái</p>
-                    <p className="text-lg">30.11.2025</p>
+                    <p className="text-lg">28.11.2025</p>
                   </div>
                 </div>
               </motion.div>

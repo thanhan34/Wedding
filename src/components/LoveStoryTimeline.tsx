@@ -21,7 +21,7 @@ const timelineEvents: TimelineEvent[] = [
     description: "Chúng tôi gặp nhau lần đầu tại một quán cà phê nhỏ. Ánh mắt anh khiến em không thể quên. Đó là khoảnh khắc định mệnh, khi hai trái tim bắt đầu đập cùng nhịp.",
     icon: <Coffee className="w-6 h-6" />,
     color: "from-[#fc5d01] to-[#fd7f33]",
-    image: "/Wedding/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg"
+    image: "/Wedding/Doc/KTIU0157.jpg"
   },
   {
     date: "Tháng 6, 2020",
@@ -29,7 +29,7 @@ const timelineEvents: TimelineEvent[] = [
     description: "Buổi hẹn hò đầu tiên tại công viên, chúng tôi đã trò chuyện suốt cả ngày mà không biết mệt. Những tiếng cười giòn tan và ánh mắt lung linh đã làm nên kỷ niệm đẹp nhất.",
     icon: <Heart className="w-6 h-6" />,
     color: "from-[#fd7f33] to-[#ffac7b]",
-    image: "/Wedding/z6735567871021_9e4913b6410c10f10977be2780d2f3f7.jpg"
+    image: "/Wedding/Doc/KTIU0180.jpg"
   },
   {
     date: "Tháng 12, 2022",
@@ -37,7 +37,7 @@ const timelineEvents: TimelineEvent[] = [
     description: "Chuyến du lịch Đà Lạt lãng mạn, nơi chúng tôi hiểu rằng mình là dành cho nhau. Giữa khung cảnh thơ mộng của thành phố ngàn hoa, tình yêu chúng tôi đã thăng hoa.",
     icon: <Plane className="w-6 h-6" />,
     color: "from-[#ffac7b] to-[#fdbc94]",
-    image: "/Wedding/z6735567882402_9def3cf5b873424e21da131c35e3aae9.jpg"
+    image: "/Wedding/Doc/KTIU0370.jpg"
   },
   {
     date: "Tháng 2, 2024",
@@ -45,7 +45,7 @@ const timelineEvents: TimelineEvent[] = [
     description: "Anh đã quỳ gối cầu hôn em trong một buổi hoàng hôn tuyệt đẹp. Em đã nói 'Có' với đầy hạnh phúc. Đó là khoảnh khắc thiêng liêng nhất, khi chúng tôi hứa sẽ yêu nhau mãi mãi.",
     icon: <Gem className="w-6 h-6" />,
     color: "from-[#fdbc94] to-[#fedac2]",
-    image: "/Wedding/z6735567894036_260ccd39a6a62711ab29b072eb173369.jpg"
+    image: "/Wedding/Doc/KTIU8198.JPG"
   }
 ];
 

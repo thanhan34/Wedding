@@ -3,68 +3,56 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Heart, Sparkles, Camera, Download, Share2, Grid3X3, LayoutGrid, Maximize2, Star, Layers } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Heart, Sparkles, Camera, Download, Share2, Grid3X3, LayoutGrid, Maximize2, Star, Layers, Circle, Palette, BookOpen } from 'lucide-react';
+import WeddingRingsLayout from './gallery/layouts/WeddingRingsLayout';
+import ButterflyWingsLayout from './gallery/layouts/ButterflyWingsLayout';
+import BookAlbumLayout from './gallery/layouts/BookAlbumLayout';
+import SmartLayout from './gallery/layouts/SmartLayout';
 
-const weddingPhotos = [
-  '/Wedding/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg',
-  '/Wedding/z6735567871021_9e4913b6410c10f10977be2780d2f3f7.jpg',
-  '/Wedding/z6735567882402_9def3cf5b873424e21da131c35e3aae9.jpg',
-  '/Wedding/z6735567894036_260ccd39a6a62711ab29b072eb173369.jpg',
-  '/Wedding/z6735567906204_6be847502f4b9d7e3f2a695bdc41a4bd.jpg',
-  '/Wedding/z6735567917740_1a81acc6ac24e1836c441ae42a93c0a6.jpg',
-  '/Wedding/z6735567927961_c7b35df35d192ed05609826ff9940a4c.jpg',
-  '/Wedding/z6735567939132_6f69d0c6e9fc1d92dc18868639c2c99f.jpg',
-  '/Wedding/z6735567951291_6900097c7a503aa5cf3befa46a85cd47.jpg',
-  '/Wedding/z6735567975547_767583a942095144b0aeb707a866ce8d.jpg',
-  '/Wedding/z6735567987748_d7077417fb671d31654fd0bf9ae6ed0b.jpg',
-  '/Wedding/z6735567999368_6d9c40712c9abd26ef6da75acaeb655b.jpg',
-  '/Wedding/z6735567999397_83c352a7a02daa39a797abde70651b9c.jpg',
-  '/Wedding/z6735568022520_cdaecac085539ead6daf709770f008d3.jpg',
-  '/Wedding/z6735568048498_05b7b7a4be9b803d3a635bddaa5d9e2a.jpg',
-  '/Wedding/z6735568061311_68c76407f6a831c15690af90b6cdd02d.jpg',
-  '/Wedding/z6735568086547_8c81b2729db2ad55e1d414077272acc2.jpg',
-  '/Wedding/z6838080697898_bcd43c92e2da834b9d6ca4532e47d30c.jpg',
-  '/Wedding/z6838080701992_98232c2adbdffc34945825587b9e5e0a.jpg',
-  '/Wedding/z6838080707580_178be53a02163fad3c96084075663cf9.jpg',
-  '/Wedding/z6838080712251_9dd253c936ac92d5a77f635b83574566.jpg',
-  '/Wedding/z6838080722077_7ecc69fe88785110420f89038b157e48.jpg',
-  '/Wedding/z6838080728726_fe43d78d183dc0a71cec5ba5b2bd7dce.jpg',
-  '/Wedding/z6838080731335_17baac262b6862ca700fe900452d7c06.jpg',
-  '/Wedding/z6838080733915_38de9ce32ca1e0d3d96907029032af74.jpg',
-  '/Wedding/z6838080739496_710f8307bc0c00c5147535e0cd2356cf.jpg',
-  '/Wedding/z6838080745654_5e8905d8daa2b2df3b7810e8fb5e69a6.jpg',
-  '/Wedding/z6838080754535_4f378055edb7a651c9a75cd196b4e58d.jpg',
-  '/Wedding/z6838080754857_b110d0d111d59f652dcf487256fa3b70.jpg',
-  '/Wedding/z6838080763589_910a47e34d25b9d7bbe4db3541608773.jpg',
-  '/Wedding/z6838080770873_7b285de85a681a017108d52fd5b4afdf.jpg',
-  '/Wedding/z6838080771149_59b1e3630b3c686210dc857d65d5969e.jpg',
-  '/Wedding/z6838080781897_2afadf8f9c02a4f5f3477057e35b8f0b.jpg',
-  '/Wedding/z6838080785399_87e2b40eca427993d205d6c1d1aa053a.jpg',
-  '/Wedding/z6838080792185_51f3e8cde7cf8e5581c1e1f274aa7684.jpg',
-  '/Wedding/z6838080797153_cc9971c162105ab5bbd1c39e4c5c5ce4.jpg',
-  '/Wedding/z6838080802537_8fef1d2348e120292fc7355db1f3b049.jpg',
-  '/Wedding/z6838080802863_b95b803063f92b35d8e4b9da4cc08f79.jpg',
-  '/Wedding/z6838080811371_8dc854e9755a1e43cccbc155007a0f74.jpg',
-  '/Wedding/z6838080819935_42f83e79091a62e65c98af7c6e36d6bf.jpg',
-  '/Wedding/z6838080822599_20fb664a8e4fd21a35dc8988832a36b8.jpg',
-  '/Wedding/z6838080830595_51edb078861bf053465a9e407c630da6.jpg',
-  '/Wedding/z6838080835676_006d003c8a87c4bce70a8acf9190259f.jpg',
-  '/Wedding/z6838080836018_72b464351e24c07b52202c909a90eb71.jpg',
-  '/Wedding/z6838080842550_b1c2724a39a3abede4973de82bef6a0c.jpg',
-  '/Wedding/z6838080852677_0a197abc6ea1581d6a9e6eb58671b8fd.jpg',
-  '/Wedding/z6838080853526_b0927a4c247f68559abc18c19ac89276.jpg',
-  '/Wedding/z6838080860610_ff4d23d09d5b69485f5270ad923f4784.jpg',
-  '/Wedding/z6838080866663_23d6bbf1c6fd4976631f98e139ece5c9.jpg',
-  '/Wedding/z6838080875690_f57d955899caf7be9bdc8f6b81611c4a.jpg',
-  '/Wedding/z6838080877495_7cc9632a07c6521867f094d09163f2a7.jpg',
-  '/Wedding/z6838080884627_0e0d5b9ebc1a8416b102ab67545b7518.jpg',
-  '/Wedding/z6838080886696_22458f83ecd91368360f984489fad70b.jpg',
-  '/Wedding/z6838080891041_c1a93cf11983fc7ffc18b186721feb7b.jpg',
-  '/Wedding/z6838080896568_53efe268ff69f80d45faea7df50df560.jpg',
-  '/Wedding/z6838080902882_2eb23f16c748f339625609bfc6954228.jpg',
-  '/Wedding/z6838080909561_52e5b9487821be42730ad71bae1f708d.jpg',
-  '/Wedding/z6838080913226_199a824049f80777d9182ead4ac2fa08.jpg'
+
+// Ảnh ngang (landscape)
+const landscapePhotos = [
+  '/Wedding/Ngang/KTIU0185.jpg',
+  '/Wedding/Ngang/KTIU0188.jpg',
+  '/Wedding/Ngang/KTIU0191.jpg',
+  '/Wedding/Ngang/KTIU0197.jpg',
+  '/Wedding/Ngang/KTIU9005.JPG',
+  '/Wedding/Ngang/KTIU9125.JPG',
+  '/Wedding/Ngang/z6735567871021_9e4913b6410c10f10977be2780d2f3f7.jpg'
 ];
+
+// Ảnh dọc (portrait)
+const portraitPhotos = [
+  '/Wedding/Doc/KTIU0010.JPG',
+  '/Wedding/Doc/KTIU0070.JPG',
+  '/Wedding/Doc/KTIU0157.jpg',
+  '/Wedding/Doc/KTIU0180.jpg',
+  '/Wedding/Doc/KTIU0256.jpg',
+  '/Wedding/Doc/KTIU0370.jpg',
+  '/Wedding/Doc/KTIU8198.JPG',
+  '/Wedding/Doc/KTIU8285.JPG',
+  '/Wedding/Doc/KTIU9054.JPG',
+  '/Wedding/Doc/KTIU9199.JPG',
+  '/Wedding/Doc/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg',
+  '/Wedding/Doc/z6735567882402_9def3cf5b873424e21da131c35e3aae9.jpg',
+  '/Wedding/Doc/z6735567894036_260ccd39a6a62711ab29b072eb173369.jpg',
+  '/Wedding/Doc/z6735567906204_6be847502f4b9d7e3f2a695bdc41a4bd.jpg',
+  '/Wedding/Doc/z6735567987748_d7077417fb671d31654fd0bf9ae6ed0b.jpg',
+  '/Wedding/Doc/z6735568048498_05b7b7a4be9b803d3a635bddaa5d9e2a.jpg',
+  '/Wedding/Doc/z6838080836018_72b464351e24c07b52202c909a90eb71.jpg',
+  '/Wedding/Doc/z6838080842550_b1c2724a39a3abede4973de82bef6a0c.jpg',
+  '/Wedding/Doc/z6838080884627_0e0d5b9ebc1a8416b102ab67545b7518.jpg',
+  '/Wedding/Doc/z6838080886696_22458f83ecd91368360f984489fad70b.jpg'
+];
+
+// Kết hợp tất cả ảnh với thông tin về orientation
+const weddingPhotos = [
+  ...landscapePhotos.map(photo => ({ src: photo, orientation: 'landscape' as const })),
+  ...portraitPhotos.map(photo => ({ src: photo, orientation: 'portrait' as const }))
+];
+
+// Tạo danh sách đường dẫn ảnh để tương thích với code hiện tại
+const weddingPhotoSrcs = weddingPhotos.map(photo => photo.src);
 
 interface WeddingGalleryProps {
   showAll?: boolean;
@@ -83,30 +71,55 @@ function HeartPhoto({
   index, 
   position, 
   displayPhotos, 
-  openLightbox 
+  openLightbox,
+  weddingPhotos
 }: { 
   photo: string; 
   index: number; 
   position: HeartPosition; 
   displayPhotos: string[]; 
   openLightbox: (index: number) => void; 
+  weddingPhotos: Array<{src: string; orientation: 'landscape' | 'portrait'}>;
 }) {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(index);
   
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPhotoIndex(prev => {
-        // Tìm ảnh mới khác với ảnh hiện tại
+        // Tìm ảnh mới khác với ảnh hiện tại, đảm bảo index không vượt quá weddingPhotos
         let newIndex;
         do {
-          newIndex = Math.floor(Math.random() * displayPhotos.length);
-        } while (newIndex === prev && displayPhotos.length > 1);
+          newIndex = Math.floor(Math.random() * Math.min(displayPhotos.length, weddingPhotos.length));
+        } while (newIndex === prev && Math.min(displayPhotos.length, weddingPhotos.length) > 1);
         return newIndex;
       });
     }, 5000 + Math.random() * 3000); // Random interval between 5-8 seconds
     
     return () => clearInterval(interval);
-  }, [displayPhotos.length]);
+  }, [displayPhotos.length, weddingPhotos.length]);
+
+  // Đảm bảo currentPhotoIndex không vượt quá bounds
+  const safePhotoIndex = Math.min(currentPhotoIndex, weddingPhotos.length - 1, displayPhotos.length - 1);
+  
+  // Improved orientation detection
+  const currentPhoto = weddingPhotos[safePhotoIndex];
+  const isPortrait = currentPhoto && currentPhoto.orientation === 'portrait';
+
+  // Điều chỉnh kích thước frame dựa trên orientation
+  const baseWidth = parseInt(position.width);
+  const baseHeight = parseInt(position.height);
+  
+  const frameStyle = isPortrait ? {
+    // Ảnh dọc: khung cao hơn rộng (3:4) - tăng kích thước 40%
+    width: `${Math.min(baseWidth, baseHeight * 0.75) * 1.4}px`,
+    height: `${Math.max(baseHeight, baseWidth * 1.33) * 1.4}px`,
+    aspectRatio: '3/4'
+  } : {
+    // Ảnh ngang: khung rộng hơn cao (4:3) - tăng kích thước 40%
+    width: `${Math.max(baseWidth, baseHeight * 1.33) * 1.4}px`,
+    height: `${Math.min(baseHeight, baseWidth * 0.75) * 1.4}px`,
+    aspectRatio: '4/3'
+  };
 
   return (
     <motion.div
@@ -123,8 +136,8 @@ function HeartPhoto({
       style={{
         left: position.left,
         top: position.top,
-        width: position.width,
-        height: position.height,
+        width: frameStyle.width,
+        height: frameStyle.height,
         transform: `translate(-50%, -50%) rotate(${position.rotate})`,
         zIndex: 20 - index
       }}
@@ -136,7 +149,10 @@ function HeartPhoto({
         transition: { duration: 0.3 }
       }}
     >
-      <div className="relative w-full h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm border-2 border-white/30 shadow-xl hover:shadow-2xl hover:shadow-[#fc5d01]/30 transition-all duration-500">
+      <div 
+        className="relative w-full h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm border-2 border-white/30 shadow-xl hover:shadow-2xl hover:shadow-[#fc5d01]/30 transition-all duration-500"
+        style={{ aspectRatio: frameStyle.aspectRatio }}
+      >
         <motion.div
           key={currentPhotoIndex}
           initial={{ opacity: 0, scale: 1.1 }}
@@ -145,8 +161,8 @@ function HeartPhoto({
           className="w-full h-full"
         >
           <Image
-            src={displayPhotos[currentPhotoIndex]}
-            alt={`Wedding photo ${currentPhotoIndex + 1}`}
+            src={displayPhotos[safePhotoIndex]}
+            alt={`Wedding photo ${safePhotoIndex + 1}`}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes="120px"
@@ -210,14 +226,14 @@ function HeartPhoto({
 export default function WeddingGallery({ showAll = false }: WeddingGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [showAllPhotos, setShowAllPhotos] = useState(showAll);
-  const [viewMode, setViewMode] = useState<'heart'|'masonry' | 'grid' | 'magazine'  >('heart');  
+  const [viewMode, setViewMode] = useState<'heart'|'rings'|'butterfly'|'bookalbum'|'smart'|'masonry' | 'grid' | 'magazine'>('heart');
   
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
 
-  const displayPhotos = showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24);
+  const displayPhotos = showAllPhotos ? weddingPhotoSrcs : weddingPhotoSrcs.slice(0, 24);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -229,13 +245,13 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
 
   const nextImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % weddingPhotos.length);
+      setSelectedImage((selectedImage + 1) % weddingPhotoSrcs.length);
     }
   };
 
   const prevImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage(selectedImage === 0 ? weddingPhotos.length - 1 : selectedImage - 1);
+      setSelectedImage(selectedImage === 0 ? weddingPhotoSrcs.length - 1 : selectedImage - 1);
     }
   };
 
@@ -295,14 +311,17 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 { mode: 'heart', icon: Heart, label: 'Heart' },
+                { mode: 'smart', icon: Camera, label: 'Smart' },
+                { mode: 'rings', icon: Sparkles, label: 'Rings' },
+                { mode: 'butterfly', icon: Star, label: 'Butterfly' },
+                { mode: 'bookalbum', icon: BookOpen, label: 'Book Album' },               
                 { mode: 'masonry', icon: LayoutGrid, label: 'Masonry' },
                 { mode: 'grid', icon: Grid3X3, label: 'Grid' },
-                { mode: 'magazine', icon: Layers, label: 'Magazine' },
-                
+                { mode: 'magazine', icon: Layers, label: 'Magazine' },                
               ].map(({ mode, icon: Icon, label }) => (
                 <motion.button
                   key={mode}
-                  onClick={() => setViewMode(mode as 'heart'|'masonry' | 'grid' | 'magazine')}
+                  onClick={() => setViewMode(mode as 'heart'|'rings'|'butterfly'|'bookalbum'|'smart'|'masonry' | 'grid' | 'magazine' )}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`group relative px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
@@ -324,7 +343,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
                   )}
                 </motion.button>
               ))}
-            </div>          
+            </div>
           </motion.div>
         </div>
       </motion.div>
@@ -340,92 +359,104 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
               exit={{ opacity: 0, y: -50 }}
               className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-6 space-y-6"
             >
-              {displayPhotos.map((photo, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.03 }}
-                  className="break-inside-avoid mb-6 group cursor-pointer"
-                  onClick={() => openLightbox(index)}
-                >
-                  <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-[#fc5d01]/25 transition-all duration-700 transform hover:-translate-y-4 hover:rotate-1">
-                    <div 
-                      className="relative w-full"
-                      style={{ height: `${300 + (index % 3) * 100}px` }}
-                    >
-                      <Image
-                        src={photo}
-                        alt={`Wedding photo ${index + 1}`}
-                        fill
-                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-                      />
-                      
-                      {/* Holographic Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#fc5d01]/20 via-transparent to-[#fd7f33]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                      
-                      {/* Futuristic HUD */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        {/* Corner Brackets */}
-                        <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-[#fc5d01]" />
-                        <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-[#fc5d01]" />
-                        <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-[#fc5d01]" />
-                        <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-[#fc5d01]" />
+              {(showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)).map((photoData, index) => {
+                const photo = typeof photoData === 'string' ? photoData : photoData.src;
+                const orientation = typeof photoData === 'string' ? 'landscape' : photoData.orientation;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.03 }}
+                    className="break-inside-avoid mb-6 group cursor-pointer"
+                    onClick={() => openLightbox(index)}
+                  >
+                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-[#fc5d01]/25 transition-all duration-700 transform hover:-translate-y-4 hover:rotate-1">
+                      <div 
+                        className={`relative w-full ${
+                          orientation === 'portrait' 
+                            ? 'aspect-[3/4]' 
+                            : 'aspect-[4/3]'
+                        }`}
+                        style={{ 
+                          height: orientation === 'portrait' 
+                            ? `${350 + (index % 3) * 80}px` 
+                            : `${280 + (index % 3) * 60}px` 
+                        }}
+                      >
+                        <Image
+                          src={photo}
+                          alt={`Wedding photo ${index + 1}`}
+                          fill
+                          className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                        />
                         
-                        {/* Center Actions */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <motion.div
-                            whileHover={{ scale: 1.1, rotate: 180 }}
-                            className="p-4 bg-[#fc5d01]/90 backdrop-blur-xl rounded-full"
-                          >
-                            <Maximize2 className="w-6 h-6 text-white" />
-                          </motion.div>
-                        </div>
+                        {/* Holographic Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#fc5d01]/20 via-transparent to-[#fd7f33]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        
+                        {/* Futuristic HUD */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                          {/* Corner Brackets */}
+                          <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-[#fc5d01]" />
+                          <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-[#fc5d01]" />
+                          <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-[#fc5d01]" />
+                          <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-[#fc5d01]" />
+                          
+                          {/* Center Actions */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div
+                              whileHover={{ scale: 1.1, rotate: 180 }}
+                              className="p-4 bg-[#fc5d01]/90 backdrop-blur-xl rounded-full"
+                            >
+                              <Maximize2 className="w-6 h-6 text-white" />
+                            </motion.div>
+                          </div>
 
-                        {/* Info Panel */}
-                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                          <div className="flex items-center justify-between text-white">
-                            <div>
-                              <p className="font-bold">IMG_{String(index + 1).padStart(3, '0')}</p>
-                              <p className="text-xs opacity-80">Wedding Collection</p>
-                            </div>
-                            <div className="flex space-x-2">
-                              <motion.button
-                                whileHover={{ scale: 1.2 }}
-                                whileTap={{ scale: 0.8 }}
-                                className="p-2 bg-white/20 rounded-full"
-                              >
-                                <Heart className="w-4 h-4" />
-                              </motion.button>
-                              <motion.button
-                                whileHover={{ scale: 1.2 }}
-                                whileTap={{ scale: 0.8 }}
-                                className="p-2 bg-white/20 rounded-full"
-                              >
-                                <Star className="w-4 h-4" />
-                              </motion.button>
+                          {/* Info Panel */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                            <div className="flex items-center justify-between text-white">
+                              <div>
+                                <p className="font-bold">IMG_{String(index + 1).padStart(3, '0')}</p>
+                                <p className="text-xs opacity-80">Wedding Collection</p>
+                              </div>
+                              <div className="flex space-x-2">
+                                <motion.button
+                                  whileHover={{ scale: 1.2 }}
+                                  whileTap={{ scale: 0.8 }}
+                                  className="p-2 bg-white/20 rounded-full"
+                                >
+                                  <Heart className="w-4 h-4" />
+                                </motion.button>
+                                <motion.button
+                                  whileHover={{ scale: 1.2 }}
+                                  whileTap={{ scale: 0.8 }}
+                                  className="p-2 bg-white/20 rounded-full"
+                                >
+                                  <Star className="w-4 h-4" />
+                                </motion.button>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Scan Line Effect */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fc5d01]/30 to-transparent h-1 opacity-0 group-hover:opacity-100"
-                        animate={{
-                          y: ['-100%', '100%']
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }}
-                      />
+                        {/* Scan Line Effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fc5d01]/30 to-transparent h-1 opacity-0 group-hover:opacity-100"
+                          animate={{
+                            y: ['-100%', '100%']
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
           )}
 
@@ -437,43 +468,49 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
               exit={{ opacity: 0, scale: 1.1 }}
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"
             >
-              {displayPhotos.map((photo, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, rotateY: -90 }}
-                  animate={{ opacity: 1, rotateY: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.05 }}
-                  className="aspect-square group cursor-pointer"
-                  onClick={() => openLightbox(index)}
-                >
-                  <div className="relative w-full h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:rotate-2">
-                    <Image
-                      src={photo}
-                      alt={`Wedding photo ${index + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                    
-                    {/* Neon Border */}
-                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#fc5d01] transition-colors duration-500 rounded-2xl" />
-                    
-                    {/* Glitch Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-[#fc5d01] opacity-0 group-hover:opacity-20"
-                      animate={{
-                        x: [0, 2, -2, 0],
-                        opacity: [0, 0.2, 0, 0.1, 0]
-                      }}
-                      transition={{
-                        duration: 0.3,
-                        repeat: Infinity,
-                        repeatDelay: 2
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              ))}
+              {(showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)).map((photoData, index) => {
+                const photo = typeof photoData === 'string' ? photoData : photoData.src;
+                const orientation = typeof photoData === 'string' ? 'landscape' : photoData.orientation;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, rotateY: -90 }}
+                    animate={{ opacity: 1, rotateY: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.05 }}
+                    className={`group cursor-pointer ${
+                      orientation === 'portrait' ? 'aspect-[3/4]' : 'aspect-square'
+                    }`}
+                    onClick={() => openLightbox(index)}
+                  >
+                    <div className="relative w-full h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:rotate-2">
+                      <Image
+                        src={photo}
+                        alt={`Wedding photo ${index + 1}`}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      />
+                      
+                      {/* Neon Border */}
+                      <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#fc5d01] transition-colors duration-500 rounded-2xl" />
+                      
+                      {/* Glitch Effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-[#fc5d01] opacity-0 group-hover:opacity-20"
+                        animate={{
+                          x: [0, 2, -2, 0],
+                          opacity: [0, 0.2, 0, 0.1, 0]
+                        }}
+                        transition={{
+                          duration: 0.3,
+                          repeat: Infinity,
+                          repeatDelay: 2
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           )}
 
@@ -485,10 +522,12 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
               exit={{ opacity: 0, x: 100 }}
               className="space-y-12"
             >
-              {Array.from({ length: Math.ceil(displayPhotos.length / 3) }).map((_, rowIndex) => (
+              {Array.from({ length: Math.ceil((showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)).length / 3) }).map((_, rowIndex) => (
                 <div key={rowIndex} className="grid grid-cols-12 gap-6 h-96">
-                  {displayPhotos.slice(rowIndex * 3, (rowIndex + 1) * 3).map((photo, index) => {
+                  {(showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)).slice(rowIndex * 3, (rowIndex + 1) * 3).map((photoData, index) => {
                     const actualIndex = rowIndex * 3 + index;
+                    const photo = typeof photoData === 'string' ? photoData : photoData.src;
+                    const orientation = typeof photoData === 'string' ? 'landscape' : photoData.orientation;
                     const spans = ['col-span-5', 'col-span-4', 'col-span-3'];
                     return (
                       <motion.div
@@ -584,6 +623,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
                       position={position}
                       displayPhotos={displayPhotos}
                       openLightbox={openLightbox}
+                      weddingPhotos={showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)}
                     />
                   );
                 })}
@@ -634,6 +674,65 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
             </motion.div>
           )}
 
+        
+
+          
+
+          {viewMode === 'rings' && (
+            <motion.div
+              key="rings"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+            >
+              <WeddingRingsLayout
+                photos={displayPhotos}
+                onImageClick={openLightbox}
+              />
+            </motion.div>
+          )}
+
+          {viewMode === 'butterfly' && (
+            <motion.div
+              key="butterfly"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+            >
+            <ButterflyWingsLayout
+              photos={showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)}
+              onImageClick={openLightbox}
+            />
+            </motion.div>
+          )}
+
+          {viewMode === 'bookalbum' && (
+            <motion.div
+              key="bookalbum"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+            >
+            <BookAlbumLayout
+              photos={showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)}
+              onImageClick={openLightbox}
+            />
+            </motion.div>
+          )}
+
+          {viewMode === 'smart' && (
+            <motion.div
+              key="smart"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+            >
+              <SmartLayout
+                photos={showAllPhotos ? weddingPhotos : weddingPhotos.slice(0, 24)}
+                onImageClick={openLightbox}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
@@ -735,7 +834,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
                   className="relative max-w-full max-h-full rounded-3xl overflow-hidden shadow-2xl"
                 >
                   <Image
-                    src={weddingPhotos[selectedImage]}
+                    src={weddingPhotoSrcs[selectedImage]}
                     alt={`Wedding photo ${selectedImage + 1}`}
                     width={1200}
                     height={800}

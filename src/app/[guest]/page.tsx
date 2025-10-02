@@ -150,7 +150,7 @@ export default function PersonalizedWeddingPage() {
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-32 h-32 chinese-frame overflow-hidden opacity-20 rotate-12">
             <Image
-              src="/Wedding/z6735567858616_2114169ea6c7948b4122776ba07606c0.jpg"
+              src="/Wedding/Ngang/KTIU0188.jpg"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -158,7 +158,7 @@ export default function PersonalizedWeddingPage() {
           </div>
           <div className="absolute top-20 right-20 w-40 h-40 chinese-frame overflow-hidden opacity-15 -rotate-12">
             <Image
-              src="/Wedding/z6735567871021_9e4913b6410c10f10977be2780d2f3f7.jpg"
+              src="/Wedding/Doc/KTIU0256.jpg"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -166,7 +166,7 @@ export default function PersonalizedWeddingPage() {
           </div>
           <div className="absolute bottom-32 left-32 w-28 h-28 chinese-frame overflow-hidden opacity-20 rotate-45">
             <Image
-              src="/Wedding/z6735567882402_9def3cf5b873424e21da131c35e3aae9.jpg"
+              src="/Wedding/Doc/KTIU0370.jpg"
               alt="Wedding photo"
               fill
               className="object-cover"
@@ -174,7 +174,7 @@ export default function PersonalizedWeddingPage() {
           </div>
           <div className="absolute bottom-20 right-32 w-36 h-36 chinese-frame overflow-hidden opacity-15 -rotate-45">
             <Image
-              src="/Wedding/z6735567894036_260ccd39a6a62711ab29b072eb173369.jpg"
+              src="/Wedding/Doc/KTIU9199.JPG"
               alt="Wedding photo"
               fill
               className="object-cover"

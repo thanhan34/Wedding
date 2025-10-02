@@ -37,6 +37,17 @@ export interface WeddingData {
       event: string;
     }>;
   };
+  events: Array<{
+    id: string;
+    title: string;
+    date: string;
+    time: string;
+    location: string;
+    address: string;
+    mapUrl: string;
+    type: 'engagement' | 'wedding' | 'reception';
+    description: string;
+  }>;
   bankAccounts: Array<{
     id: string;
     name: string;
@@ -65,7 +76,7 @@ const defaultWeddingData: WeddingData = {
   },
   weddingDates: {
     groomSide: '29.11.2025',
-    brideSide: '15.07.2024'
+    brideSide: '28.11.2025'
   },
   venues: {
     groomSide: {
@@ -75,26 +86,59 @@ const defaultWeddingData: WeddingData = {
       vietnameseDate: 'Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)'
     },
     brideSide: {
-      name: 'Sảnh 5 - Tầng 2 - Diamond Palace',
-      address: 'Khách Sạn Giao Tế - Số 9, Hồ Tùng Mậu, TP. Vinh, Nghệ An',
-      date: 'Monday, 15 July, 2024',
-      vietnameseDate: 'Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)'
+      name: 'Nhà Hàng Thanh Tâm',
+      address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
+      date: 'Friday, 28 November, 2025',
+      vietnameseDate: 'Thứ 6, ngày 28.11.2025 (09.10 Ất Tỵ)'
     }
   },
   timeline: {
     groomSide: [
-      { time: '09:30', event: 'Đón khách' },
-      { time: '10:00', event: 'Lễ Thành Hôn' },
-      { time: '10:30', event: 'Khai tiệc' },
-      { time: '12:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' }
+      { time: '11:00', event: 'Chụp ảnh cùng dâu rể' },
+      { time: '11:30', event: 'Nghi lễ bắt đầu' },
+      { time: '12:00', event: 'Khai tiệc' }
     ],
     brideSide: [
-      { time: '09:30', event: 'Đón khách' },
-      { time: '10:00', event: 'Lễ Thành Hôn' },
-      { time: '10:30', event: 'Khai tiệc' },
-      { time: '12:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' }
+      { time: '16:00', event: 'Chụp ảnh cùng dâu rể' },
+      { time: '16:30', event: 'Nghi lễ bắt đầu' },
+      { time: '17:00', event: 'Khai tiệc' }
     ]
   },
+  events: [
+    {
+      id: 'bao-hy',
+      title: 'Tiệc Báo Hỷ',
+      date: 'Chủ Nhật, 23/11/2025',
+      time: '16:00 - 18:00',
+      location: 'Victoria Resort Cần Thơ',
+      address: 'Cái Khế, Ninh Kiều, Cần Thơ',
+      mapUrl: 'https://maps.google.com/?q=Victoria+Resort+Can+Tho+Cai+Khe+Ninh+Kieu',
+      type: 'engagement',
+      description: 'Tiệc báo hỷ tại Victoria Resort Cần Thơ với không gian sang trọng bên bờ sông Hậu. Chương trình bắt đầu lúc 16:00 với nghi lễ báo hỷ và tiệc mừng.'
+    },
+    {
+      id: 'wedding-groom',
+      title: 'Lễ Cưới Nhà Trai',
+      date: 'Thứ Sáu, 29/11/2025',
+      time: '11:00 - 13:00',
+      location: 'Khách Sạn Anh Thanh Đô',
+      address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
+      mapUrl: 'https://maps.google.com/?q=Khach+San+Anh+Thanh+Do+Le+Hong+Phong+Long+Xuyen+An+Giang',
+      type: 'wedding',
+      description: 'Lễ cưới tại nhà trai với chương trình: 11:00 Chụp ảnh cùng dâu rể, 11:30 Nghi lễ bắt đầu, 12:00 Khai tiệc'
+    },
+    {
+      id: 'wedding-bride',
+      title: 'Lễ Cưới Nhà Gái',
+      date: 'Thứ Năm, 28/11/2025',
+      time: '16:00 - 18:00',
+      location: 'Nhà Hàng Thanh Tâm',
+      address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
+      mapUrl: 'https://maps.google.com/?q=Nha+Hang+Thanh+Tam+Pham+Van+Hung+Ke+Sach+Soc+Trang',
+      type: 'wedding',
+      description: 'Lễ cưới tại nhà gái với chương trình: 16:00 Chụp ảnh cùng dâu rể, 16:30 Nghi lễ bắt đầu, 17:00 Khai tiệc'
+    }
+  ],
   bankAccounts: [
     {
       id: 'groom',
@@ -127,30 +171,40 @@ const defaultWeddingData: WeddingData = {
 
 export function useWeddingData() {
   const [weddingData, setWeddingData] = useState<WeddingData>(defaultWeddingData);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Start with false to show default data immediately
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadWeddingData = async () => {
       try {
-        setLoading(true);
-        const docRef = doc(db, 'wedding', 'data');
-        const docSnap = await getDoc(docRef);
+        // Don't set loading to true, keep showing default data
         
-        if (docSnap.exists()) {
-          setWeddingData(docSnap.data() as WeddingData);
-        } else {
-          // Sử dụng dữ liệu mặc định nếu chưa có dữ liệu trong Firebase
-          setWeddingData(defaultWeddingData);
-        }
+        // Add timeout to prevent hanging
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('Timeout')), 3000); // 3 second timeout
+        });
+        
+        const dataPromise = (async () => {
+          const docRef = doc(db, 'wedding', 'data');
+          const docSnap = await getDoc(docRef);
+          
+          if (docSnap.exists()) {
+            return docSnap.data() as WeddingData;
+          } else {
+            return defaultWeddingData;
+          }
+        })();
+        
+        const result = await Promise.race([dataPromise, timeoutPromise]);
+        setWeddingData(result as WeddingData);
+        
       } catch (err) {
         console.error('Error loading wedding data:', err);
-        setError('Không thể tải dữ liệu');
-        // Sử dụng dữ liệu mặc định khi có lỗi
+        setError('Sử dụng dữ liệu mặc định');
+        // Keep using default data when there's an error or timeout
         setWeddingData(defaultWeddingData);
-      } finally {
-        setLoading(false);
       }
+      // Don't set loading to false since it's already false
     };
 
     loadWeddingData();
