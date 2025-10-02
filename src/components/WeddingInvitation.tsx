@@ -175,7 +175,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
                   >
-                    Saturday, 29 November, 2025
+                    Friday, 24 October, 2025
                   </motion.p>
                   
                   <motion.p 
@@ -184,7 +184,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
                   >
-                    Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)
+                    Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)
                   </motion.p>
                 </div>
 
@@ -293,7 +293,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
                   >
-                    Friday, 28 November, 2025
+                    Thursday, 23 October, 2025
                   </motion.p>
                   
                   <motion.p 
@@ -302,7 +302,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 }}
                   >
-                    Thứ 6, ngày 28.11.2025 (9.10 Ất Tỵ)
+                    Thứ 5, ngày 23.10.2025 (3.9 Ất Tỵ)
                   </motion.p>
                 </div>
 
@@ -411,7 +411,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 }}
                   >
-                    Sunday, 14 December, 2025
+                    Saturday, 15 November, 2025
                   </motion.p>
                   
                   <motion.p 
@@ -420,7 +420,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.6 }}
                   >
-                    Chủ Nhật, ngày 14.12.2025 (25.10 Ất Tỵ)
+                    Thứ Bảy, ngày 15.11.2025 (26.9 Ất Tỵ)
                   </motion.p>
                 </div>
 
@@ -429,10 +429,10 @@ export default function WeddingInvitation() {
                   whileHover={{ scale: 1.02 }}
                 >
                   <p className="text-lg font-semibold text-gray-800">
-                    Tại: Victoria Resort Cần Thơ
+                    Tại: Resort Cồn Khương
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    Cái Khế, Ninh Kiều, Cần Thơ
+                    99A, Võ Văn Tần, Cái Khế, Cần Thơ
                   </p>
                 </motion.div>
 
@@ -468,237 +468,7 @@ export default function WeddingInvitation() {
 
 
         {/* Chi Tiết Sự Kiện Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2 }}
-          className="mt-20"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.2 }}
-            className="text-center mb-16"
-          >
-            <motion.div
-              animate={{ 
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, -5, 0]
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-8"
-            >
-              <Gift className="w-10 h-10 text-white" />
-            </motion.div>
-            
-            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-4">Chi Tiết Sự Kiện</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Thông tin chi tiết về lịch trình và dress code cho từng buổi tiệc
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-6"></div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {/* Nhà Trai Detailed Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 2.4 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="relative group"
-            >
-              <Card className="bg-gradient-to-br from-white via-[#fff8f5] to-[#fedac2]/20 border-2 border-[#fc5d01]/30 rounded-3xl p-8 shadow-2xl relative overflow-hidden group-hover:shadow-3xl transition-all duration-500">
-                {/* Header with Icon */}
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Heart className="w-8 h-8 text-white fill-current" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#fc5d01] mb-2">Nhà Trai</h3>
-                  <p className="text-xl font-medium text-gray-800">29.11.2025</p>
-                  <p className="text-gray-600 font-semibold">Nhà Hàng Thắng Lợi 1</p>
-                  <p className="text-sm text-gray-500 mt-2">Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang</p>
-                </div>
-
-                {/* Schedule */}
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">11:00</span>
-                    </div>
-                    <span className="font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">11:30</span>
-                    </div>
-                    <span className="font-medium">Hôn Lễ Bái Đấu</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">12:00</span>
-                    </div>
-                    <span className="font-medium">Khai tiệc</span>
-                  </div>
-                </div>
-
-                {/* Dress Code */}
-                <div className="border-t-2 border-[#fedac2] pt-6">
-                  <h4 className="text-lg font-semibold text-gray-800 text-center mb-4">Dress Code</h4>
-                  <div className="flex justify-center space-x-6">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-red-500 rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Đỏ</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-black rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Đen</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-white border-2 border-gray-300 rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Trắng</p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Nhà Gái Detailed Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.6 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="relative group"
-            >
-              <Card className="bg-gradient-to-br from-white via-[#fff8f5] to-[#fedac2]/20 border-2 border-[#fc5d01]/30 rounded-3xl p-8 shadow-2xl relative overflow-hidden group-hover:shadow-3xl transition-all duration-500">
-                {/* Header with Icon */}
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Heart className="w-8 h-8 text-white fill-current" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#fc5d01] mb-2">Nhà Gái</h3>
-                  <p className="text-xl font-medium text-gray-800">28.11.2025</p>
-                  <p className="text-gray-600 font-semibold">Thanh Tâm Restaurant</p>
-                  <p className="text-sm text-gray-500 mt-2">97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng</p>
-                </div>
-
-                {/* Schedule */}
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">16:00</span>
-                    </div>
-                    <span className="font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">16:30</span>
-                    </div>
-                    <span className="font-medium">Hôn Lễ Bái Đấu</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">17:00</span>
-                    </div>
-                    <span className="font-medium">Khai tiệc</span>
-                  </div>
-                </div>
-
-                {/* Dress Code */}
-                <div className="border-t-2 border-[#fedac2] pt-6">
-                  <h4 className="text-lg font-semibold text-gray-800 text-center mb-4">Dress Code</h4>
-                  <div className="flex justify-center space-x-6">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-red-500 rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Đỏ</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-black rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Đen</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-white border-2 border-gray-300 rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Trắng</p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Báo Hỷ Detailed Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 2.8 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="relative group"
-            >
-              <Card className="bg-gradient-to-br from-white via-[#fff8f5] to-[#fedac2]/20 border-2 border-[#fc5d01]/30 rounded-3xl p-8 shadow-2xl relative overflow-hidden group-hover:shadow-3xl transition-all duration-500">
-                {/* Header with Icon */}
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Gift className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#fc5d01] mb-2">Báo Hỷ</h3>
-                  <p className="text-xl font-medium text-gray-800">14.12.2025</p>
-                  <p className="text-gray-600 font-semibold">Victoria Resort Cần Thơ</p>
-                  <p className="text-sm text-gray-500 mt-2">Cái Khế, Ninh Kiều, Cần Thơ</p>
-                </div>
-
-                {/* Schedule */}
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">15:00</span>
-                    </div>
-                    <span className="font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">15:30</span>
-                    </div>
-                    <span className="font-medium">Hôn Lễ Bái Đấu</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-4 p-3 bg-[#fc5d01] text-white rounded-xl">
-                    <div className="w-14 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <span className="text-sm font-bold">16:00</span>
-                    </div>
-                    <span className="font-medium">Khai tiệc</span>
-                  </div>
-                </div>
-
-                {/* Dress Code */}
-                <div className="border-t-2 border-[#fedac2] pt-6">
-                  <h4 className="text-lg font-semibold text-gray-800 text-center mb-4">Dress Code</h4>
-                  <div className="flex justify-center space-x-6">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-red-500 rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Đỏ</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-black rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Đen</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-white border-2 border-gray-300 rounded-full mx-auto mb-2 shadow-md"></div>
-                      <p className="text-sm font-medium text-gray-700">Trắng</p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </motion.div>
+        
 
         {/* Bottom Decoration */}
         <motion.div

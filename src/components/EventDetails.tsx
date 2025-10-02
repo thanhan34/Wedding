@@ -59,7 +59,7 @@ const additionalInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
     title: "Liên Hệ",
-    content: "Mọi thắc mắc xin liên hệ: Cô dâu 0987654321 | Chú rể 0123456789",
+    content: "Mọi thắc mắc xin liên hệ: Cô dâu 9399366669 | Chú rể 0123456789",
     color: "from-[#fc5d01] to-[#fd7f33]"
   }
 ];
@@ -447,7 +447,7 @@ export default function EventDetails() {
             <div className="relative z-10">
               <div className="aspect-video w-full rounded-2xl overflow-hidden border-4 border-[#fedac2]/50 shadow-xl">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4326002567447!2d106.69741831533309!3d10.776530192320445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4b3330bcc9%3A0x2b6c6b8c6b8c6b8c!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4326002567447!2d106.69741831533309!3d10.776530192320445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4b3330bcc9%3A0x2b6c6b8c6b8c6b8c!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1037798878123!5m2!1sen!2s"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

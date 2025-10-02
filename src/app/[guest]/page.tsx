@@ -273,7 +273,7 @@ export default function PersonalizedWeddingPage() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-lg md:text-xl text-gray-600 mb-8 font-light"
             >
-              {loading ? '29.11.2025 Nhà Trai - 15.07.2024 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
+              {loading ? '24.10.2025 Nhà Trai - 15.07.2024 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
             </motion.p>
 
             {/* Personalized Message */}
@@ -645,7 +645,7 @@ export default function PersonalizedWeddingPage() {
                 <div className="space-y-3 text-white/90 font-light">
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Trai</p>
-                    <p className="text-lg">29.11.2025</p>
+                    <p className="text-lg">24.10.2025</p>
                   </div>
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Gái</p>

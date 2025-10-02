@@ -144,7 +144,7 @@ export default function Countdown({ targetDate }: CountdownProps) {
           Đếm Ngược Đến Ngày Hạnh Phúc
         </h2>
         <p className="text-lg text-gray-600 mb-2">
-          10/10 Âm Lịch - 30/11/2025
+          4/9 Âm Lịch - 24/10/2025
         </p>
         <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full"></div>
       </motion.div>

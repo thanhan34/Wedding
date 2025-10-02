@@ -13,11 +13,11 @@ export default function BaoHy() {
   const baoHyEvent = {
     title: "Tiệc Báo Hỷ",
     coupleNames: "Thanh Ngân & Thanh An",
-    date: "Sunday, 14 December, 2025",
-    vietnameseDate: "Chủ Nhật, ngày 14.12.2025 (25.10 Ất Tỵ)",
+    date: "Saturday, 15 November, 2025",
+    vietnameseDate: "Thứ Bảy, ngày 15.11.2025 (26.9 Ất Tỵ)",
     time: "16:00",
-    location: "Victoria Resort Cần Thơ",
-    address: "Cái Khế, Ninh Kiều, Cần Thơ",
+    location: "Resort Cồn Khương",
+    address: "99A, Võ Văn Tần, Cái Khế, Cần Thơ",
     mapUrl: "https://maps.google.com/?q=Victoria+Resort+Can+Tho+Cai+Khe+Ninh+Kieu",
     description: "Tiệc báo hỷ với không gian sang trọng bên bờ sông Hậu thơ mộng"
   };

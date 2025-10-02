@@ -75,21 +75,21 @@ const defaultWeddingData: WeddingData = {
     bride: 'Thanh Ngân'
   },
   weddingDates: {
-    groomSide: '29.11.2025',
-    brideSide: '28.11.2025'
+    groomSide: '24.10.2025',
+    brideSide: '23.10.2025'
   },
   venues: {
     groomSide: {
       name: 'Khách Sạn Anh Thanh Đô',
       address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
-      date: 'Saturday, 29 November, 2025',
-      vietnameseDate: 'Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)'
+      date: 'Friday, 24 October, 2025',
+      vietnameseDate: 'Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)'
     },
     brideSide: {
       name: 'Nhà Hàng Thanh Tâm',
       address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
-      date: 'Friday, 28 November, 2025',
-      vietnameseDate: 'Thứ 6, ngày 28.11.2025 (09.10 Ất Tỵ)'
+      date: 'Thursday, 23 October, 2025',
+      vietnameseDate: 'Thứ 6, ngày 23.10.2025 (09.10 Ất Tỵ)'
     }
   },
   timeline: {
@@ -110,11 +110,11 @@ const defaultWeddingData: WeddingData = {
       title: 'Tiệc Báo Hỷ',
       date: 'Chủ Nhật, 23/11/2025',
       time: '16:00 - 18:00',
-      location: 'Victoria Resort Cần Thơ',
-      address: 'Cái Khế, Ninh Kiều, Cần Thơ',
+      location: 'Resort Cồn Khương',
+      address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
       mapUrl: 'https://maps.google.com/?q=Victoria+Resort+Can+Tho+Cai+Khe+Ninh+Kieu',
       type: 'engagement',
-      description: 'Tiệc báo hỷ tại Victoria Resort Cần Thơ với không gian sang trọng bên bờ sông Hậu. Chương trình bắt đầu lúc 16:00 với nghi lễ báo hỷ và tiệc mừng.'
+      description: 'Tiệc báo hỷ tại Resort Cồn Khương với không gian sang trọng bên bờ sông Hậu. Chương trình bắt đầu lúc 16:00 với nghi lễ báo hỷ và tiệc mừng.'
     },
     {
       id: 'wedding-groom',
@@ -144,14 +144,14 @@ const defaultWeddingData: WeddingData = {
       id: 'groom',
       name: 'Thanh An',
       bank: 'Vietcombank',
-      accountNumber: '1234567890',
+      accountNumber: '1037798878',
       accountName: 'Thanh An'
     },
     {
       id: 'bride',
       name: 'Thanh Ngân',
       bank: 'Techcombank',
-      accountNumber: '0987654321',
+      accountNumber: '9399366669',
       accountName: 'Thanh Ngân'
     }
   ],

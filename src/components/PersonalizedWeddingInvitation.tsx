@@ -193,7 +193,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.2 }}
                     >
-                      Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)
+                      Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)
                     </motion.p>
                   </div>
 
@@ -302,7 +302,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.2 }}
                     >
-                      Friday, 28 November, 2025
+                      Thursday, 23 October, 2025
                     </motion.p>
                     
                     <motion.p 
@@ -311,7 +311,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.4 }}
                     >
-                      Thứ 6, ngày 28.11.2025 (09.10 Ất Tỵ)
+                      Thứ 6, ngày 23.10.2025 (09.10 Ất Tỵ)
                     </motion.p>
                   </div>
 
@@ -420,7 +420,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.4 }}
                     >
-                      Sunday, 14 December, 2025
+                      Saturday, 15 November, 2025
                     </motion.p>
                     
                     <motion.p 
@@ -429,7 +429,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.6 }}
                     >
-                      Chủ Nhật, ngày 14.12.2025 (25.10 Ất Tỵ)
+                      Thứ Bảy, ngày 15.11.2025 (26.9 Ất Tỵ)
                     </motion.p>
                   </div>
 
@@ -438,10 +438,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                     whileHover={{ scale: 1.02 }}
                   >
                     <p className="text-lg font-semibold text-gray-800">
-                      Tại: Victoria Resort Cần Thơ
+                      Tại: Resort Cồn Khương
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      Cái Khế, Ninh Kiều, Cần Thơ
+                      99A, Võ Văn Tần, Cái Khế, Cần Thơ
                     </p>
                   </motion.div>
 

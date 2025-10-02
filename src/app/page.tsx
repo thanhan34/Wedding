@@ -20,7 +20,7 @@ import DetailedEventCards from '../components/DetailedEventCards';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
-  const weddingDate = "2025-11-29T10:00:00";
+  const weddingDate = "2025-10-24T10:00:00";
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { weddingData, loading } = useWeddingData();
@@ -212,7 +212,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-lg md:text-xl text-gray-600 mb-8 font-light"
             >
-              {loading ? '29.11.2025 Nhà Trai - 28.11.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
+              {loading ? '24.10.2025 Nhà Trai - 23.10.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
             </motion.p>
 
             <motion.div
@@ -287,9 +287,9 @@ export default function Home() {
       </section>
 
       {/* Báo Hỷ Section */}
-      <section id="bao-hy">
+      {/* <section id="bao-hy">
         <BaoHy />
-      </section>
+      </section> */}
 
       {/* RSVP Section */}
       <section id="rsvp" className="py-20 bg-white">
@@ -489,7 +489,7 @@ export default function Home() {
                         ease: "easeInOut"
                       }}
                     >
-                      {loading ? '29 . 11 . 2025' : weddingData.weddingDates.groomSide.split('.').join(' . ')}
+                      {loading ? '24 .10 . 2025' : weddingData.weddingDates.groomSide.split('.').join(' . ')}
                     </motion.p>
                     <p className="text-xl text-gray-600 mb-2 font-semibold">
                       {loading ? 'Nhà Hàng Thắng Lợi 1' : weddingData.venues.groomSide.name}
@@ -762,7 +762,7 @@ export default function Home() {
                         ease: "easeInOut"
                       }}
                     >
-                      {loading ? '28 . 11 . 2025' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
+                      {loading ? '23 .10 . 2025' : weddingData.weddingDates.brideSide.split('.').join(' . ')}
                     </motion.p>
                     <p className="text-xl text-gray-600 mb-2 font-semibold">
                       {loading ? 'Nhà Hàng Thanh Tâm' : weddingData.venues.brideSide.name}
@@ -1035,13 +1035,13 @@ export default function Home() {
                         ease: "easeInOut"
                       }}
                     >
-                      14 . 12 . 2025
+                      15 . 11 . 2025
                     </motion.p>
                     <p className="text-xl text-gray-600 mb-2 font-semibold">
-                      Victoria Resort Cần Thơ
+                      Resort Cồn Khương
                     </p>
                     <p className="text-base text-gray-500 leading-relaxed">
-                      Cái Khế, Ninh Kiều, Cần Thơ
+                      99A, Võ Văn Tần, Cái Khế, Cần Thơ
                     </p>
                   </motion.div>
                 </div>
@@ -1049,10 +1049,9 @@ export default function Home() {
                 {/* Timeline Events */}
                 <div className="space-y-4 relative z-10 mb-10">
                   {[
-                    { time: '15:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' },
-                    { time: '15:30', event: 'Hôn Lễ Bái Đấu' },
-                    { time: '16:00', event: 'Khai tiệc' },
-                    { time: '18:00', event: 'Kết thúc tiệc' }
+                    { time: '16:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' },
+                    { time: '16:30', event: 'Hôn Lễ Bắt Đấu' },
+                    { time: '17:00', event: 'Khai tiệc' },
                   ].map((event, index) => (
                     <motion.div
                       key={index}
@@ -1235,40 +1234,7 @@ export default function Home() {
       </section>
 
       {/* After Party Section */}
-      <section className="py-20 bg-gradient-to-br from-[#fedac2]/10 to-[#fdbc94]/10">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-8">After Party</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { icon: '🎮', title: 'Game' },
-              { icon: '💃', title: 'Dance' },
-              { icon: '🌸', title: 'Rút Hoa' },
-              { icon: '🎁', title: 'Quà cưới' }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-4xl mb-4 shadow-lg mx-auto">
-                  {item.icon}
-                </div>
-                <p className="text-lg font-light text-[#fc5d01]">{item.title}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Gift Section */}
       <section id="gift" className="py-20 bg-white relative">
@@ -1828,11 +1794,11 @@ export default function Home() {
                 <div className="space-y-3 text-white/90 font-light">
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Trai</p>
-                    <p className="text-lg">29.11.2025</p>
+                    <p className="text-lg">24.10.2025</p>
                   </div>
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Nhà Gái</p>
-                    <p className="text-lg">28.11.2025</p>
+                    <p className="text-lg">23.10.2025</p>
                   </div>
                 </div>
               </motion.div>

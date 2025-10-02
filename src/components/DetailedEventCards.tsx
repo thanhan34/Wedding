@@ -89,7 +89,7 @@ export default function DetailedEventCards() {
                   <Heart className="w-8 h-8 text-white fill-current" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#fc5d01] mb-2">Nhà Trai</h3>
-                <p className="text-xl font-medium text-gray-800">29.11.2025</p>
+                <p className="text-xl font-medium text-gray-800">24.10.2025</p>
                 <p className="text-gray-600 font-semibold">Nhà Hàng Thắng Lợi 1</p>
                 <p className="text-sm text-gray-500 mt-2">Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang</p>
               </div>
@@ -160,7 +160,7 @@ export default function DetailedEventCards() {
                   <Heart className="w-8 h-8 text-white fill-current" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#fc5d01] mb-2">Nhà Gái</h3>
-                <p className="text-xl font-medium text-gray-800">28.11.2025</p>
+                <p className="text-xl font-medium text-gray-800">23.10.2025</p>
                 <p className="text-gray-600 font-semibold">Thanh Tâm Restaurant</p>
                 <p className="text-sm text-gray-500 mt-2">97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng</p>
               </div>
@@ -232,8 +232,8 @@ export default function DetailedEventCards() {
                 </div>
                 <h3 className="text-2xl font-bold text-[#fc5d01] mb-2">Báo Hỷ</h3>
                 <p className="text-xl font-medium text-gray-800">14.12.2025</p>
-                <p className="text-gray-600 font-semibold">Victoria Resort Cần Thơ</p>
-                <p className="text-sm text-gray-500 mt-2">Cái Khế, Ninh Kiều, Cần Thơ</p>
+                <p className="text-gray-600 font-semibold">Resort Cồn Khương</p>
+                <p className="text-sm text-gray-500 mt-2">99A, Võ Văn Tần, Cái Khế, Cần Thơ</p>
               </div>
 
               {/* Schedule */}

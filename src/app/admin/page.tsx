@@ -102,15 +102,15 @@ export default function AdminPage() {
       bride: 'Thanh Ngân'
     },
     weddingDates: {
-      groomSide: '29.11.2025',
+      groomSide: '24.10.2025',
       brideSide: '15.07.2024'
     },
     venues: {
       groomSide: {
         name: 'Nhà Hàng Thắng Lợi 1',
         address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
-        date: 'Saturday, 29 November, 2025',
-        vietnameseDate: 'Thứ 7, ngày 29.11.2025 (10.10 Ất Tỵ)'
+        date: 'Friday, 24 October, 2025',
+        vietnameseDate: 'Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)'
       },
       brideSide: {
         name: 'Nhà Hàng Restaurant',
@@ -138,14 +138,14 @@ export default function AdminPage() {
         id: 'groom',
         name: 'Thanh An',
         bank: 'Vietcombank',
-        accountNumber: '1234567890',
+        accountNumber: '1037798878',
         accountName: 'THANH AN'
       },
       {
         id: 'bride',
         name: 'Thanh Ngân',
         bank: 'Techcombank',
-        accountNumber: '0987654321',
+        accountNumber: '9399366669',
         accountName: 'THANH NGAN'
       }
     ],

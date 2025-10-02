@@ -528,9 +528,9 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                     
                     <div className="grid md:grid-cols-3 gap-4">
                       {[
-                        { key: 'nha-gai', title: 'Nhà Gái', date: '28.11.2025', location: 'Sóc Trăng, Cần Thơ', icon: MapPin, color: 'from-pink-500 to-pink-600' },
-                        { key: 'nha-trai', title: 'Nhà Trai', date: '29.11.2025', location: 'Long Xuyên, An Giang', icon: MapPin, color: 'from-blue-500 to-blue-600' },                        
-                        { key: 'both', title: 'Tiệc Báo Hỷ', date: '14.12.2025', location: 'Cần Thơ', icon: Heart, color: 'from-[#fc5d01] to-[#fd7f33]' }
+                        { key: 'nha-gai', title: 'Nhà Gái', date: '23.10.2025', location: 'Sóc Trăng, Cần Thơ', icon: MapPin, color: 'from-pink-500 to-pink-600' },
+                        { key: 'nha-trai', title: 'Nhà Trai', date: '24.10.2025', location: 'Long Xuyên, An Giang', icon: MapPin, color: 'from-blue-500 to-blue-600' },                        
+                        { key: 'both', title: 'Tiệc Báo Hỷ', date: '15.11.2025', location: 'Cần Thơ', icon: Heart, color: 'from-[#fc5d01] to-[#fd7f33]' }
                       ].map((event, index) => (
                         <motion.button
                           key={event.key}
