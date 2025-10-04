@@ -53,7 +53,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
 
     try {
       // Tạo object dữ liệu chỉ với các trường có giá trị
-      const rsvpData: any = {
+      const rsvpData: Record<string, unknown> = {
         name: formData.name,
         phone: formData.phone,
         guestCount: formData.guestCount,
@@ -855,8 +855,8 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                         className="bg-gradient-to-r from-[#fc5d01]/10 via-[#fd7f33]/5 to-[#fc5d01]/10 rounded-2xl p-6 border border-[#fedac2]/30"
                       >
                         <p className="text-base text-gray-700 italic">
-                          "Nếu bạn muốn gửi lời chúc phước và một chút quà nhỏ đến đôi uyên ương, 
-                          chúng mình sẽ vô cùng biết ơn và hạnh phúc! 🎁"
+                          &ldquo;Nếu bạn muốn gửi lời chúc phước và một chút quà nhỏ đến đôi uyên ương, 
+                          chúng mình sẽ vô cùng biết ơn và hạnh phúc! 🎁&rdquo;
                         </p>
                       </motion.div>
                     </motion.div>
@@ -915,7 +915,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                     // Submit the "not attending" response
                     setIsSubmitting(true);
                     try {
-                      const rsvpData: any = {
+                      const rsvpData: Record<string, unknown> = {
                         name: formData.name || 'Khách mời',
                         phone: formData.phone || '',
                         guestCount: 1,
