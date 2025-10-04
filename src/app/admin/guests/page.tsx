@@ -28,7 +28,7 @@ export default function GuestManagementPage() {
   const [guests, setGuests] = useState<GuestInfo[]>([]);
   const [filteredGuests, setFilteredGuests] = useState<GuestInfo[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterBy, setFilterBy] = useState<'all' | 'both' | 'groom' | 'bride'>('all');
+  const [filterBy, setFilterBy] = useState<'all' | 'groom' | 'bride'>('all');
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingGuest, setEditingGuest] = useState<GuestInfo | null>(null);
   const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ export default function GuestManagementPage() {
     title: 'Anh',
     personalMessage: '',
     relationship: '',
-    invitedTo: 'both',
+    invitedTo: 'groom',
     specialNotes: ''
   });
 
@@ -109,7 +109,7 @@ export default function GuestManagementPage() {
         title: newGuest.title || 'Anh',
         personalMessage: newGuest.personalMessage,
         relationship: newGuest.relationship || '',
-        invitedTo: newGuest.invitedTo || 'both',
+        invitedTo: newGuest.invitedTo || 'groom',
         specialNotes: newGuest.specialNotes
       };
 
@@ -122,7 +122,7 @@ export default function GuestManagementPage() {
         title: 'Anh',
         personalMessage: '',
         relationship: '',
-        invitedTo: 'both',
+        invitedTo: 'groom',
         specialNotes: ''
       });
       setShowAddForm(false);
@@ -163,7 +163,7 @@ export default function GuestManagementPage() {
         title: 'Anh',
         personalMessage: '',
         relationship: '',
-        invitedTo: 'both',
+        invitedTo: 'groom',
         specialNotes: ''
       });
       toast.success('Đã cập nhật khách mời thành công!');
@@ -222,7 +222,7 @@ export default function GuestManagementPage() {
       title: 'Anh',
       personalMessage: '',
       relationship: '',
-      invitedTo: 'both',
+      invitedTo: 'groom',
       specialNotes: ''
     });
   };
@@ -281,11 +281,10 @@ export default function GuestManagementPage() {
                 <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <select
                   value={filterBy}
-                  onChange={(e) => setFilterBy(e.target.value as 'all' | 'both' | 'groom' | 'bride')}
+                  onChange={(e) => setFilterBy(e.target.value as 'all' | 'groom' | 'bride')}
                   className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fc5d01] focus:border-[#fc5d01]"
                 >
                   <option value="all">Tất cả</option>
-                  <option value="both">Cả hai ngày</option>
                   <option value="groom">Nhà trai</option>
                   <option value="bride">Nhà gái</option>
                 </select>
@@ -315,10 +314,6 @@ export default function GuestManagementPage() {
             <div className="text-center p-4 bg-gradient-to-br from-pink-500/10 to-pink-600/10 rounded-lg">
               <div className="text-2xl font-bold text-pink-600">{guests.filter(g => g.invitedTo === 'bride').length}</div>
               <div className="text-sm text-gray-600">Nhà gái</div>
-            </div>
-            <div className="text-center p-4 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-lg">
-              <div className="text-2xl font-bold text-purple-600">{guests.filter(g => g.invitedTo === 'both').length}</div>
-              <div className="text-sm text-gray-600">Cả hai ngày</div>
             </div>
           </div>
         </motion.div>
@@ -379,10 +374,9 @@ export default function GuestManagementPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Được mời tham dự</label>
                       <select
                         value={newGuest.invitedTo}
-                        onChange={(e) => setNewGuest({ ...newGuest, invitedTo: e.target.value as 'both' | 'groom' | 'bride' })}
+                        onChange={(e) => setNewGuest({ ...newGuest, invitedTo: e.target.value as 'groom' | 'bride' })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fc5d01] focus:border-[#fc5d01]"
                       >
-                        <option value="both">Cả hai ngày</option>
                         <option value="groom">Nhà trai</option>
                         <option value="bride">Nhà gái</option>
                       </select>
@@ -543,14 +537,11 @@ export default function GuestManagementPage() {
                         <p className="text-gray-600">{guest.relationship}</p>
                         <div className="flex items-center mt-2">
                           <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                            guest.invitedTo === 'both' 
-                              ? 'bg-purple-100 text-purple-800'
-                              : guest.invitedTo === 'groom'
+                            guest.invitedTo === 'groom'
                               ? 'bg-blue-100 text-blue-800'
                               : 'bg-pink-100 text-pink-800'
                           }`}>
-                            {guest.invitedTo === 'both' ? 'Cả hai ngày' : 
-                             guest.invitedTo === 'groom' ? 'Nhà trai' : 'Nhà gái'}
+                            {guest.invitedTo === 'groom' ? 'Nhà trai' : 'Nhà gái'}
                           </span>
                         </div>
                       </div>
