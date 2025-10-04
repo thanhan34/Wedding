@@ -900,7 +900,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <QRPayment />
+                <QRPayment guestInfo={guestInfo} />
               </motion.div>
 
               {/* Close Button */}

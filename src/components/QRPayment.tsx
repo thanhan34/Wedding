@@ -4,13 +4,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { QrCode, Copy, Check, Gift } from 'lucide-react';
 import { useState } from 'react';
 import { useWeddingData } from '../hooks/useWeddingData';
+import { GuestInfo } from '../lib/guestData';
 import Lottie from 'lottie-react';
 import giftAnimation from '../../public/Gift premium animation.json';
 
-export default function QRPayment() {
+interface QRPaymentProps {
+  guestInfo?: GuestInfo;
+}
+
+export default function QRPayment({ guestInfo }: QRPaymentProps) {
   const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
   const [openedGifts, setOpenedGifts] = useState<Set<string>>(new Set());
   const { weddingData, loading } = useWeddingData();
+
+  // Lọc tài khoản ngân hàng dựa trên khách mời được mời tham dự bên nào
+  // Nếu không có guestInfo (trang chính), mặc định hiển thị tài khoản nhà gái
+  const filteredBankAccounts = guestInfo 
+    ? weddingData.bankAccounts.filter(account => account.id === guestInfo.invitedTo)
+    : weddingData.bankAccounts.filter(account => account.id === 'bride');
 
   if (loading) {
     return (
@@ -71,8 +82,15 @@ export default function QRPayment() {
         className="bg-white rounded-lg shadow-xl p-8 border border-[#fedac2]/30 relative overflow-hidden mb-8"
       >
         <div className="text-center mb-6">
-          <h3 className="text-3xl font-light text-[#fc5d01] mb-2">Gửi Quà Đến Cô Dâu & Chú Rể</h3>
-          <p className="text-lg text-gray-600">Chọn tài khoản để chuyển khoản</p>
+          <h3 className="text-3xl font-light text-[#fc5d01] mb-2">
+            {guestInfo 
+              ? (guestInfo.invitedTo === 'bride' 
+                  ? 'Gửi Quà Đến Cô Dâu' 
+                  : 'Gửi Quà Đến Chú Rể')
+              : 'Gửi Quà Đến Cô Dâu'
+            }
+          </h3>
+          <p className="text-lg text-gray-600">Thông tin chuyển khoản</p>
         </div>
 
         {/* Gift Box or QR Codes */}
@@ -212,7 +230,7 @@ export default function QRPayment() {
                 </div>
               </motion.div>
             ) : (
-              // Both QR Codes
+              // QR Codes (filtered by guest side)
               <motion.div
                 key="qr-codes"
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -221,8 +239,8 @@ export default function QRPayment() {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
-                <div className="grid md:grid-cols-2 gap-8">
-                  {weddingData.bankAccounts.map((account, index) => (
+                <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
+                  {filteredBankAccounts.map((account, index) => (
                     <motion.div
                       key={account.id}
                       initial={{ opacity: 0, x: index === 0 ? -50 : 50 }}

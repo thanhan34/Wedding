@@ -426,7 +426,11 @@ export default function PersonalizedWeddingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-8">Gửi Quà Đến Cô Dâu & Chú Rể</h2>
+            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-8">
+              {guestInfo.invitedTo === 'bride' 
+                ? 'Gửi Quà Đến Cô Dâu' 
+                : 'Gửi Quà Đến Chú Rể'}
+            </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
               Cảm ơn {guestInfo.title} {guestInfo.name} đã dành tình cảm cho vợ chồng mình. 
               Chúng mình biết {guestInfo.title} đang rất bận, bận với công việc, với cuộc sống và với cả gia đình.
@@ -439,7 +443,7 @@ export default function PersonalizedWeddingPage() {
               Một lần nữa, chân thành cảm ơn {guestInfo.title} ❤️
             </p>
           </motion.div>
-          <QRPayment />
+          <QRPayment guestInfo={guestInfo} />
         </div>
       </section>
 

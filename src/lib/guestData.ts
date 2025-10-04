@@ -8,7 +8,7 @@ export interface GuestInfo {
   title: string; // Anh/Chị/Bạn/Cô/Chú/etc.
   personalMessage: string;
   relationship: string; // bạn bè/đồng nghiệp/họ hàng/etc.
-  invitedTo: 'both' | 'groom' | 'bride'; // được mời tham dự bên nào
+  invitedTo: 'groom' | 'bride'; // được mời tham dự bên nào
   specialNotes?: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -24,7 +24,7 @@ const defaultGuestList: Omit<GuestInfo, 'id'>[] = [
     title: 'Anh',
     personalMessage: 'Cảm ơn anh đã luôn là người bạn tốt và đồng hành cùng chúng tôi trong suốt thời gian qua. Sự hiện diện của anh trong ngày trọng đại này sẽ làm cho đám cưới của chúng tôi thêm ý nghĩa và trọn vẹn.',
     relationship: 'bạn thân',
-    invitedTo: 'both',
+    invitedTo: 'groom',
     createdAt: new Date()
   },
   {
@@ -33,7 +33,7 @@ const defaultGuestList: Omit<GuestInfo, 'id'>[] = [
     title: 'Chị',
     personalMessage: 'Chị luôn là người chị gái tuyệt vời mà chúng em rất quý mến. Những lời khuyên và sự động viên của chị đã giúp chúng em rất nhiều. Chúng em rất mong chị sẽ có mặt để chứng kiến hạnh phúc của chúng em.',
     relationship: 'đồng nghiệp',
-    invitedTo: 'both',
+    invitedTo: 'bride',
     createdAt: new Date()
   },
   {
@@ -60,7 +60,7 @@ const defaultGuestList: Omit<GuestInfo, 'id'>[] = [
     title: 'Chú',
     personalMessage: 'Chú luôn là tấm gương sáng cho chúng cháu noi theo. Những kinh nghiệm sống và lời khuyên quý báu của chú đã giúp chúng cháu trưởng thành hơn. Chúng cháu rất vinh dự khi có chú tham dự đám cưới.',
     relationship: 'họ hàng',
-    invitedTo: 'both',
+    invitedTo: 'groom',
     createdAt: new Date()
   }
 ];
@@ -191,7 +191,7 @@ export async function initializeDefaultGuests(): Promise<void> {
 }
 
 // Hàm tìm kiếm khách mời
-export async function searchGuests(searchTerm: string, filterBy?: 'both' | 'groom' | 'bride'): Promise<GuestInfo[]> {
+export async function searchGuests(searchTerm: string, filterBy?: 'groom' | 'bride'): Promise<GuestInfo[]> {
   try {
     let q = query(collection(db, COLLECTION_NAME), orderBy('createdAt', 'desc'));
     

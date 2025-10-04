@@ -168,7 +168,7 @@ export default function AdminPage() {
   const [guestMessages, setGuestMessages] = useState<GuestMessage[]>([]);
   const [rsvpResponses, setRSVPResponses] = useState<RSVPResponse[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterBy, setFilterBy] = useState<'all' | 'both' | 'groom' | 'bride'>('all');
+  const [filterBy, setFilterBy] = useState<'all' | 'groom' | 'bride'>('all');
 
   // Guest Form
   const [showGuestForm, setShowGuestForm] = useState(false);
@@ -178,7 +178,7 @@ export default function AdminPage() {
     title: 'Anh',
     personalMessage: '',
     relationship: 'bạn bè',
-    invitedTo: 'both' as 'both' | 'groom' | 'bride',
+    invitedTo: 'groom' as 'groom' | 'bride',
     specialNotes: ''
   });
 
@@ -314,7 +314,7 @@ export default function AdminPage() {
         title: 'Anh',
         personalMessage: '',
         relationship: 'bạn bè',
-        invitedTo: 'both',
+        invitedTo: 'groom',
         specialNotes: ''
       });
       await loadGuests();
@@ -900,7 +900,7 @@ export default function AdminPage() {
                       title: 'Anh',
                       personalMessage: '',
                       relationship: 'bạn bè',
-                      invitedTo: 'both',
+                      invitedTo: 'groom',
                       specialNotes: ''
                     });
                   }}
@@ -929,11 +929,10 @@ export default function AdminPage() {
                     <Filter className="w-4 h-4 text-gray-400" />
                     <select
                       value={filterBy}
-                      onChange={(e) => setFilterBy(e.target.value as 'all' | 'both' | 'groom' | 'bride')}
+                      onChange={(e) => setFilterBy(e.target.value as 'all' | 'groom' | 'bride')}
                       className="px-3 py-2 border border-[#fedac2] rounded-lg focus:border-[#fc5d01] focus:outline-none"
                     >
                       <option value="all">Tất cả</option>
-                      <option value="both">Cả hai</option>
                       <option value="groom">Nhà trai</option>
                       <option value="bride">Nhà gái</option>
                     </select>
@@ -952,12 +951,10 @@ export default function AdminPage() {
                             {guest.title} {guest.name}
                           </h3>
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            guest.invitedTo === 'both' ? 'bg-purple-100 text-purple-800' :
                             guest.invitedTo === 'groom' ? 'bg-blue-100 text-blue-800' :
                             'bg-pink-100 text-pink-800'
                           }`}>
-                            {guest.invitedTo === 'both' ? 'Cả hai' :
-                             guest.invitedTo === 'groom' ? 'Nhà trai' : 'Nhà gái'}
+                            {guest.invitedTo === 'groom' ? 'Nhà trai' : 'Nhà gái'}
                           </span>
                         </div>
                         <p className="text-gray-600 text-sm mt-1">{guest.relationship}</p>
@@ -1057,10 +1054,9 @@ export default function AdminPage() {
                             <label className="block text-sm font-medium text-gray-700 mb-2">Được mời tham dự</label>
                             <select
                               value={guestForm.invitedTo}
-                              onChange={(e) => setGuestForm({ ...guestForm, invitedTo: e.target.value as 'both' | 'groom' | 'bride' })}
+                              onChange={(e) => setGuestForm({ ...guestForm, invitedTo: e.target.value as 'groom' | 'bride' })}
                               className="w-full px-3 py-2 border border-[#fedac2] rounded-lg focus:border-[#fc5d01] focus:outline-none"
                             >
-                              <option value="both">Cả hai</option>
                               <option value="groom">Nhà trai</option>
                               <option value="bride">Nhà gái</option>
                             </select>
