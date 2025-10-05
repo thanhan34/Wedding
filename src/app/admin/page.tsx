@@ -103,7 +103,7 @@ export default function AdminPage() {
     },
     weddingDates: {
       groomSide: '24.10.2025',
-      brideSide: '15.07.2024'
+      brideSide: '23.10.2025'
     },
     venues: {
       groomSide: {
@@ -116,7 +116,7 @@ export default function AdminPage() {
         name: 'Nhà Hàng Restaurant',
         address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
         date: 'Monday, 15 July, 2024',
-        vietnameseDate: 'Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)'
+        vietnameseDate: 'Thứ 2, ngày 23.10.2025 (15.06 Giáp Thìn)'
       }
     },
     timeline: {
@@ -671,7 +671,7 @@ export default function AdminPage() {
                         <Input
                           value={weddingData.venues.groomSide.vietnameseDate}
                           onChange={(e) => updateNestedData(['venues', 'groomSide', 'vietnameseDate'], e.target.value)}
-                          placeholder="Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)"
+                          placeholder="Thứ 2, ngày 23.10.2025 (15.06 Giáp Thìn)"
                           className="border-[#fedac2] focus:border-[#fc5d01] focus:ring-[#fc5d01]"
                         />
                       </div>
@@ -711,7 +711,7 @@ export default function AdminPage() {
                         <Input
                           value={weddingData.venues.brideSide.vietnameseDate}
                           onChange={(e) => updateNestedData(['venues', 'brideSide', 'vietnameseDate'], e.target.value)}
-                          placeholder="Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)"
+                          placeholder="Thứ 2, ngày 23.10.2025 (15.06 Giáp Thìn)"
                           className="border-[#fedac2] focus:border-[#fc5d01] focus:ring-[#fc5d01]"
                         />
                       </div>
