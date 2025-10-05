@@ -43,7 +43,7 @@ export default function DetailedEventCards() {
                   Tại: Nhà Hàng Thắng Lợi 1
                 </p>
                 <p className="text-center text-[10px] text-gray-700 leading-snug">
-                  Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang
+                  01 Lê Hồng Phong, Long Xuyên, An Giang
                 </p>
               </div>
 
@@ -96,7 +96,7 @@ export default function DetailedEventCards() {
                   Tại: Nhà Hàng Thanh Tâm
                 </p>
                 <p className="text-center text-[10px] text-gray-700 leading-snug">
-                  97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng
+                  90 Ấp An Phú, Kế Sách, Cần Thơ
                 </p>
               </div>
 

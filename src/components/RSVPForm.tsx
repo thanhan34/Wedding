@@ -35,6 +35,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [showGiftSection, setShowGiftSection] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -528,23 +529,55 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                     
                     <div className="grid md:grid-cols-3 gap-4">
                       {[
-                        { key: 'nha-gai', title: 'Nhà Gái', date: '23.10.2025', location: 'Sóc Trăng, Cần Thơ', icon: MapPin, color: 'from-pink-500 to-pink-600' },
-                        { key: 'nha-trai', title: 'Nhà Trai', date: '24.10.2025', location: 'Long Xuyên, An Giang', icon: MapPin, color: 'from-blue-500 to-blue-600' },                        
-                        { key: 'both', title: 'Tiệc Báo Hỷ', date: '15.11.2025', location: 'Cần Thơ', icon: Heart, color: 'from-[#fc5d01] to-[#fd7f33]' }
+                        { 
+                          key: 'nha-gai', 
+                          title: 'Nhà Gái', 
+                          date: '23.10.2025', 
+                          location: 'Sóc Trăng, Cần Thơ', 
+                          icon: MapPin, 
+                          color: 'from-pink-500 to-pink-600',
+                          venue: 'Nhà Hàng Thanh Tâm',
+                          address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
+                          time: '16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
+                        },
+                        { 
+                          key: 'nha-trai', 
+                          title: 'Nhà Trai', 
+                          date: '24.10.2025', 
+                          location: 'Long Xuyên, An Giang', 
+                          icon: MapPin, 
+                          color: 'from-blue-500 to-blue-600',
+                          venue: 'Nhà Hàng Thắng Lợi 1',
+                          address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
+                          time: '11:00 - Chụp ảnh cùng Cô Dâu & Chú Rể\n11:30 - Hôn Lễ Bắt Đầu\n12:00 - Khai tiệc'
+                        },                        
+                        { 
+                          key: 'both', 
+                          title: 'Tiệc Báo Hỷ', 
+                          date: '15.11.2025', 
+                          location: 'Cần Thơ', 
+                          icon: Heart, 
+                          color: 'from-[#fc5d01] to-[#fd7f33]',
+                          venue: 'Resort Cồn Khương',
+                          address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
+                          time: '16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
+                        }
                       ].map((event, index) => (
                         <motion.button
                           key={event.key}
                           type="button"
                           onClick={() => {
+                            setSelectedEvent(event.key);
                             setFormData({ ...formData, event: event.key });
-                            setCurrentStep(2);
                           }}
                           whileHover={{ scale: 1.02, y: -3 }}
                           whileTap={{ scale: 0.98 }}
                           initial={{ opacity: 0, y: 30 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className="group relative p-6 rounded-2xl border-2 border-[#fedac2] hover:border-[#fc5d01] transition-all duration-300 bg-white hover:shadow-lg overflow-hidden"
+                          className={`group relative p-6 rounded-2xl border-2 transition-all duration-300 bg-white hover:shadow-lg overflow-hidden ${
+                            selectedEvent === event.key ? 'border-[#fc5d01] shadow-lg' : 'border-[#fedac2] hover:border-[#fc5d01]'
+                          }`}
                         >
                           <motion.div
                             className="absolute inset-0 bg-gradient-to-br from-[#fc5d01]/5 to-[#fd7f33]/5 opacity-0 group-hover:opacity-100"
@@ -564,16 +597,138 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                       ))}
                     </div>
 
-                    <div className="flex justify-center">
+                    {/* Venue Details - Shows when event is selected */}
+                    <AnimatePresence mode="wait">
+                      {selectedEvent && (
+                        <motion.div
+                          key={selectedEvent}
+                          initial={{ opacity: 0, y: 20, height: 0 }}
+                          animate={{ opacity: 1, y: 0, height: 'auto' }}
+                          exit={{ opacity: 0, y: -20, height: 0 }}
+                          transition={{ duration: 0.5, ease: "easeOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-6 p-6 bg-gradient-to-br from-[#fedac2]/10 via-white to-[#fdbc94]/10 rounded-2xl border-2 border-[#fc5d01]/30">
+                            {(() => {
+                              const eventData = [
+                                { 
+                                  key: 'nha-gai', 
+                                  venue: 'Nhà Hàng Thanh Tâm',
+                                  address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
+                                  time: ['16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc']
+                                },
+                                { 
+                                  key: 'nha-trai', 
+                                  venue: 'Nhà Hàng Thắng Lợi 1',
+                                  address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
+                                  time: ['11:00 - Chụp ảnh cùng Cô Dâu & Chú Rể', '11:30 - Hôn Lễ Bắt Đầu', '12:00 - Khai tiệc']
+                                },
+                                { 
+                                  key: 'both', 
+                                  venue: 'Resort Cồn Khương',
+                                  address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
+                                  time: ['16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc']
+                                }
+                              ].find(e => e.key === selectedEvent);
+
+                              if (!eventData) return null;
+
+                              return (
+                                <div className="space-y-4">
+                                  {/* Venue Name */}
+                                  <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.1 }}
+                                    className="flex items-start space-x-3"
+                                  >
+                                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                                      <MapPin className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="text-sm text-gray-600 mb-1">Địa điểm</h4>
+                                      <p className="text-lg font-semibold text-gray-800">{eventData.venue}</p>
+                                    </div>
+                                  </motion.div>
+
+                                  {/* Address */}
+                                  <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="flex items-start space-x-3"
+                                  >
+                                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#fd7f33] to-[#ffac7b] rounded-lg flex items-center justify-center shadow-md">
+                                      <MapPin className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="text-sm text-gray-600 mb-1">Địa chỉ</h4>
+                                      <p className="text-base text-gray-700 leading-relaxed">{eventData.address}</p>
+                                    </div>
+                                  </motion.div>
+
+                                  {/* Timeline */}
+                                  <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="flex items-start space-x-3"
+                                  >
+                                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#ffac7b] to-[#fdbc94] rounded-lg flex items-center justify-center shadow-md">
+                                      <Calendar className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="text-sm text-gray-600 mb-2">Chương trình</h4>
+                                      <div className="space-y-1">
+                                        {eventData.time.map((t, i) => (
+                                          <motion.p
+                                            key={i}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.4 + (i * 0.1) }}
+                                            className="text-sm text-gray-700"
+                                          >
+                                            • {t}
+                                          </motion.p>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                </div>
+                              );
+                            })()}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="flex justify-center space-x-4 mt-6">
                       <motion.button
                         type="button"
-                        onClick={() => setCurrentStep(0)}
+                        onClick={() => {
+                          setCurrentStep(0);
+                          setSelectedEvent(null);
+                        }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="px-6 py-2 text-gray-600 hover:text-[#fc5d01] transition-colors duration-300 text-sm"
                       >
                         ← Quay lại
                       </motion.button>
+
+                      {selectedEvent && (
+                        <motion.button
+                          type="button"
+                          onClick={() => setCurrentStep(2)}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="px-8 py-2 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-sm font-medium"
+                        >
+                          Tiếp tục →
+                        </motion.button>
+                      )}
                     </div>
                   </motion.div>
                 )}

@@ -205,8 +205,37 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       Tại: Nhà Hàng Thắng Lợi 1
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang
+                      01 Lê Hồng Phong, Long Xuyên, An Giang
                     </p>
+                  </motion.div>
+
+                  {/* Timeline Section */}
+                  <motion.div 
+                    className="space-y-1.5 pt-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.3 }}
+                  >
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">11:00</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">11:30</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Hôn Lễ Bắt Đầu</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">12:00</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Khai tiệc</p>
+                    </div>
                   </motion.div>
 
                   <motion.div 
@@ -323,8 +352,37 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       Tại: Nhà Hàng Thanh Tâm
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng
+                      90 Ấp An Phú, Kế Sách, Cần Thơ
                     </p>
+                  </motion.div>
+
+                  {/* Timeline Section */}
+                  <motion.div 
+                    className="space-y-1.5 pt-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">16:00</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">16:30</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Hôn Lễ Bắt Đầu</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">17:00</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Khai tiệc</p>
+                    </div>
                   </motion.div>
 
                   <motion.div 
@@ -443,6 +501,35 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                     <p className="text-gray-600 leading-relaxed">
                       99A, Võ Văn Tần, Cái Khế, Cần Thơ
                     </p>
+                  </motion.div>
+
+                  {/* Timeline Section */}
+                  <motion.div 
+                    className="space-y-1.5 pt-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.7 }}
+                  >
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">16:00</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">16:30</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Hôn Lễ Bắt Đầu</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">17:00</span>
+                      </div>
+                      <p className="text-gray-700 text-sm font-medium">Khai tiệc</p>
+                    </div>
                   </motion.div>
 
                   <motion.div 

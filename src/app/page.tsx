@@ -219,12 +219,19 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button
                 onClick={() => scrollToSection('invitation')}
                 className="bg-[#fc5d01] hover:bg-[#e55401] text-white font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
               >
-                Trân trọng kính mời!
+                Xem Thông Tin Đám Cưới
+              </button>
+              <button
+                onClick={() => scrollToSection('rsvp')}
+                className="bg-white hover:bg-gray-50 text-[#fc5d01] border-2 border-[#fc5d01] font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
+              >
+                Xác Nhận Tham Dự
               </button>
             </motion.div>
           </div>
@@ -276,23 +283,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wedding Invitation Cards */}
+      {/* Wedding Invitation Cards - THÔNG TIN CHÍNH */}
       <section id="invitation">
         <WeddingInvitation />
       </section>
 
-      {/* Bride and Groom Introduction */}
-      <section id="bride-groom-intro">
-        <BrideGroomIntroduction />
-      </section>
-
-      {/* Báo Hỷ Section */}
-      {/* <section id="bao-hy">
-        <BaoHy />
-      </section> */}
-
-      {/* RSVP Section */}
-      <section id="rsvp" className="py-20 bg-white">
+      {/* RSVP Section - XÁC NHẬN THAM DỰ (Priority #2 - Moved Up) */}
+      <section id="rsvp" className="py-20 bg-gradient-to-br from-[#fedac2]/20 to-[#fdbc94]/20">
         <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -300,13 +297,35 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <motion.div
+              animate={{ 
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-8"
+            >
+              <Heart className="w-10 h-10 text-white fill-current" />
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-6">Xác Nhận Tham Dự</h2>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
               Đám cưới sẽ trọn vẹn và ý nghĩa hơn khi có sự hiện diện và chúc phúc của bạn. 
               Hãy xác nhận sự có mặt của bạn để Thanh An & Thanh Ngân chuẩn bị đón tiếp bạn chu đáo nhất nha ♥️
             </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full"></div>
           </motion.div>
           <RSVPForm />
         </div>
+      </section>
+
+      {/* Bride and Groom Introduction */}
+      <section id="bride-groom-intro">
+        <BrideGroomIntroduction />
       </section>
 
       {/* Timeline Section */}
@@ -495,7 +514,7 @@ export default function Home() {
                       {loading ? 'Nhà Hàng Thắng Lợi 1' : weddingData.venues.groomSide.name}
                     </p>
                     <p className="text-base text-gray-500 leading-relaxed">
-                      {loading ? 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang' : weddingData.venues.groomSide.address}
+                      {loading ? '01 Lê Hồng Phong, Long Xuyên, An Giang' : weddingData.venues.groomSide.address}
                     </p>
                   </motion.div>
                 </div>
@@ -768,7 +787,7 @@ export default function Home() {
                       {loading ? 'Nhà Hàng Thanh Tâm' : weddingData.venues.brideSide.name}
                     </p>
                     <p className="text-base text-gray-500 leading-relaxed">
-                      {loading ? '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng' : weddingData.venues.brideSide.address}
+                      {loading ? '90 Ấp An Phú, Kế Sách, Cần Thơ' : weddingData.venues.brideSide.address}
                     </p>
                   </motion.div>
                 </div>
@@ -1049,7 +1068,7 @@ export default function Home() {
                 {/* Timeline Events */}
                 <div className="space-y-4 relative z-10 mb-10">
                   {[
-                    { time: '16:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' },
+                    { time: '16:00', event: 'Chụp ảnh cùng Dâu & Rể' },
                     { time: '16:30', event: 'Hôn Lễ Bắt Đấu' },
                     { time: '17:00', event: 'Khai tiệc' },
                   ].map((event, index) => (

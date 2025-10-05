@@ -108,20 +108,20 @@ export default function AdminPage() {
     venues: {
       groomSide: {
         name: 'Nhà Hàng Thắng Lợi 1',
-        address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
+        address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
         date: 'Friday, 24 October, 2025',
         vietnameseDate: 'Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)'
       },
       brideSide: {
         name: 'Nhà Hàng Restaurant',
-        address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
+        address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
         date: 'Monday, 15 July, 2024',
         vietnameseDate: 'Thứ 2, ngày 15.07.2024 (15.06 Giáp Thìn)'
       }
     },
     timeline: {
       groomSide: [
-        { time: '12:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' },
+        { time: '12:00', event: 'Chụp ảnh cùng Dâu & Rể' },
         { time: '10:00', event: 'Lễ Thành Hôn' },
         { time: '10:30', event: 'Khai tiệc' },
         
@@ -130,7 +130,7 @@ export default function AdminPage() {
         { time: '09:30', event: 'Đón khách' },
         { time: '10:00', event: 'Lễ Thành Hôn' },
         { time: '10:30', event: 'Khai tiệc' },
-        { time: '12:00', event: 'Chụp ảnh cùng Cô Dâu & Chú Rể' }
+        { time: '12:00', event: 'Chụp ảnh cùng Dâu & Rể' }
       ]
     },
     bankAccounts: [

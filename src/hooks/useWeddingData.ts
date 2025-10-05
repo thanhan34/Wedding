@@ -81,13 +81,13 @@ const defaultWeddingData: WeddingData = {
   venues: {
     groomSide: {
       name: 'Khách Sạn Anh Thanh Đô',
-      address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
+      address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
       date: 'Friday, 24 October, 2025',
       vietnameseDate: 'Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)'
     },
     brideSide: {
       name: 'Nhà Hàng Thanh Tâm',
-      address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
+      address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
       date: 'Thursday, 23 October, 2025',
       vietnameseDate: 'Thứ 6, ngày 23.10.2025 (09.10 Ất Tỵ)'
     }
@@ -122,7 +122,7 @@ const defaultWeddingData: WeddingData = {
       date: 'Thứ Sáu, 29/11/2025',
       time: '11:00 - 13:00',
       location: 'Khách Sạn Anh Thanh Đô',
-      address: 'Số 01 Đ. Lê Hồng Phong, P. Mỹ Bình, Thành phố Long Xuyên, An Giang',
+      address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
       mapUrl: 'https://maps.google.com/?q=Khach+San+Anh+Thanh+Do+Le+Hong+Phong+Long+Xuyen+An+Giang',
       type: 'wedding',
       description: 'Lễ cưới tại nhà trai với chương trình: 11:00 Chụp ảnh cùng dâu rể, 11:30 Nghi lễ bắt đầu, 12:00 Khai tiệc'
@@ -133,7 +133,7 @@ const defaultWeddingData: WeddingData = {
       date: 'Thứ Năm, 28/11/2025',
       time: '16:00 - 18:00',
       location: 'Nhà Hàng Thanh Tâm',
-      address: '97 Phạm Văn Hùng, TT. Kế Sách, Kế Sách, Sóc Trăng',
+      address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
       mapUrl: 'https://maps.google.com/?q=Nha+Hang+Thanh+Tam+Pham+Van+Hung+Ke+Sach+Soc+Trang',
       type: 'wedding',
       description: 'Lễ cưới tại nhà gái với chương trình: 16:00 Chụp ảnh cùng dâu rể, 16:30 Nghi lễ bắt đầu, 17:00 Khai tiệc'

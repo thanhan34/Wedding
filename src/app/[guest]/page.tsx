@@ -292,12 +292,19 @@ export default function PersonalizedWeddingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <button
                 onClick={() => scrollToSection('invitation')}
                 className="bg-[#fc5d01] hover:bg-[#e55401] text-white font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
               >
-                Trân trọng kính mời!
+                Xem Thông Tin Đám Cưới
+              </button>
+              <button
+                onClick={() => scrollToSection('rsvp')}
+                className="bg-white hover:bg-gray-50 text-[#fc5d01] border-2 border-[#fc5d01] font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
+              >
+                Xác Nhận Tham Dự
               </button>
             </motion.div>
           </div>
@@ -353,8 +360,8 @@ export default function PersonalizedWeddingPage() {
         <PersonalizedWeddingInvitation guestInfo={guestInfo} />
       </section>
 
-      {/* RSVP Section with personalized message */}
-      <section id="rsvp" className="py-20 bg-white">
+      {/* RSVP Section with personalized message - PRIORITY #2 */}
+      <section id="rsvp" className="py-20 bg-gradient-to-br from-[#fedac2]/20 to-[#fdbc94]/20">
         <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -362,18 +369,34 @@ export default function PersonalizedWeddingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-6">
-              Xác nhận tham dự
-            </h2>
-            <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-6 mb-8">
-              <p className="text-lg text-gray-700 mb-4">
-                Kính gửi {guestInfo.title} <span className="font-medium text-[#fc5d01]">{guestInfo.name}</span>,
+            <motion.div
+              animate={{ 
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-full shadow-xl mb-8"
+            >
+              <Heart className="w-10 h-10 text-white fill-current" />
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-6">Xác Nhận Tham Dự</h2>
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-[#fedac2]/50">
+              <p className="text-xl text-gray-700 mb-4">
+                Kính gửi {guestInfo.title} <span className="font-semibold text-[#fc5d01]">{guestInfo.name}</span>,
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Đám cưới sẽ trọn vẹn và ý nghĩa hơn khi có sự hiện diện và chúc phúc của {guestInfo.title}. 
                 Hãy xác nhận sự có mặt để Thanh An & Thanh Ngân chuẩn bị đón tiếp {guestInfo.title} chu đáo nhất nha ♥️
               </p>
             </div>
+            
+            <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full"></div>
           </motion.div>
           <RSVPForm guestInfo={guestInfo} />
         </div>
