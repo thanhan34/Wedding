@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Great_Vibes, Cormorant_Garamond, Inter, Dancing_Script, Lora, Abril_Fatface } from "next/font/google";
 import "./globals.css";
+import { GuestInfo } from '../lib/guestData';
 import { Toaster } from "../components/ui/sonner";
 
 const greatVibes = Great_Vibes({
@@ -44,7 +45,7 @@ const abrilFatface = Abril_Fatface({
 });
 
 export const metadata: Metadata = {
-  title: "Thanh An 💞 Thanh Ngân- Wedding",
+  title: "Thanh An 💞 Thanh Ngân Wedding - Kính mời {GuestInfo.title}",
   description: "Trang web đám cưới của Thanh An và Thanh Ngân. Xem thông tin sự kiện, RSVP, và gửi lời chúc mừng.",
 };
 
