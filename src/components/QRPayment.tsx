@@ -1,12 +1,13 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { QrCode, Copy, Check, Gift } from 'lucide-react';
+import { Copy, Check, Gift } from 'lucide-react';
 import { useState } from 'react';
 import { useWeddingData } from '../hooks/useWeddingData';
 import { GuestInfo } from '../lib/guestData';
 import Lottie from 'lottie-react';
 import giftAnimation from '../../public/Gift premium animation.json';
+import Image from 'next/image';
 
 interface QRPaymentProps {
   guestInfo?: GuestInfo;
@@ -255,12 +256,15 @@ export default function QRPayment({ guestInfo }: QRPaymentProps) {
                       
                       {/* QR Code */}
                       <div className="flex justify-center mb-4">
-                        <div className="w-40 h-40 bg-white rounded-xl shadow-inner flex items-center justify-center border-2 border-[#fedac2]/30">
-                          <div className="relative">
-                            <QrCode className="w-32 h-32 text-[#fc5d01] drop-shadow-sm" />
-                            <div className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-lg">
-                              <Gift className="w-3 h-3 text-white" />
-                            </div>
+                        <div className="w-48 h-48 bg-white rounded-xl shadow-inner flex items-center justify-center border-2 border-[#fedac2]/30 p-3">
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={account.id === 'bride' ? '/qr/qr-codau.png' : '/qr/qr-chure.png'}
+                              alt={`QR Code ${account.name}`}
+                              fill
+                              className="object-contain rounded-lg"
+                              priority
+                            />
                           </div>
                         </div>
                       </div>
