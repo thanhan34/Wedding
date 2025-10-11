@@ -1,13 +1,19 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Copy, Check, Gift } from 'lucide-react';
-import { useState } from 'react';
+import { Copy, Check, Gift, Heart, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { useWeddingData } from '../hooks/useWeddingData';
 import { GuestInfo } from '../lib/guestData';
+import { addGift, getGiftCount } from '../lib/giftData';
 import Lottie from 'lottie-react';
 import giftAnimation from '../../public/Gift premium animation.json';
 import Image from 'next/image';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Button } from './ui/button';
+import { toast } from 'sonner';
 
 interface QRPaymentProps {
   guestInfo?: GuestInfo;
@@ -16,7 +22,25 @@ interface QRPaymentProps {
 export default function QRPayment({ guestInfo }: QRPaymentProps) {
   const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
   const [openedGifts, setOpenedGifts] = useState<Set<string>>(new Set());
+  const [showGiftForm, setShowGiftForm] = useState(false);
+  const [giftAmount, setGiftAmount] = useState('');
+  const [giftMessage, setGiftMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [todayGiftCount, setTodayGiftCount] = useState(0);
   const { weddingData, loading } = useWeddingData();
+
+  // Lấy số lượng quà tặng hôm nay
+  useEffect(() => {
+    const fetchTodayCount = async () => {
+      const recipient = guestInfo 
+        ? guestInfo.invitedTo 
+        : 'bride';
+      const count = await getGiftCount(recipient);
+      setTodayGiftCount(count);
+    };
+    fetchTodayCount();
+  }, [guestInfo]);
 
   // Lọc tài khoản ngân hàng dựa trên khách mời được mời tham dự bên nào
   // Nếu không có guestInfo (trang chính), mặc định hiển thị tài khoản nhà gái
@@ -57,6 +81,79 @@ export default function QRPayment({ guestInfo }: QRPaymentProps) {
       setCopiedAccount(accountId);
       setTimeout(() => setCopiedAccount(null), 2000);
     });
+  };
+
+  // Format số tiền khi nhập
+  const formatCurrency = (value: string) => {
+    const number = value.replace(/\D/g, '');
+    return number.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '');
+    setGiftAmount(value);
+  };
+
+  // Xử lý submit form quà tặng
+  const handleSubmitGift = async () => {
+    if (!giftAmount || parseInt(giftAmount) <= 0) {
+      toast.error('Vui lòng nhập số tiền hợp lệ');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const recipient = guestInfo 
+        ? guestInfo.invitedTo 
+        : 'bride';
+
+      // Tạo object gift, chỉ thêm các trường có giá trị
+      const giftData: any = {
+        guestName: guestInfo?.name || 'Khách mời',
+        amount: parseInt(giftAmount),
+        recipient,
+        createdAt: new Date(),
+      };
+
+      // Chỉ thêm các trường optional nếu chúng có giá trị
+      if (guestInfo?.id) {
+        giftData.guestId = guestInfo.id;
+      }
+
+      if (giftMessage.trim()) {
+        giftData.message = giftMessage.trim();
+      }
+
+      if (filteredBankAccounts[0]?.accountNumber) {
+        giftData.bankAccount = filteredBankAccounts[0].accountNumber;
+      }
+
+      await addGift(giftData);
+
+      // Show confetti
+      setShowConfetti(true);
+      setTodayGiftCount(prev => prev + 1);
+      
+      // Success message
+      toast.success('🎉 Cảm ơn bạn đã gửi quà!', {
+        description: 'Món quà của bạn đã được ghi nhận thành công!'
+      });
+
+      // Reset form
+      setTimeout(() => {
+        setShowGiftForm(false);
+        setGiftAmount('');
+        setGiftMessage('');
+        setShowConfetti(false);
+      }, 3000);
+
+    } catch (error) {
+      console.error('Error submitting gift:', error);
+      toast.error('Có lỗi xảy ra, vui lòng thử lại');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isGiftOpen = openedGifts.has('main-gift');
@@ -332,13 +429,158 @@ export default function QRPayment({ guestInfo }: QRPaymentProps) {
           </AnimatePresence>
         </div>
         
-        {/* Message */}
-        <div className="text-center">
+        {/* Message & Button */}
+        <div className="text-center space-y-4">
           <p className="text-sm text-gray-600 italic">
             Cảm ơn {guestInfo && <span className="lowercase">{guestInfo.title}</span>} đã gửi lời chúc và quà cưới đến chúng mình! ❤️
           </p>
+          
+          {/* Button Xác nhận đã chuyển */}
+          <motion.button
+            onClick={() => setShowGiftForm(true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 mx-auto"
+          >
+            <Gift className="w-5 h-5" />
+            Đã chuyển khoản
+            <Sparkles className="w-4 h-4" />
+          </motion.button>
         </div>
       </motion.div>
+
+      {/* Gift Form Dialog */}
+      <Dialog open={showGiftForm} onOpenChange={setShowGiftForm}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-center text-[#fc5d01] flex items-center justify-center gap-2">
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+              >
+                🎊
+              </motion.div>
+              Xác nhận món quà của bạn
+              <motion.div
+                animate={{ rotate: [0, -10, 10, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+              >
+                🎊
+              </motion.div>
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              Bạn là người thứ <span className="font-bold text-[#fc5d01]">{todayGiftCount + 1}</span> gửi quà hôm nay! 💝
+            </DialogDescription>
+          </DialogHeader>
+
+          {/* Confetti Effect */}
+          <AnimatePresence>
+            {showConfetti && (
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {[...Array(20)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ 
+                      x: '50%', 
+                      y: '50%',
+                      scale: 0 
+                    }}
+                    animate={{ 
+                      x: `${Math.random() * 100}%`,
+                      y: `${Math.random() * 100}%`,
+                      scale: [0, 1, 0],
+                      rotate: Math.random() * 360
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      delay: i * 0.05
+                    }}
+                    className="absolute"
+                  >
+                    {['❤️', '💝', '🎁', '✨', '🎉'][i % 5]}
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </AnimatePresence>
+
+          <div className="space-y-4 py-4">
+            {/* Amount Input */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 flex items-center gap-2 mb-2">
+                💰 Số tiền bạn vừa chuyển
+              </label>
+              <div className="relative">
+                <Input
+                  type="text"
+                  value={formatCurrency(giftAmount)}
+                  onChange={handleAmountChange}
+                  placeholder="Ví dụ: 500,000"
+                  className="pl-4 pr-16 h-12 text-lg border-2 border-[#fedac2]/50 focus:border-[#fc5d01] transition-colors"
+                  disabled={isSubmitting}
+                />
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium">
+                  VNĐ
+                </span>
+              </div>
+            </div>
+
+            {/* Message Input */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 flex items-center gap-2 mb-2">
+                💌 Lời chúc của bạn (tùy chọn)
+              </label>
+              <Textarea
+                value={giftMessage}
+                onChange={(e) => setGiftMessage(e.target.value)}
+                placeholder="Chúc hai bạn trăm năm hạnh phúc! ❤️"
+                className="min-h-[100px] border-2 border-[#fedac2]/50 focus:border-[#fc5d01] transition-colors resize-none"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            {/* Submit Button */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button
+                onClick={handleSubmitGift}
+                disabled={isSubmitting || !giftAmount}
+                className="w-full h-12 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] hover:from-[#fd7f33] hover:to-[#fc5d01] text-white font-medium text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    className="flex items-center gap-2"
+                  >
+                    <Heart className="w-5 h-5" />
+                    Đang gửi...
+                  </motion.div>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <Gift className="w-5 h-5" />
+                    Gửi lời chúc
+                    <Sparkles className="w-5 h-5" />
+                  </span>
+                )}
+              </Button>
+            </motion.div>
+
+            {/* Skip Option */}
+            <p className="text-center text-sm text-gray-500">
+              <button
+                onClick={() => setShowGiftForm(false)}
+                className="hover:text-[#fc5d01] transition-colors underline"
+                disabled={isSubmitting}
+              >
+                Hoặc có thể bỏ qua bước này
+              </button>
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -533,7 +533,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           key: 'nha-gai', 
                           title: 'Nhà Gái', 
                           date: '23.10.2025', 
-                          location: 'Sóc Trăng, Cần Thơ', 
+                          location: 'Kế Sách, Sóc Trăng', 
                           emoji: '👰', 
                           color: 'from-pink-500 to-pink-600',
                           venue: 'Nhà Hàng Thanh Tâm',

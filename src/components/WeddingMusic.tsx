@@ -34,7 +34,7 @@ const WeddingMusic: React.FC<WeddingMusicProps> = ({ className = "" }) => {
   ];
 
   const [currentTrack, setCurrentTrack] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [currentTime, setCurrentTime] = useState(0);
@@ -120,13 +120,38 @@ const WeddingMusic: React.FC<WeddingMusicProps> = ({ className = "" }) => {
 
   // Auto play khi component mount
   useEffect(() => {
-    if (audioRef.current && isPlaying) {
-      audioRef.current.play().catch(() => {
-        // Handle autoplay restrictions
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    // Tự động phát nhạc khi component mount
+    const playAudio = async () => {
+      try {
+        audio.volume = volume;
+        await audio.play();
+        setIsPlaying(true);
+      } catch (error) {
+        // Handle autoplay restrictions - một số trình duyệt chặn autoplay
+        console.log('Autoplay was prevented. User interaction required.');
+        setIsPlaying(false);
+      }
+    };
+
+    playAudio();
+  }, [currentTrack, volume]);
+
+  // Xử lý play/pause khi state isPlaying thay đổi
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.play().catch(() => {
         setIsPlaying(false);
       });
+    } else {
+      audio.pause();
     }
-  }, [currentTrack, isPlaying]);
+  }, [isPlaying]);
 
   return (
     <div className={`fixed bottom-6 right-6 z-50 ${className}`}>

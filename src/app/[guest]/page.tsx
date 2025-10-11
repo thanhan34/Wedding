@@ -119,29 +119,6 @@ export default function PersonalizedWeddingPage() {
       {/* Chinese Decorations */}
       <ChineseDecorations />
       
-      {/* Background Audio */}
-      <audio ref={audioRef} loop>
-        <source src="/wedding-music.mp3" type="audio/mpeg" />
-      </audio>
-
-      {/* Music Control */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1 }}
-        className="fixed top-6 right-6 z-50"
-      >
-        <button
-          onClick={toggleMusic}
-          className="bg-white/90 backdrop-blur-sm border border-[#fedac2] rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-        >
-          {isPlaying ? (
-            <Pause className="w-5 h-5 text-[#fc5d01]" />
-          ) : (
-            <Play className="w-5 h-5 text-[#fc5d01]" />
-          )}
-        </button>
-      </motion.div>
 
       {/* Personalized Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -171,6 +148,35 @@ export default function PersonalizedWeddingPage() {
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto px-4 relative z-10">
           {/* Left Column - Personalized Text Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
+            {/* Logo in Hero Section */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="flex justify-center lg:justify-start mb-8"
+            >
+              <motion.div
+                animate={{ 
+                  rotate: [0, 5, -5, 0],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Image
+                  src="/orange-logo.png"
+                  alt="Wedding Logo"
+                  width={120}
+                  height={120}
+                  className="object-contain drop-shadow-2xl"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+
             {/* Personalized Greeting */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -620,20 +626,27 @@ export default function PersonalizedWeddingPage() {
                 transition={{ duration: 0.6 }}
                 className="text-center md:text-left"
               >
+                {/* Logo in Footer */}
                 <div className="flex items-center justify-center md:justify-start mb-6">
                   <motion.div
                     animate={{ 
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                       rotate: [0, 5, -5, 0]
                     }}
                     transition={{ 
-                      duration: 3, 
+                      duration: 4, 
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                    className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30"
+                    className="bg-white/95 backdrop-blur-sm rounded-full p-3 shadow-2xl border-2 border-white/50"
                   >
-                    <Heart className="w-8 h-8" />
+                    <Image
+                      src="/orange-logo.png"
+                      alt="Wedding Logo"
+                      width={70}
+                      height={70}
+                      className="object-contain"
+                    />
                   </motion.div>
                 </div>
                 <h3 className="text-2xl font-light mb-4">

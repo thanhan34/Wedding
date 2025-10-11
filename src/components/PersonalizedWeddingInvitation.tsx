@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Card } from './ui/card';
 import { Heart, Star, Sparkles, Gift } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
+import WeddingMusic from './WeddingMusic';
+import Image from 'next/image';
 
 interface PersonalizedWeddingInvitationProps {
   guestInfo: GuestInfo;
@@ -85,6 +87,37 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             />
+          </motion.div>
+
+          {/* Logo - Enhanced */}
+          <motion.div
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, scale: 0.5, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, type: "spring" }}
+          >
+            <motion.div
+              animate={{ 
+                rotate: [0, 5, -5, 0],
+                scale: [1, 1.05, 1]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-[#fc5d01]/20 to-[#fd7f33]/20 rounded-full blur-xl"></div>
+              <Image
+                src="/orange-logo.png"
+                alt="Wedding Logo"
+                width={180}
+                height={180}
+                className="object-contain relative z-10 drop-shadow-2xl"
+                priority
+              />
+            </motion.div>
           </motion.div>
 
           <motion.h1 
@@ -604,6 +637,9 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
           )}
         </motion.div>
       </div>
+
+      {/* Wedding Music Player */}
+      <WeddingMusic />
     </div>
   );
 }

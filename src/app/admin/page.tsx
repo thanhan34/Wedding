@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Save, Eye, EyeOff, Lock, Users, MessageSquare, Calendar, Settings, Database, Plus, Edit, Trash2, Search, Filter, Download, RefreshCw } from 'lucide-react';
+import { Save, Eye, EyeOff, Lock, Users, MessageSquare, Calendar, Settings, Database, Plus, Edit, Trash2, Search, Filter, Download, RefreshCw, Gift } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { doc, getDoc, setDoc, collection, getDocs, deleteDoc, query, orderBy } from 'firebase/firestore';
 import { getAllGuests, addGuest, updateGuest, deleteGuest, createSlug, GuestInfo } from '../../lib/guestData';
+import { getGiftStats, formatAmount, GiftStats } from '../../lib/giftData';
 import { Input } from '../../components/ui/input';
 import { Textarea } from '../../components/ui/textarea';
 import { Button } from '../../components/ui/button';
@@ -167,6 +168,7 @@ export default function AdminPage() {
   const [guests, setGuests] = useState<GuestInfo[]>([]);
   const [guestMessages, setGuestMessages] = useState<GuestMessage[]>([]);
   const [rsvpResponses, setRSVPResponses] = useState<RSVPResponse[]>([]);
+  const [giftStats, setGiftStats] = useState<GiftStats | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState<'all' | 'groom' | 'bride'>('all');
 
@@ -197,7 +199,8 @@ export default function AdminPage() {
         loadWeddingData(),
         loadGuests(),
         loadGuestMessages(),
-        loadRSVPResponses()
+        loadRSVPResponses(),
+        loadGiftStats()
       ]);
     } catch (error) {
       console.error('Error loading data:', error);
@@ -260,6 +263,15 @@ export default function AdminPage() {
       setRSVPResponses(responses);
     } catch (error) {
       console.error('Error loading RSVP responses:', error);
+    }
+  };
+
+  const loadGiftStats = async () => {
+    try {
+      const stats = await getGiftStats();
+      setGiftStats(stats);
+    } catch (error) {
+      console.error('Error loading gift stats:', error);
     }
   };
 
@@ -543,6 +555,7 @@ export default function AdminPage() {
             {[
               { id: 'wedding', label: 'Dữ liệu cưới', icon: Calendar },
               { id: 'guests', label: 'Khách mời', icon: Users },
+              { id: 'gifts', label: 'Quà cưới', icon: Gift },
               { id: 'messages', label: 'Lời chúc', icon: MessageSquare },
               { id: 'rsvp', label: 'RSVP', icon: Calendar },
               { id: 'settings', label: 'Cài đặt', icon: Settings }
@@ -1314,6 +1327,74 @@ export default function AdminPage() {
             </motion.div>
           )}
 
+          {/* Gifts Tab */}
+          {activeTab === 'gifts' && (
+            <motion.div
+              key="gifts"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-light text-[#fc5d01]">Quà cưới</h2>
+                <Button
+                  onClick={() => window.location.href = '/admin/gifts'}
+                  className="bg-[#fc5d01] hover:bg-[#e55401] text-white"
+                >
+                  <Gift className="w-4 h-4 mr-2" />
+                  Xem chi tiết
+                </Button>
+              </div>
+
+              {/* Gift Stats Overview */}
+              {giftStats && (
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <Card className="p-6 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] text-white">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-4xl">💰</span>
+                    </div>
+                    <div className="text-3xl font-bold mb-2">{formatAmount(giftStats.totalAmount)}</div>
+                    <div className="text-white/80">Tổng tiền quà tặng</div>
+                  </Card>
+
+                  <Card className="p-6 bg-gradient-to-br from-purple-500 to-purple-700 text-white">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-4xl">🎁</span>
+                    </div>
+                    <div className="text-3xl font-bold mb-2">{giftStats.totalCount}</div>
+                    <div className="text-white/80">Tổng số quà tặng</div>
+                  </Card>
+
+                  <Card className="p-6 bg-gradient-to-br from-pink-500 to-pink-700 text-white">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-4xl">👰</span>
+                    </div>
+                    <div className="text-3xl font-bold mb-2">{formatAmount(giftStats.brideAmount)}</div>
+                    <div className="text-white/80">Cô dâu ({giftStats.brideCount} quà)</div>
+                  </Card>
+
+                  <Card className="p-6 bg-gradient-to-br from-blue-500 to-blue-700 text-white">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-4xl">🤵</span>
+                    </div>
+                    <div className="text-3xl font-bold mb-2">{formatAmount(giftStats.groomAmount)}</div>
+                    <div className="text-white/80">Chú rể ({giftStats.groomCount} quà)</div>
+                  </Card>
+                </div>
+              )}
+
+              <Card className="p-6">
+                <h3 className="text-xl font-medium text-gray-800 mb-4">Thông tin chi tiết</h3>
+                <div className="space-y-3 text-gray-700">
+                  <p>• Để xem danh sách chi tiết các món quà, vui lòng click vào nút "Xem chi tiết" ở trên.</p>
+                  <p>• Trang chi tiết sẽ hiển thị thông tin đầy đủ về từng món quà bao gồm: tên khách, số tiền, lời chúc, và thời gian gửi.</p>
+                  <p>• Bạn có thể tìm kiếm, lọc và xuất dữ liệu ra file CSV để quản lý dễ dàng hơn.</p>
+                </div>
+              </Card>
+            </motion.div>
+          )}
+
           {/* Settings Tab */}
           {activeTab === 'settings' && (
             <motion.div
@@ -1326,8 +1407,8 @@ export default function AdminPage() {
               <h2 className="text-2xl font-light text-[#fc5d01]">Cài đặt hệ thống</h2>
               
               <Card className="p-6">
-                <h3 className="text-xl font-medium text-gray-800 mb-4">Thống kê</h3>
-                <div className="grid md:grid-cols-4 gap-6">
+                <h3 className="text-xl font-medium text-gray-800 mb-4">Thống kê tổng quan</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-[#fc5d01]">{guests.length}</div>
                     <div className="text-gray-600">Khách mời</div>
@@ -1346,8 +1427,41 @@ export default function AdminPage() {
                     </div>
                     <div className="text-gray-600">Sẽ tham gia</div>
                   </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-[#fc5d01]">
+                      {giftStats?.totalCount || 0}
+                    </div>
+                    <div className="text-gray-600">Quà tặng</div>
+                  </div>
                 </div>
               </Card>
+
+              {/* Gift Stats in Settings */}
+              {giftStats && giftStats.totalCount > 0 && (
+                <Card className="p-6">
+                  <h3 className="text-xl font-medium text-gray-800 mb-4">Thống kê quà cưới</h3>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="text-center p-4 bg-[#fedac2]/20 rounded-lg">
+                      <div className="text-2xl font-bold text-[#fc5d01] mb-1">
+                        {formatAmount(giftStats.totalAmount)}
+                      </div>
+                      <div className="text-gray-600 text-sm">Tổng tiền quà tặng</div>
+                    </div>
+                    <div className="text-center p-4 bg-pink-50 rounded-lg">
+                      <div className="text-2xl font-bold text-pink-600 mb-1">
+                        {formatAmount(giftStats.brideAmount)}
+                      </div>
+                      <div className="text-gray-600 text-sm">Cô dâu</div>
+                    </div>
+                    <div className="text-center p-4 bg-blue-50 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600 mb-1">
+                        {formatAmount(giftStats.groomAmount)}
+                      </div>
+                      <div className="text-gray-600 text-sm">Chú rể</div>
+                    </div>
+                  </div>
+                </Card>
+              )}
 
               <Card className="p-6">
                 <h3 className="text-xl font-medium text-gray-800 mb-4">Xuất dữ liệu</h3>
