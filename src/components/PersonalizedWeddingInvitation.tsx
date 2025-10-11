@@ -220,7 +220,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-white font-bold text-sm">11:00</span>
                       </div>
-                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</p>
+                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Dâu & Rể</p>
                     </div>
                     
                     <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
@@ -367,7 +367,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-white font-bold text-sm">16:00</span>
                       </div>
-                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</p>
+                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Dâu & Rể</p>
                     </div>
                     
                     <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">
@@ -514,7 +514,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
                         <span className="text-white font-bold text-sm">16:00</span>
                       </div>
-                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Cô Dâu & Chú Rể</p>
+                      <p className="text-gray-700 text-sm font-medium">Chụp ảnh cùng Dâu & Rể</p>
                     </div>
                     
                     <div className="flex items-center space-x-2.5 bg-transparent rounded-xl p-1">

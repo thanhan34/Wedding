@@ -14,6 +14,8 @@ import WeddingGallery from '../../components/WeddingGallery';
 import ChineseDecorations from '../../components/ChineseDecorations';
 import PersonalizedWeddingInvitation from '../../components/PersonalizedWeddingInvitation';
 import RandomHeroImage from '../../components/RandomHeroImage';
+import BrideGroomIntroduction from '../../components/BrideGroomIntroduction';
+import Countdown from '../../components/Countdown';
 import { useWeddingData } from '../../hooks/useWeddingData';
 import { getGuestInfo, GuestInfo } from '../../lib/guestData';
 
@@ -142,77 +144,27 @@ export default function PersonalizedWeddingPage() {
       </motion.div>
 
       {/* Personalized Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden chinese-double-happiness">
-        {/* Chinese Pattern Background */}
-        <div className="absolute inset-0 chinese-pattern"></div>
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Subtle Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#fedac2]/5 via-white to-[#fdbc94]/5"></div>
         
-        {/* Background Images with Chinese Frames */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-32 h-32 chinese-frame overflow-hidden opacity-20 rotate-12">
-            <Image
-              src="/Wedding/Ngang/KTIU0188.jpg"
-              alt="Wedding photo"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute top-20 right-20 w-40 h-40 chinese-frame overflow-hidden opacity-15 -rotate-12">
-            <Image
-              src="/Wedding/Doc/KTIU0256.jpg"
-              alt="Wedding photo"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute bottom-32 left-32 w-28 h-28 chinese-frame overflow-hidden opacity-20 rotate-45">
-            <Image
-              src="/Wedding/Doc/KTIU0370.jpg"
-              alt="Wedding photo"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute bottom-20 right-32 w-36 h-36 chinese-frame overflow-hidden opacity-15 -rotate-45">
-            <Image
-              src="/Wedding/Doc/KTIU9199.JPG"
-              alt="Wedding photo"
-              fill
-              className="object-cover"
-            />
-          </div>
-          
-          {/* Chinese Decorative Elements */}
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-60 rotate-12">
+        {/* Minimal Decorative Elements - Only 2 subtle backgrounds */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-24 h-24 opacity-40">
             <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
               alt="Chinese decoration"
               fill
-              className="object-contain drop-shadow-lg"
+              className="object-contain"
             />
           </div>
-          <div className="absolute top-1/3 right-1/4 w-28 h-28 opacity-60 -rotate-12">
+          <div className="absolute bottom-1/4 right-1/4 w-24 h-24 opacity-40">
             <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807515.png"
               alt="Chinese decoration"
               fill
-              className="object-contain drop-shadow-lg"
+              className="object-contain"
             />
-          </div>
-        </div>
-
-        {/* Elegant Chinese Decorative Elements */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-20 left-20 chinese-ornament">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] opacity-30"></div>
-          </div>
-          <div className="absolute top-40 right-32 chinese-ornament">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#ffac7b] to-[#fd7f33] opacity-25"></div>
-          </div>
-          <div className="absolute bottom-32 left-40 chinese-ornament">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#fedac2] to-[#fdbc94] opacity-35"></div>
-          </div>
-          <div className="absolute bottom-20 right-20 chinese-ornament">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] opacity-30"></div>
           </div>
         </div>
 
@@ -267,87 +219,124 @@ export default function PersonalizedWeddingPage() {
               <div className="w-20 h-px bg-[#fc5d01]"></div>
             </motion.div>
 
-            <motion.p
+            {/* Wedding Dates - Improved */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-lg md:text-xl text-gray-600 mb-8 font-light"
+              className="mb-8"
             >
-              {loading ? '24.10.2025 Nhà Trai - 23.10.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
-            </motion.p>
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#fc5d01]/10 via-[#fd7f33]/5 to-[#fc5d01]/10 rounded-full border border-[#fedac2]/30">
+                <Calendar className="w-5 h-5 text-[#fc5d01]" />
+                <p className="text-base md:text-lg text-gray-700 font-medium">
+                  {loading ? '24.10.2025 Nhà Trai - 23.10.2025 Nhà Gái' : `${weddingData.weddingDates.groomSide} Nhà Trai - ${weddingData.weddingDates.brideSide} Nhà Gái`}
+                </p>
+              </div>
+            </motion.div>
 
-            {/* Personalized Message */}
+            {/* Personalized Message - Enhanced */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
-              className="mb-8 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-[#fedac2]/50"
+              className="mb-10"
             >
-              <p className="text-gray-700 italic leading-relaxed">
-                {guestInfo.personalMessage}
-              </p>
+              <div className="relative bg-gradient-to-br from-white via-[#fff8f5] to-white rounded-2xl shadow-lg border border-[#fedac2]/40 p-8 md:p-10 overflow-hidden">
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-[#fc5d01]/5 to-transparent rounded-br-full"></div>
+                <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-[#fd7f33]/5 to-transparent rounded-tl-full"></div>
+                
+                {/* Enhanced quote marks with better styling */}
+                <motion.div 
+                  className="absolute top-3 left-3 md:top-4 md:left-4"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.1, duration: 0.5 }}
+                >
+                  <div className="relative">
+                    <span className="text-5xl md:text-6xl font-serif text-[#fc5d01]/30 leading-none">&ldquo;</span>
+                    <div className="absolute inset-0 text-5xl md:text-6xl font-serif text-[#fc5d01]/10 blur-sm leading-none">&ldquo;</div>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute bottom-3 right-3 md:bottom-4 md:right-4"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                >
+                  <div className="relative">
+                    <span className="text-5xl md:text-6xl font-serif text-[#fc5d01]/30 leading-none">&rdquo;</span>
+                    <div className="absolute inset-0 text-5xl md:text-6xl font-serif text-[#fc5d01]/10 blur-sm leading-none">&rdquo;</div>
+                  </div>
+                </motion.div>
+                
+                {/* Small heart decoration */}
+                <motion.div
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2"
+                  animate={{ 
+                    y: [-2, 2, -2],
+                    opacity: [0.3, 0.5, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Heart className="w-4 h-4 text-[#fc5d01]/20 fill-current" />
+                </motion.div>
+                
+                <div className="relative px-6 md:px-8">
+                  <p className="text-base md:text-lg text-gray-700 leading-relaxed text-center lg:text-left italic">
+                    {guestInfo.personalMessage}
+                  </p>
+                </div>
+              </div>
             </motion.div>
 
+            {/* Action Buttons - Redesigned */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <button
+              <motion.button
                 onClick={() => scrollToSection('invitation')}
-                className="bg-[#fc5d01] hover:bg-[#e55401] text-white font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] hover:from-[#e55401] hover:to-[#e55401] text-white font-medium py-4 px-10 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 text-base overflow-hidden"
               >
-                Xem Thông Tin Đám Cưới
-              </button>
-              <button
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                <span className="relative flex items-center justify-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  Xem Thông Tin Đám Cưới
+                </span>
+              </motion.button>
+              
+              <motion.button
                 onClick={() => scrollToSection('rsvp')}
-                className="bg-white hover:bg-gray-50 text-[#fc5d01] border-2 border-[#fc5d01] font-light py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative bg-white hover:bg-[#fc5d01] text-[#fc5d01] hover:text-white border-2 border-[#fc5d01] font-medium py-4 px-10 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 text-base"
               >
-                Xác Nhận Tham Dự
-              </button>
+                <span className="relative flex items-center justify-center gap-2">
+                  <Heart className="w-5 h-5" />
+                  Xác Nhận Tham Dự
+                </span>
+              </motion.button>
             </motion.div>
           </div>
 
           {/* Right Column - Hero Image */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              {/* Decorative Background Elements */}
-              <div className="absolute -inset-8 bg-gradient-to-br from-[#fc5d01]/20 via-[#fd7f33]/15 to-[#ffac7b]/20 rounded-3xl blur-2xl"></div>
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#fedac2]/30 to-[#fdbc94]/30 rounded-2xl blur-xl"></div>
-              
-              {/* Floating Hearts Around Image */}
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute text-[#fc5d01]/40"
-                  style={{
-                    left: `${-10 + Math.random() * 120}%`,
-                    top: `${-10 + Math.random() * 120}%`,
-                  }}
-                  animate={{
-                    y: [-10, -20, -10],
-                    x: [-5, 5, -5],
-                    opacity: [0.3, 0.7, 0.3],
-                    scale: [0.8, 1.2, 0.8],
-                    rotate: [0, 360]
-                  }}
-                  transition={{
-                    duration: 4 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: Math.random() * 3,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <Heart className="w-6 h-6 fill-current" />
-                </motion.div>
-              ))}
-
               {/* Random Hero Image Component */}
               <RandomHeroImage />
             </motion.div>
@@ -400,6 +389,16 @@ export default function PersonalizedWeddingPage() {
           </motion.div>
           <RSVPForm guestInfo={guestInfo} />
         </div>
+      </section>
+
+      {/* Bride & Groom Introduction Section */}
+      <section id="introduction" className="py-20 bg-white">
+        <BrideGroomIntroduction />
+      </section>
+
+      {/* Countdown Section */}
+      <section id="countdown" className="py-20 bg-gradient-to-br from-[#fedac2]/10 to-[#fdbc94]/10">
+        <Countdown targetDate="2025-10-24T11:30:00" />
       </section>
 
       {/* Album Section */}

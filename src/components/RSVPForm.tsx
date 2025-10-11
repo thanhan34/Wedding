@@ -538,7 +538,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           color: 'from-pink-500 to-pink-600',
                           venue: 'Nhà Hàng Thanh Tâm',
                           address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
-                          time: '16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
+                          time: '16:00 - Chụp ảnh cùng Dâu & Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
                         },
                         { 
                           key: 'nha-trai', 
@@ -549,7 +549,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           color: 'from-blue-500 to-blue-600',
                           venue: 'Nhà Hàng Thắng Lợi 1',
                           address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
-                          time: '11:00 - Chụp ảnh cùng Cô Dâu & Chú Rể\n11:30 - Hôn Lễ Bắt Đầu\n12:00 - Khai tiệc'
+                          time: '11:00 - Chụp ảnh cùng Dâu & Rể\n11:30 - Hôn Lễ Bắt Đầu\n12:00 - Khai tiệc'
                         },                        
                         { 
                           key: 'both', 
@@ -560,7 +560,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           color: 'from-[#fc5d01] to-[#fd7f33]',
                           venue: 'Resort Cồn Khương',
                           address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
-                          time: '16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
+                          time: '16:00 - Chụp ảnh cùng Dâu & Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
                         }
                       ].map((event, index) => (
                         <motion.button
@@ -615,19 +615,19 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                                   key: 'nha-gai', 
                                   venue: 'Nhà Hàng Thanh Tâm',
                                   address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
-                                  time: ['16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc']
+                                  time: ['16:00 - Chụp ảnh cùng Dâu & Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc']
                                 },
                                 { 
                                   key: 'nha-trai', 
                                   venue: 'Nhà Hàng Thắng Lợi 1',
                                   address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
-                                  time: ['11:00 - Chụp ảnh cùng Cô Dâu & Chú Rể', '11:30 - Hôn Lễ Bắt Đầu', '12:00 - Khai tiệc']
+                                  time: ['11:00 - Chụp ảnh cùng Dâu & Rể', '11:30 - Hôn Lễ Bắt Đầu', '12:00 - Khai tiệc']
                                 },
                                 { 
                                   key: 'both', 
                                   venue: 'Resort Cồn Khương',
                                   address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
-                                  time: ['16:00 - Chụp ảnh cùng Cô Dâu & Chú Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc']
+                                  time: ['16:00 - Chụp ảnh cùng Dâu & Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc']
                                 }
                               ].find(e => e.key === selectedEvent);
 

@@ -400,7 +400,7 @@ export default function BrideGroomIntroduction() {
               >
                 <div className="absolute -left-2 top-0 w-1 h-full bg-gradient-to-b from-[#fc5d01]/30 to-transparent rounded-full"></div>
                 <p className="text-xl text-gray-700 leading-relaxed font-light pl-6">
-                  {loading ? 'Thanh An, chàng trai nhẹ nhàng, tình cảm' : weddingData.loveStory.groom.description}
+                  {loading ? 'Thanh An, chàng trai nhẹ nhàng và tình cảm, luôn tin rằng tình yêu đẹp nhất không nằm ở những lời hứa, mà ở sự đồng hành mỗi ngày. Với anh, hạnh phúc là khi có thể cùng người mình thương chia sẻ ước mơ, vượt qua thử thách và cùng nhau trưởng thành.' : weddingData.loveStory.groom.description}
                 </p>
               </motion.div>
 

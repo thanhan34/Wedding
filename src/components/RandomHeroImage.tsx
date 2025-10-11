@@ -147,118 +147,97 @@ const RandomHeroImage: React.FC<RandomHeroImageProps> = ({ className = "" }) => 
 
   return (
     <div className={`relative ${className}`}>
-      {/* Decorative Background Elements */}
-      <div className="absolute -inset-8 bg-gradient-to-br from-[#fc5d01]/20 via-[#fd7f33]/15 to-[#ffac7b]/20 rounded-3xl blur-2xl"></div>
-      <div className="absolute -inset-4 bg-gradient-to-br from-[#fedac2]/30 to-[#fdbc94]/30 rounded-2xl blur-xl"></div>
+      {/* Simplified Decorative Background */}
+      <div className="absolute -inset-6 bg-gradient-to-br from-[#fc5d01]/10 via-[#fd7f33]/5 to-[#ffac7b]/10 rounded-3xl blur-xl"></div>
       
-      {/* Floating Hearts Around Image */}
-      {[...Array(6)].map((_, i) => (
+      {/* Reduced Floating Hearts - Only 3 subtle ones */}
+      {[...Array(3)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute text-[#fc5d01]/40"
+          className="absolute text-[#fc5d01]/20"
           style={{
-            left: `${-10 + (i * 20)}%`,
-            top: `${-10 + (i * 15)}%`,
+            left: `${10 + (i * 40)}%`,
+            top: `${20 + (i * 20)}%`,
           }}
           animate={{
-            y: [-10, -20, -10],
-            x: [-5, 5, -5],
-            opacity: [0.3, 0.7, 0.3],
-            scale: [0.8, 1.2, 0.8],
-            rotate: [0, 360]
+            y: [-5, -15, -5],
+            opacity: [0.2, 0.4, 0.2],
+            scale: [0.9, 1.1, 0.9],
           }}
           transition={{
-            duration: 4 + (i * 0.5),
+            duration: 5 + (i * 1),
             repeat: Infinity,
-            delay: i * 0.5,
+            delay: i * 1.5,
             ease: "easeInOut"
           }}
           suppressHydrationWarning
         >
-          <Heart className="w-6 h-6 fill-current" />
+          <Heart className="w-5 h-5 fill-current" />
         </motion.div>
       ))}
 
-
       {/* Main Hero Image Container */}
       <motion.div 
-        className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm cursor-pointer group"
+        className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/80 backdrop-blur-sm cursor-pointer group"
         style={{
-          width: imageDimensions.width > 0 ? `${imageDimensions.width}px` : '320px',
-          height: imageDimensions.height > 0 ? `${imageDimensions.height}px` : '384px',
-          minWidth: '280px',
-          minHeight: '320px',
-          maxWidth: '480px', // Tăng để phù hợp với ảnh ngang
-          maxHeight: '480px'  // Tăng để phù hợp với ảnh dọc
+          width: imageDimensions.width > 0 ? `${imageDimensions.width}px` : '400px',
+          height: imageDimensions.height > 0 ? `${imageDimensions.height}px` : '500px',
+          minWidth: '320px',
+          minHeight: '400px',
+          maxWidth: '500px',
+          maxHeight: '600px'
         }}
         animate={{
-          width: imageDimensions.width > 0 ? `${imageDimensions.width}px` : '320px',
-          height: imageDimensions.height > 0 ? `${imageDimensions.height}px` : '384px'
+          width: imageDimensions.width > 0 ? `${imageDimensions.width}px` : '400px',
+          height: imageDimensions.height > 0 ? `${imageDimensions.height}px` : '500px'
         }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        onClick={handleImageClick}>
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        onClick={handleImageClick}
+        whileHover={{ scale: 1.02 }}
+      >
         
-        {/* Image Transition */}
+        {/* Smooth Image Transition */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImageIndex}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeInOut"
+            }}
             className="absolute inset-0"
           >
             <Image
               src={weddingImages[currentImageIndex]}
               alt={`Thanh An & Thanh Ngân - Wedding Photo ${currentImageIndex + 1}`}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover"
               priority={currentImageIndex === 0}
             />
           </motion.div>
         </AnimatePresence>
         
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        {/* Subtle Hover Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#fc5d01]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         
-        {/* Click Hint */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
-            <Shuffle className="w-6 h-6 text-[#fc5d01]" />
-          </div>
-        </div>
-        
-        {/* Decorative Corner Elements */}
-        <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/60 rounded-tl-lg"></div>
-        <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/60 rounded-tr-lg"></div>
-        <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/60 rounded-bl-lg"></div>
-        <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/60 rounded-br-lg"></div>
-      </motion.div>
-
-      {/* Sparkle Effects */}
-      {[...Array(4)].map((_, i) => (
-        <motion.div
-          key={`sparkle-${i}`}
-          className="absolute text-[#ffac7b] text-2xl pointer-events-none"
-          style={{
-            left: `${20 + i * 25}%`,
-            top: `${10 + (i % 2) * 80}%`,
-          }}
-          animate={{
-            scale: [0, 1.5, 0],
-            rotate: [0, 180, 360],
-            opacity: [0, 1, 0]
-          }}
-          transition={{
-            duration: 2.5,
-            repeat: Infinity,
-            delay: i * 0.6,
-            ease: "easeInOut"
-          }}
+        {/* Minimal Click Hint */}
+        <motion.div 
+          className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          whileHover={{ scale: 1.1 }}
         >
-          ✨
+          <div className="bg-white/95 backdrop-blur-sm rounded-full p-2 shadow-lg">
+            <Shuffle className="w-4 h-4 text-[#fc5d01]" />
+          </div>
         </motion.div>
-      ))}
+        
+        {/* Simplified Corner Elements */}
+        <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-white/70"></div>
+        <div className="absolute top-3 right-3 w-6 h-6 border-r-2 border-t-2 border-white/70"></div>
+        <div className="absolute bottom-3 left-3 w-6 h-6 border-l-2 border-b-2 border-white/70"></div>
+        <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-white/70"></div>
+      </motion.div>
 
       {/* Loading Overlay */}
       <AnimatePresence>

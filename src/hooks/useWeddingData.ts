@@ -158,7 +158,7 @@ const defaultWeddingData: WeddingData = {
   loveStory: {
     groom: {
       name: 'Thanh An',
-      description: 'Thanh An, chàng trai nhẹ nhàng, tình cảm',
+      description: 'Thanh An, chàng trai nhẹ nhàng và tình cảm, luôn tin rằng tình yêu đẹp nhất không nằm ở những lời hứa, mà ở sự đồng hành mỗi ngày. Với anh, hạnh phúc là khi có thể cùng người mình thương chia sẻ ước mơ, vượt qua thử thách và cùng nhau trưởng thành.',
       quote: 'Mỗi ngày thức dậy bạn nghĩ đến 1 ai đó, trước khi đi ngủ bạn nghĩ đến 1 ai đó… Đó là 1 ngày trọn vẹn. Cảm ơn vì đã gặp được em "Thanh Ngân", anh mong sau này, dù có thế nào, chúng ta cũng mãi yêu thương nhau, mãi nắm tay nhau đi đến hết con đường còn lại em nhé !!'
     },
     bride: {
