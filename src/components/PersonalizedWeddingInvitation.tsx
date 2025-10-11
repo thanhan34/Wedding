@@ -110,10 +110,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
             transition={{ duration: 0.8, delay: 1 }}
           >
             <p className="text-xl text-[#fc5d01] font-medium mb-2">
-              Kính gửi {guestInfo.title} {guestInfo.name}
+              Kính gửi <span className="lowercase">{guestInfo.title}</span> {guestInfo.name}
             </p>
             <p className="text-lg text-gray-600 font-light italic">
-              Chúng mình rất hân hạnh được mời {guestInfo.title} tham dự
+              Chúng mình rất hân hạnh được mời <span className="lowercase">{guestInfo.title}</span> tham dự
             </p>
           </motion.div>
         </motion.div>
@@ -580,7 +580,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                 animate={{ opacity: [0.8, 1, 0.8] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Sự hiện diện của {guestInfo.title} {guestInfo.name}
+                Sự hiện diện của <span className="lowercase">{guestInfo.title}</span> {guestInfo.name}
               </motion.p>
               <p className="text-lg text-gray-600">
                 là niềm hạnh phúc của chúng mình

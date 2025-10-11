@@ -267,7 +267,7 @@ export default function Guestbook() {
                     className="space-y-8"
                   >
                     <motion.h3 
-                      className="text-2xl font-light text-gray-800 text-center mb-8"
+                      className="text-2xl font-light text-gray-800 text-center mb-8 font-dancing-script"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
@@ -275,7 +275,7 @@ export default function Guestbook() {
                       Bạn là ai của cô dâu chú rể?
                     </motion.h3>
                     
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-6 ">
                       {[
                         { key: 'couple', title: 'Bạn Cô Dâu Chú Rể', icon: '👫', desc: 'Bạn của cả hai' },
                         { key: 'bride', title: 'Bạn Cô Dâu', icon: '👰', desc: 'Bạn của cô dâu' },
@@ -303,8 +303,7 @@ export default function Guestbook() {
                           
                           <div className="relative z-10 text-center space-y-3">
                             <div className="text-4xl mb-3">{relationship.icon}</div>
-                            <h4 className="text-lg font-medium text-gray-800">{relationship.title}</h4>
-                            <p className="text-gray-600 text-sm">{relationship.desc}</p>
+                            <h4 className="text-lg font-medium text-gray-800 font-dancing-script">{relationship.title}</h4>                            
                           </div>
                         </motion.button>
                       ))}
