@@ -495,25 +495,7 @@ export default function Guestbook() {
         </motion.div>
 
         {/* View All Messages Link */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mb-16"
-        >
-          <motion.a
-            href="https://docs.google.com/spreadsheets/d/1-kA-FDLoM0Nx6h0aUGN7nAC6eX6_sXri_vp0J_BUrV4/edit?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center bg-gradient-to-r from-[#fedac2] to-[#fdbc94] hover:from-[#fdbc94] hover:to-[#ffac7b] text-[#fc5d01] font-light text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-[#fc5d01]/20"
-          >
-            <MessageSquare className="w-5 h-5 mr-2" />
-            <span>Xem tất cả lời chúc của mọi người</span>
-            <Sparkles className="w-4 h-4 ml-2" />
-          </motion.a>
-        </motion.div>
+       
 
         {/* Display recent messages */}
         <div className="space-y-8">

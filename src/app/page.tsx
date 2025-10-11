@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Calendar, Gift, Play, Pause, User, User2, Wine, Home } from 'lucide-react';
+import { Heart, Calendar, Gift, Play, Pause, User, User2, Wine } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import Countdown from '../components/Countdown';
