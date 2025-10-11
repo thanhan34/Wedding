@@ -461,7 +461,7 @@ export default function PersonalizedWeddingPage() {
               Chúng mình hiểu rằng không phải ai cũng có thể sắp xếp để đến chung vui. Nhưng dù ở xa hay gần, chỉ cần một lời chúc hay một niềm vui nhỏ gửi đến, chúng mình cũng thấy thật hạnh phúc rồi.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Một lần nữa, chân thành cảm ơn <span className="lowercase">{guestInfo.title}</span> ❤️
+              Một lần nữa, chân thành cảm ơn <span className="lowercase">{guestInfo.title}</span> ! ❤️
             </p>
           </motion.div>
           <QRPayment guestInfo={guestInfo} />

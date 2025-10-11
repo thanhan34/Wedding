@@ -769,7 +769,7 @@ export default function BrideGroomIntroduction() {
             transition={{ duration: 0.8, delay: 1 }}
             className="mt-10"
           >
-            <h4 className="text-3xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-6">
+            <h4 className="font-extrabold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-6">
               Trái Tim Thổn Thức
             </h4>
             

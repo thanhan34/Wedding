@@ -1326,7 +1326,7 @@ export default function Home() {
               Vợ chồng mình rất hi vọng sẽ có mặt bạn trong ngày quan trọng này để chứng kiến và chia sẻ niềm hạnh phúc này cùng chúng mình.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Một lần nữa, chân thành cảm ơn bạn ❤️
+              Một lần nữa, chân thành cảm ơn bạn ! ❤️
             </p>
           </motion.div>
           <QRPayment />
