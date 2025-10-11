@@ -392,7 +392,7 @@ export default function ButterflyWingsLayout({ photos, onImageClick }: Butterfly
           🦋 Cánh Bướm Tình Yêu 🦋
         </h3>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Như đôi cánh bướm bay lượn trong gió, tình yêu của chúng tôi nhẹ nhàng và tự do. 
+          Như đôi cánh bướm bay lượn trong gió, tình yêu của chúng mình nhẹ nhàng và tự do. 
           Mỗi bức ảnh là một khoảnh khắc bay bổng, đầy màu sắc và sự kỳ diệu trong hành trình chung.
         </p>
       </motion.div>

@@ -636,7 +636,7 @@ export default function Guestbook() {
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
-            Cảm ơn bạn đã dành thời gian cho chúng tôi
+            Cảm ơn bạn đã dành thời gian cho chúng mình
             <motion.span
               className="ml-3"
               animate={{ scale: [1, 1.3, 1] }}

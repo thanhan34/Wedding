@@ -22,7 +22,7 @@ const defaultGuestList: Omit<GuestInfo, 'id'>[] = [
     slug: 'nguyen-van-a',
     name: 'Nguyễn Văn A',
     title: 'Anh',
-    personalMessage: 'Cảm ơn anh đã luôn là người bạn tốt và đồng hành cùng chúng tôi trong suốt thời gian qua. Sự hiện diện của anh trong ngày trọng đại này sẽ làm cho đám cưới của chúng tôi thêm ý nghĩa và trọn vẹn.',
+    personalMessage: 'Cảm ơn anh đã luôn là người bạn tốt và đồng hành cùng chúng mình trong suốt thời gian qua. Sự hiện diện của anh trong ngày trọng đại này sẽ làm cho đám cưới của chúng mình thêm ý nghĩa và trọn vẹn.',
     relationship: 'bạn thân',
     invitedTo: 'groom',
     createdAt: new Date()
@@ -40,7 +40,7 @@ const defaultGuestList: Omit<GuestInfo, 'id'>[] = [
     slug: 'le-minh-c',
     name: 'Lê Minh C',
     title: 'Bạn',
-    personalMessage: 'Bạn là người bạn thân thiết từ thời học sinh. Những kỷ niệm đẹp chúng ta đã cùng nhau trải qua sẽ mãi là những điều đáng nhớ. Mong bạn sẽ tiếp tục đồng hành cùng chúng tôi trong chương mới của cuộc đời.',
+    personalMessage: 'Bạn là người bạn thân thiết từ thời học sinh. Những kỷ niệm đẹp chúng ta đã cùng nhau trải qua sẽ mãi là những điều đáng nhớ. Mong bạn sẽ tiếp tục đồng hành cùng chúng mình trong chương mới của cuộc đời.',
     relationship: 'bạn học',
     invitedTo: 'groom',
     createdAt: new Date()

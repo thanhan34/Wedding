@@ -13,14 +13,14 @@ export const messageTemplates: MessageTemplate[] = [
     category: 'Bạn bè',
     relationship: 'bạn thân',
     title: 'Bạn thân từ thời học sinh',
-    message: 'Cảm ơn bạn đã luôn là người bạn tốt nhất và đồng hành cùng chúng tôi trong suốt thời gian qua. Từ những ngày học sinh ngây thơ đến bây giờ, tình bạn của chúng ta vẫn luôn bền chặt. Sự hiện diện của bạn trong ngày trọng đại này sẽ làm cho đám cưới của chúng tôi thêm ý nghĩa và trọn vẹn.'
+    message: 'Cảm ơn bạn đã luôn là người bạn tốt nhất và đồng hành cùng chúng mình trong suốt thời gian qua. Từ những ngày học sinh ngây thơ đến bây giờ, tình bạn của chúng ta vẫn luôn bền chặt. Sự hiện diện của bạn trong ngày trọng đại này sẽ làm cho đám cưới của chúng mình thêm ý nghĩa và trọn vẹn.'
   },
   {
     id: 'friend-2',
     category: 'Bạn bè',
     relationship: 'bạn thân',
     title: 'Người bạn tri kỷ',
-    message: 'Bạn là người hiểu tôi nhất, là người luôn lắng nghe và chia sẻ mọi niềm vui nỗi buồn. Những kỷ niệm đẹp chúng ta đã cùng nhau trải qua sẽ mãi là những điều đáng nhớ nhất trong cuộc đời tôi. Mong bạn sẽ tiếp tục đồng hành cùng chúng tôi trong chương mới của cuộc đời này.'
+    message: 'Bạn là người hiểu tôi nhất, là người luôn lắng nghe và chia sẻ mọi niềm vui nỗi buồn. Những kỷ niệm đẹp chúng ta đã cùng nhau trải qua sẽ mãi là những điều đáng nhớ nhất trong cuộc đời tôi. Mong bạn sẽ tiếp tục đồng hành cùng chúng mình trong chương mới của cuộc đời này.'
   },
   {
     id: 'friend-3',
@@ -43,7 +43,7 @@ export const messageTemplates: MessageTemplate[] = [
     category: 'Công việc',
     relationship: 'đồng nghiệp',
     title: 'Đồng nghiệp thân thiết',
-    message: 'Cảm ơn bạn đã luôn là người đồng nghiệp tuyệt vời và cũng là người bạn tốt trong công việc. Những ngày làm việc cùng nhau đã tạo nên những kỷ niệm đẹp và tình bạn quý giá. Sự hiện diện của bạn trong ngày trọng đại này sẽ làm cho đám cưới của chúng tôi thêm ý nghĩa.'
+    message: 'Cảm ơn bạn đã luôn là người đồng nghiệp tuyệt vời và cũng là người bạn tốt trong công việc. Những ngày làm việc cùng nhau đã tạo nên những kỷ niệm đẹp và tình bạn quý giá. Sự hiện diện của bạn trong ngày trọng đại này sẽ làm cho đám cưới của chúng mình thêm ý nghĩa.'
   },
   {
     id: 'colleague-2',
@@ -112,14 +112,14 @@ export const messageTemplates: MessageTemplate[] = [
     category: 'Hàng xóm',
     relationship: 'hàng xóm',
     title: 'Người hàng xóm thân thiết',
-    message: 'Cảm ơn bác/anh/chị đã luôn quan tâm và giúp đỡ gia đình chúng tôi như người thân trong nhà. Tình nghĩa hàng xóm tốt đẹp này đã tạo nên những kỷ niệm đáng nhớ. Chúng tôi rất mong bác/anh/chị sẽ có mặt để chia sẻ niềm vui trong ngày trọng đại này.'
+    message: 'Cảm ơn bác/anh/chị đã luôn quan tâm và giúp đỡ gia đình chúng mình như người thân trong nhà. Tình nghĩa hàng xóm tốt đẹp này đã tạo nên những kỷ niệm đáng nhớ. chúng mình rất mong bác/anh/chị sẽ có mặt để chia sẻ niềm vui trong ngày trọng đại này.'
   },
   {
     id: 'neighbor-2',
     category: 'Hàng xóm',
     relationship: 'hàng xóm',
     title: 'Hàng xóm như người thân',
-    message: 'Bác/Anh/Chị đã sống gần gũi với gia đình chúng tôi từ lâu, luôn sẵn sàng giúp đỡ và chia sẻ. Tình cảm chân thành mà bác/anh/chị dành cho gia đình chúng tôi thật đáng quý. Chúng tôi rất vinh dự khi có bác/anh/chị tham dự đám cưới.'
+    message: 'Bác/Anh/Chị đã sống gần gũi với gia đình chúng mình từ lâu, luôn sẵn sàng giúp đỡ và chia sẻ. Tình cảm chân thành mà bác/anh/chị dành cho gia đình chúng mình thật đáng quý. chúng mình rất vinh dự khi có bác/anh/chị tham dự đám cưới.'
   },
 
   // Bạn học
@@ -160,14 +160,14 @@ export const messageTemplates: MessageTemplate[] = [
     category: 'Khách VIP',
     relationship: 'khách quý',
     title: 'Khách quý đặc biệt',
-    message: 'Chúng tôi rất vinh dự được mời anh/chị tham dự đám cưới của mình. Sự hiện diện của anh/chị sẽ làm cho ngày trọng đại này trở nên đặc biệt và ý nghĩa hơn. Chúng tôi mong anh/chị sẽ dành thời gian quý báu để chia sẻ niềm vui cùng gia đình chúng tôi.'
+    message: 'chúng mình rất vinh dự được mời anh/chị tham dự đám cưới của mình. Sự hiện diện của anh/chị sẽ làm cho ngày trọng đại này trở nên đặc biệt và ý nghĩa hơn. chúng mình mong anh/chị sẽ dành thời gian quý báu để chia sẻ niềm vui cùng gia đình chúng mình.'
   },
   {
     id: 'vip-2',
     category: 'Khách VIP',
     relationship: 'khách quý',
     title: 'Người đáng kính trọng',
-    message: 'Anh/Chị là người mà chúng tôi rất kính trọng và ngưỡng mộ. Những thành tựu và phẩm chất tốt đẹp của anh/chị luôn là tấm gương sáng cho chúng tôi noi theo. Chúng tôi rất mong anh/chị sẽ có mặt để chúc phúc và chia sẻ kinh nghiệm sống cho vợ chồng trẻ chúng tôi.'
+    message: 'Anh/Chị là người mà chúng mình rất kính trọng và ngưỡng mộ. Những thành tựu và phẩm chất tốt đẹp của anh/chị luôn là tấm gương sáng cho chúng mình noi theo. chúng mình rất mong anh/chị sẽ có mặt để chúc phúc và chia sẻ kinh nghiệm sống cho vợ chồng trẻ chúng mình.'
   },
 
   // Bạn thời thơ ấu

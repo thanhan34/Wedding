@@ -53,7 +53,7 @@ export default function DetailedEventCards() {
                   TRÂN TRỌNG KÍNH MỜI !
                 </h4>
                 <p className="text-[10px] text-gray-700 mb-2 leading-snug">
-                  Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                  Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                 </p>
                 <p className="text-xs font-bold text-gray-800">
                   Bạn + người thương (GĐ bạn)
@@ -106,7 +106,7 @@ export default function DetailedEventCards() {
                   TRÂN TRỌNG KÍNH MỜI !
                 </h4>
                 <p className="text-[10px] text-gray-700 mb-2 leading-snug">
-                  Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                  Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                 </p>
                 <p className="text-xs font-bold text-gray-800">
                   Bạn + người thương (GĐ bạn)
@@ -159,7 +159,7 @@ export default function DetailedEventCards() {
                   TRÂN TRỌNG KÍNH MỜI !
                 </h4>
                 <p className="text-[10px] text-gray-700 mb-2 leading-snug">
-                  Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng tôi
+                  Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng mình
                 </p>
                 <p className="text-xs font-bold text-gray-800">
                   Bạn + người thương (GĐ bạn)

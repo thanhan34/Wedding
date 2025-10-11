@@ -97,7 +97,7 @@ export default function PersonalizedWeddingPage() {
             <Heart className="w-16 h-16 text-[#fc5d01] mx-auto mb-4" />
             <h1 className="text-3xl text-[#fc5d01] mb-4">Xin lỗi!</h1>
             <p className="text-gray-600 mb-6">
-              Chúng tôi không tìm thấy thông tin lời mời của bạn.
+              chúng mình không tìm thấy thông tin lời mời của bạn.
             </p>
             <Link 
               href="/"
@@ -377,11 +377,11 @@ export default function PersonalizedWeddingPage() {
             
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-[#fedac2]/50">
               <p className="text-xl text-gray-700 mb-4">
-                Kính gửi {guestInfo.title} <span className="font-semibold text-[#fc5d01]">{guestInfo.name}</span>,
+                Kính gửi <span className="lowercase">{guestInfo.title}</span> <span className="font-semibold text-[#fc5d01]">{guestInfo.name}</span>,
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Niềm vui của ngày cưới sẽ trọn vẹn hơn khi có bạn chung vui và chúc phúc của {guestInfo.title}. 
-                Hãy xác nhận tham dự để Thanh An & Thanh Ngân chuẩn bị đón tiếp {guestInfo.title} chu đáo nhất nha ♥️
+                Niềm vui của ngày cưới sẽ trọn vẹn hơn khi có <span className="lowercase">{guestInfo.title}</span> chung vui và chúc phúc của <span className="lowercase">{guestInfo.title}</span>. 
+                Hãy xác nhận tham dự để Thanh An & Thanh Ngân chuẩn bị đón tiếp <span className="lowercase">{guestInfo.title}</span> chu đáo nhất nha ♥️
               </p>
             </div>
             
@@ -412,7 +412,7 @@ export default function PersonalizedWeddingPage() {
             className="text-center mb-16 chinese-lantern"
           >
             <h2 className="text-4xl md:text-5xl text-elegant chinese-gold mb-4">Album Ảnh Cưới</h2>
-            <p className="text-lg text-gray-600">Những khoảnh khắc đẹp nhất của chúng tôi</p>
+            <p className="text-lg text-gray-600">Những khoảnh khắc đẹp nhất của chúng mình</p>
             <div className="flex justify-center items-center space-x-6 mt-6">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#fc5d01] to-[#fd7f33]"></div>
               <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#fd7f33] to-[#ffac7b]"></div>
@@ -454,15 +454,14 @@ export default function PersonalizedWeddingPage() {
                 : 'Gửi Quà Đến Chú Rể'}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Cảm ơn {guestInfo.title} {guestInfo.name} đã dành tình cảm cho vợ chồng mình. 
-              Chúng mình biết {guestInfo.title} đang rất bận, bận với công việc, với cuộc sống và với cả gia đình.
+              Cảm ơn <span className="lowercase">{guestInfo.title}</span> {guestInfo.name} đã dành tình cảm cho vợ chồng mình. 
+              Chúng mình biết <span className="lowercase">{guestInfo.title}</span> đang rất bận, bận với gia đình, bận với công việc, và bộn bề cuộc sống.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Nhưng thực sự sẽ rất tuyệt vời nếu như ngày Hạnh Phúc của chúng mình có thêm sự góp mặt của {guestInfo.title}. 
-              Vợ chồng mình rất hi vọng sẽ có mặt {guestInfo.title} trong ngày quan trọng này để chứng kiến và chia sẻ niềm hạnh phúc này cùng chúng mình.
+              Chúng mình hiểu rằng không phải ai cũng có thể sắp xếp để đến chung vui. Nhưng dù ở xa hay gần, chỉ cần một lời chúc hay một niềm vui nhỏ gửi đến, chúng mình cũng thấy thật hạnh phúc rồi.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Một lần nữa, chân thành cảm ơn {guestInfo.title} ❤️
+              Một lần nữa, chân thành cảm ơn <span className="lowercase">{guestInfo.title}</span> ❤️
             </p>
           </motion.div>
           <QRPayment guestInfo={guestInfo} />
@@ -540,20 +539,20 @@ export default function PersonalizedWeddingPage() {
               >
                 <div className="max-w-4xl mx-auto">
                   <blockquote className="text-xl md:text-2xl font-light text-gray-700 leading-relaxed italic mb-8">
-                    &ldquo;Cảm ơn {guestInfo.title} {guestInfo.name} đã là một phần quan trọng trong hành trình tình yêu của chúng tôi. 
-                    Sự hiện diện, lời chúc phúc và tình cảm của {guestInfo.title} đã làm cho ngày đặc biệt này trở nên 
+                    &ldquo;Cảm ơn <span className="lowercase">{guestInfo.title}</span> {guestInfo.name} đã là một phần quan trọng trong hành trình tình yêu của chúng mình. 
+                    Sự hiện diện, lời chúc phúc và tình cảm của <span className="lowercase">{guestInfo.title}</span> đã làm cho ngày đặc biệt này trở nên 
                     ý nghĩa và trọn vẹn hơn bao giờ hết.&rdquo;
                   </blockquote>
                   
                   <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-8 border border-[#fedac2]/30">
                     <p className="text-lg text-gray-600 leading-relaxed mb-4">
                       Chúng mình hiểu rằng ai cũng có những lo toan và bận rộn riêng trong cuộc sống. 
-                      Vì thế, việc {guestInfo.title} dành chút thời gian để quan tâm, chúc phúc hay cùng đến chung vui đã là điều vô cùng đáng quý. 
-                      Dù {guestInfo.title} có mặt hay không, tình cảm của {guestInfo.title} vẫn luôn là niềm hạnh phúc lớn với chúng mình.                  
+                      Vì thế, việc <span className="lowercase">{guestInfo.title}</span> dành chút thời gian để quan tâm, chúc phúc hay cùng đến chung vui đã là điều vô cùng đáng quý. 
+                      Dù <span className="lowercase">{guestInfo.title}</span> có mặt hay không, tình cảm của <span className="lowercase">{guestInfo.title}</span> vẫn luôn là niềm hạnh phúc lớn với chúng mình.                  
                       
                     </p>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      Cảm ơn {guestInfo.title} – từ tận đáy lòng – vì đã là một phần trong hành trình yêu thương này 💕.                     
+                      Cảm ơn <span className="lowercase">{guestInfo.title}</span> – từ tận đáy lòng – vì đã là một phần trong hành trình yêu thương này 💕.                     
                     </p>
                   </div>
                 </div>

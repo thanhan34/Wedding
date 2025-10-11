@@ -137,7 +137,7 @@ export default function BaoHy() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Chúng tôi rất hân hạnh được mời bạn tham dự tiệc báo hỷ của chúng tôi
+            Chúng mình rất hân hạnh được mời bạn tham dự tiệc báo hỷ của chúng mình
             <motion.span
               className="inline-block ml-3"
               animate={{ 
@@ -364,14 +364,14 @@ export default function BaoHy() {
                 >
                   <p className="text-xl font-bold text-[#fc5d01] mb-4">TRÂN TRỌNG KÍNH MỜI !</p>
                   <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-                    Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                    Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                   </p>
                   <p className="text-xl font-semibold text-gray-800 mb-3">
                     Bạn + người thương (GĐ bạn)
                   </p>
                   <div className="flex items-center justify-center space-x-2 text-gray-600">
                     <Heart className="w-4 h-4 text-[#fc5d01]" />
-                    <p className="text-sm">Sự hiện diện của bạn là niềm vinh hạnh cho chúng tôi</p>
+                    <p className="text-sm">Sự hiện diện của bạn là niềm vinh hạnh cho chúng mình</p>
                     <Heart className="w-4 h-4 text-[#fc5d01]" />
                   </div>
                 </motion.div>
@@ -424,7 +424,7 @@ export default function BaoHy() {
               animate={{ opacity: [0.8, 1, 0.8] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              Rất mong được đón tiếp bạn trong buổi tiệc báo hỷ của chúng tôi
+              Rất mong được đón tiếp bạn trong buổi tiệc báo hỷ của chúng mình
               <motion.span
                 className="ml-3"
                 animate={{ scale: [1, 1.3, 1] }}

@@ -230,7 +230,7 @@ export default function EventDetails() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Chúng tôi rất hân hạnh được mời bạn tham dự lễ cưới của chúng tôi
+            Chúng mình rất hân hạnh được mời bạn tham dự lễ cưới của chúng mình
             <motion.span
               className="inline-block ml-3"
               animate={{ 
@@ -491,7 +491,7 @@ export default function EventDetails() {
               animate={{ opacity: [0.8, 1, 0.8] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              Rất mong được đón tiếp bạn trong ngày trọng đại của chúng tôi
+              Rất mong được đón tiếp bạn trong ngày trọng đại của chúng mình
               <motion.span
                 className="ml-3"
                 animate={{ scale: [1, 1.3, 1] }}

@@ -667,7 +667,7 @@ export default function WeddingGallery({ showAll = false }: WeddingGalleryProps)
                   💕 Trái Tim Kỷ Niệm 💕
                 </h3>
                 <p className="text-gray-600 max-w-2xl mx-auto">
-                  Mỗi bức ảnh là một khoảnh khắc đáng nhớ trong hành trình tình yêu của chúng tôi, 
+                  Mỗi bức ảnh là một khoảnh khắc đáng nhớ trong hành trình tình yêu của chúng mình, 
                   được sắp xếp thành hình trái tim và tự động thay đổi theo thời gian để mang đến những bất ngờ thú vị.
                 </p>
               </motion.div>

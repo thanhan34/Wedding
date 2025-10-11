@@ -105,7 +105,7 @@ export default function WeddingInvitation() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            Chúng tôi rất hân hạnh được mời bạn tham dự
+            Chúng mình rất hân hạnh được mời bạn tham dự
           </motion.p>
         </motion.div>
 
@@ -239,7 +239,7 @@ export default function WeddingInvitation() {
                     TRÂN TRỌNG KÍNH MỜI !
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                    Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                   </p>
                   <p className="text-lg font-semibold text-gray-800">
                     Bạn + người thương (GĐ bạn)
@@ -386,7 +386,7 @@ export default function WeddingInvitation() {
                     TRÂN TRỌNG KÍNH MỜI !
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                    Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                   </p>
                   <p className="text-lg font-semibold text-gray-800">
                     Bạn + người thương (GĐ bạn)
@@ -533,7 +533,7 @@ export default function WeddingInvitation() {
                     TRÂN TRỌNG KÍNH MỜI !
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng tôi
+                    Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng mình
                   </p>
                   <p className="text-lg font-semibold text-gray-800">
                     Bạn + người thương (GĐ bạn)
@@ -574,7 +574,7 @@ export default function WeddingInvitation() {
               animate={{ opacity: [0.8, 1, 0.8] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              Sự hiện diện của bạn là niềm hạnh phúc của chúng tôi
+              Sự hiện diện của bạn là niềm hạnh phúc của chúng mình
             </motion.p>
             <Heart className="w-6 h-6 text-[#fc5d01] fill-current" />
           </motion.div>

@@ -180,7 +180,7 @@ export default function BrideGroomIntroduction() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-6 tracking-wide"
+            className="font-lora italic text-5xl md:text-6xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-6 tracking-wide"
           >
             Giới Thiệu Cô Dâu & Chú Rể
           </motion.h2>
@@ -357,12 +357,12 @@ export default function BrideGroomIntroduction() {
               className="space-y-6"
             >
               {/* Enhanced Name and Title */}
-              <div className="text-left relative">
+              <div className="text-left relative ">
                 {/* Background Decoration */}
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-[#fc5d01]/5 to-[#fd7f33]/5 rounded-full blur-xl"></div>
                 
                 <motion.h3 
-                  className="text-6xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-4 relative z-10"
+                  className="font-abril-fatface text-6xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-4 relative z-10"
                   whileHover={{ 
                     scale: 1.05,
                     textShadow: "0 0 20px rgba(252,93,1,0.3)"
@@ -483,7 +483,7 @@ export default function BrideGroomIntroduction() {
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#fd7f33]/5 to-[#ffac7b]/5 rounded-full blur-xl"></div>
                 
                 <motion.h3 
-                  className="text-6xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fd7f33] via-[#ffac7b] to-[#fdbc94] mb-4 relative z-10"
+                  className="font-abril-fatface text-6xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fd7f33] via-[#ffac7b] to-[#fdbc94] mb-4 relative z-10"
                   whileHover={{ 
                     scale: 1.05,
                     textShadow: "0 0 20px rgba(253,127,51,0.3)"
@@ -518,9 +518,10 @@ export default function BrideGroomIntroduction() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="relative"
+                
               >
                 <div className="absolute -right-2 top-0 w-1 h-full bg-gradient-to-b from-[#fd7f33]/30 to-transparent rounded-full"></div>
-                <p className="text-xl text-gray-700 leading-relaxed font-light pr-6">
+                <p className="text-xl text-gray-700 leading-relaxed font-light pr-6 ">
                   {loading ? 'Thanh Ngân, cô gái xinh tươi vui vẻ.' : weddingData.loveStory.bride.description}
                 </p>
               </motion.div>

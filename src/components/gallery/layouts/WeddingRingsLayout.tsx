@@ -278,7 +278,7 @@ export default function WeddingRingsLayout({ photos, onImageClick }: WeddingRing
         </h3>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Hai chiếc nhẫn cưới đan xen nhau, tượng trưng cho tình yêu vĩnh cửu và sự gắn kết không thể tách rời. 
-          Mỗi bức ảnh là một viên kim cương quý giá trong hành trình tình yêu của chúng tôi.
+          Mỗi bức ảnh là một viên kim cương quý giá trong hành trình tình yêu của chúng mình.
         </p>
       </motion.div>
     </div>

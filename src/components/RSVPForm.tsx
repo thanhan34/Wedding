@@ -6,7 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
-import { Send, Users, Heart, X, User, Phone, Calendar, MapPin, Sparkles, Gift } from 'lucide-react';
+import { Send, Users, Heart, X, User, Phone, Calendar, MapPin, Sparkles, Gift, User2, Wine, Home } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
 import QRPayment from './QRPayment';
 
@@ -251,7 +251,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                 )}
                 {currentStep === 3 && (
                   <p className="text-gray-700 text-base">
-                    ✍️ <strong>Điền thông tin</strong> để chúng tôi liên hệ
+                    ✍️ <strong>Điền thông tin</strong> để chúng mình liên hệ
                   </p>
                 )}
               </motion.div>
@@ -300,12 +300,12 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                       </motion.div>
 
                       <motion.h3 
-                        className="text-3xl md:text-4xl font-light text-gray-800 mb-4"
+                        className="text-3xl md:text-4xl font-light text-gray-800 mb-4 font-dancing-script"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                       >
-                        Bạn sẽ tham gia cùng chúng tôi chứ?
+                        Bạn sẽ tham gia cùng chúng mình chứ?
                       </motion.h3>
 
                       <motion.p
@@ -519,7 +519,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                     className="space-y-8"
                   >
                     <motion.h3 
-                      className="text-2xl font-light text-gray-800 text-center mb-8"
+                      className="text-2xl font-light text-gray-800 text-center mb-8 font-dancing-script"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
@@ -534,7 +534,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           title: 'Nhà Gái', 
                           date: '23.10.2025', 
                           location: 'Sóc Trăng, Cần Thơ', 
-                          icon: MapPin, 
+                          emoji: '👰', 
                           color: 'from-pink-500 to-pink-600',
                           venue: 'Nhà Hàng Thanh Tâm',
                           address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
@@ -545,7 +545,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           title: 'Nhà Trai', 
                           date: '24.10.2025', 
                           location: 'Long Xuyên, An Giang', 
-                          icon: MapPin, 
+                          emoji: '🤵', 
                           color: 'from-blue-500 to-blue-600',
                           venue: 'Nhà Hàng Thắng Lợi 1',
                           address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
@@ -556,7 +556,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           title: 'Tiệc Báo Hỷ', 
                           date: '15.11.2025', 
                           location: 'Cần Thơ', 
-                          icon: Heart, 
+                          emoji: '🥂', 
                           color: 'from-[#fc5d01] to-[#fd7f33]',
                           venue: 'Resort Cồn Khương',
                           address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
@@ -585,8 +585,8 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           />
                           
                           <div className="relative z-10 text-center space-y-3">
-                            <div className={`w-12 h-12 bg-gradient-to-br ${event.color} rounded-full flex items-center justify-center mx-auto shadow-md`}>
-                              <event.icon className="w-6 h-6 text-white" />
+                            <div className={`w-12 h-12 bg-gradient-to-br ${event.color} rounded-full flex items-center justify-center mx-auto shadow-md text-2xl`}>
+                              {event.emoji}
                             </div>
                             
                             <h4 className="text-lg font-medium text-gray-800">{event.title}</h4>
@@ -643,7 +643,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                                     className="flex items-start space-x-3"
                                   >
                                     <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#fc5d01] to-[#fd7f33] rounded-lg flex items-center justify-center shadow-md">
-                                      <MapPin className="w-5 h-5 text-white" />
+                                      <Home className="w-5 h-5 text-white" />
                                     </div>
                                     <div className="flex-1">
                                       <h4 className="text-sm text-gray-600 mb-1">Địa điểm</h4>
@@ -1155,7 +1155,7 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              Cảm ơn bạn đã dành thời gian cho chúng tôi
+              Cảm ơn bạn đã dành thời gian cho chúng mình
               <motion.span
                 className="ml-3"
                 animate={{ scale: [1, 1.3, 1] }}

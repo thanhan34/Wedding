@@ -331,7 +331,7 @@ export default function QRPayment({ guestInfo }: QRPaymentProps) {
         {/* Message */}
         <div className="text-center">
           <p className="text-sm text-gray-600 italic">
-            Cảm ơn bạn đã gửi lời chúc và quà cưới đến chúng mình! ❤️
+            Cảm ơn {guestInfo && <span className="lowercase">{guestInfo.title}</span>} đã gửi lời chúc và quà cưới đến chúng mình! ❤️
           </p>
         </div>
       </motion.div>

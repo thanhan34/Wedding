@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Calendar, Gift, Play, Pause } from 'lucide-react';
+import { Heart, Calendar, Gift, Play, Pause, User, User2, Wine, Home } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import Countdown from '../components/Countdown';
@@ -375,8 +375,8 @@ export default function Home() {
             
             <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-4">Timeline</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Sự hiện diện của Quý vị là niềm vinh hạnh của Gia đình chúng tôi! 
-              Hãy cùng chúng tôi tạo nên những khoảnh khắc đáng nhớ nhất.
+              Sự hiện diện của Quý vị là niềm vinh hạnh của Gia đình chúng mình! 
+              Hãy cùng chúng mình tạo nên những khoảnh khắc đáng nhớ nhất.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-6"></div>
           </motion.div>
@@ -1217,7 +1217,7 @@ export default function Home() {
             className="text-center mb-16 chinese-lantern"
           >
             <h2 className="text-4xl md:text-5xl text-elegant chinese-gold mb-4">Album Ảnh Cưới</h2>
-            <p className="text-lg text-gray-600">Những khoảnh khắc đẹp nhất của chúng tôi</p>
+            <p className="text-lg text-gray-600">Những khoảnh khắc đẹp nhất của chúng mình</p>
             <div className="flex justify-center items-center space-x-6 mt-6">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#fc5d01] to-[#fd7f33]"></div>
               <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#fd7f33] to-[#ffac7b]"></div>
@@ -1587,7 +1587,7 @@ export default function Home() {
               >
                 <div className="max-w-4xl mx-auto">
                   <blockquote className="text-xl md:text-2xl font-light text-gray-700 leading-relaxed italic mb-8">
-                    &ldquo;Cảm ơn bạn đã là một phần quan trọng trong hành trình tình yêu của chúng tôi. 
+                    &ldquo;Cảm ơn bạn đã là một phần quan trọng trong hành trình tình yêu của chúng mình. 
                     Sự hiện diện, lời chúc phúc và tình cảm của bạn đã làm cho ngày đặc biệt này trở nên 
                     ý nghĩa và trọn vẹn hơn bao giờ hết.&rdquo;
                   </blockquote>

@@ -113,7 +113,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
               Kính gửi {guestInfo.title} {guestInfo.name}
             </p>
             <p className="text-lg text-gray-600 font-light italic">
-              Chúng tôi rất hân hạnh được mời {guestInfo.title} tham dự
+              Chúng mình rất hân hạnh được mời {guestInfo.title} tham dự
             </p>
           </motion.div>
         </motion.div>
@@ -248,10 +248,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       TRÂN TRỌNG KÍNH MỜI !
                     </p>
                     <p className="text-gray-700 leading-relaxed">
-                      Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                      Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                     </p>
                     <p className="text-lg font-semibold text-gray-800">
-                      {guestInfo.title} {guestInfo.name}
+                      {guestInfo.title} {guestInfo.name} cùng người thương!
                     </p>
                   </motion.div>
                 </div>
@@ -395,10 +395,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       TRÂN TRỌNG KÍNH MỜI !
                     </p>
                     <p className="text-gray-700 leading-relaxed">
-                      Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+                      Đến dự buổi tiệc chung vui cùng gia đình chúng mình
                     </p>
                     <p className="text-lg font-semibold text-gray-800">
-                      {guestInfo.title} {guestInfo.name}
+                      {guestInfo.title} {guestInfo.name} cùng người thương!
                     </p>
                   </motion.div>
                 </div>
@@ -542,10 +542,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       TRÂN TRỌNG KÍNH MỜI !
                     </p>
                     <p className="text-gray-700 leading-relaxed">
-                      Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng tôi
+                      Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng mình
                     </p>
                     <p className="text-lg font-semibold text-gray-800">
-                      {guestInfo.title} {guestInfo.name}
+                      {guestInfo.title} {guestInfo.name} cùng người thương!
                     </p>
                   </motion.div>
                 </div>
@@ -583,7 +583,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                 Sự hiện diện của {guestInfo.title} {guestInfo.name}
               </motion.p>
               <p className="text-lg text-gray-600">
-                là niềm hạnh phúc của chúng tôi
+                là niềm hạnh phúc của chúng mình
               </p>
             </div>
             <Heart className="w-8 h-8 text-[#fc5d01] fill-current" />

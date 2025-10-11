@@ -18,7 +18,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     date: "Tháng 1, 2020",
     title: "Lần đầu gặp gỡ",
-    description: "Chúng tôi gặp nhau lần đầu tại một quán cà phê nhỏ. Ánh mắt anh khiến em không thể quên. Đó là khoảnh khắc định mệnh, khi hai trái tim bắt đầu đập cùng nhịp.",
+    description: "chúng mình gặp nhau lần đầu tại một quán cà phê nhỏ. Ánh mắt anh khiến em không thể quên. Đó là khoảnh khắc định mệnh, khi hai trái tim bắt đầu đập cùng nhịp.",
     icon: <Coffee className="w-6 h-6" />,
     color: "from-[#fc5d01] to-[#fd7f33]",
     image: "/Wedding/Doc/KTIU0157.jpg"
@@ -26,7 +26,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     date: "Tháng 6, 2020",
     title: "Hẹn hò đầu tiên",
-    description: "Buổi hẹn hò đầu tiên tại công viên, chúng tôi đã trò chuyện suốt cả ngày mà không biết mệt. Những tiếng cười giòn tan và ánh mắt lung linh đã làm nên kỷ niệm đẹp nhất.",
+    description: "Buổi hẹn hò đầu tiên tại công viên, chúng mình đã trò chuyện suốt cả ngày mà không biết mệt. Những tiếng cười giòn tan và ánh mắt lung linh đã làm nên kỷ niệm đẹp nhất.",
     icon: <Heart className="w-6 h-6" />,
     color: "from-[#fd7f33] to-[#ffac7b]",
     image: "/Wedding/Doc/KTIU0180.jpg"
@@ -34,7 +34,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     date: "Tháng 12, 2022",
     title: "Chuyến du lịch đáng nhớ",
-    description: "Chuyến du lịch Đà Lạt lãng mạn, nơi chúng tôi hiểu rằng mình là dành cho nhau. Giữa khung cảnh thơ mộng của thành phố ngàn hoa, tình yêu chúng tôi đã thăng hoa.",
+    description: "Chuyến du lịch Đà Lạt lãng mạn, nơi chúng mình hiểu rằng mình là dành cho nhau. Giữa khung cảnh thơ mộng của thành phố ngàn hoa, tình yêu chúng mình đã thăng hoa.",
     icon: <Plane className="w-6 h-6" />,
     color: "from-[#ffac7b] to-[#fdbc94]",
     image: "/Wedding/Doc/KTIU0370.jpg"
@@ -42,7 +42,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     date: "Tháng 2, 2024",
     title: "Lời cầu hôn",
-    description: "Anh đã quỳ gối cầu hôn em trong một buổi hoàng hôn tuyệt đẹp. Em đã nói 'Có' với đầy hạnh phúc. Đó là khoảnh khắc thiêng liêng nhất, khi chúng tôi hứa sẽ yêu nhau mãi mãi.",
+    description: "Anh đã quỳ gối cầu hôn em trong một buổi hoàng hôn tuyệt đẹp. Em đã nói 'Có' với đầy hạnh phúc. Đó là khoảnh khắc thiêng liêng nhất, khi chúng mình hứa sẽ yêu nhau mãi mãi.",
     icon: <Gem className="w-6 h-6" />,
     color: "from-[#fdbc94] to-[#fedac2]",
     image: "/Wedding/Doc/KTIU8198.JPG"
@@ -131,10 +131,10 @@ export default function LoveStoryTimeline() {
           </motion.div>
           
           <h2 className="text-2xl md:text-3xl font-light text-[#fc5d01] mb-3">
-            Chuyện Tình Yêu Của Chúng Tôi
+            Chuyện Tình Yêu Của chúng mình
           </h2>
           <p className="text-sm text-gray-600 max-w-2xl mx-auto leading-snug">
-            Mỗi khoảnh khắc đều là một trang sách trong câu chuyện tình yêu của chúng tôi. 
+            Mỗi khoảnh khắc đều là một trang sách trong câu chuyện tình yêu của chúng mình. 
             Hãy cùng lật từng trang để khám phá hành trình từ lần gặp đầu tiên đến ngày hạnh phúc nhất.
           </p>
           <div className="w-20 h-0.5 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full mt-4"></div>
@@ -347,7 +347,7 @@ export default function LoveStoryTimeline() {
             </h3>
             <p className="text-sm text-gray-700 leading-snug italic">
               &ldquo;Từ những khoảnh khắc đầu tiên đến ngày hôm nay, mỗi bước đi trong hành trình tình yêu 
-              đều dẫn chúng tôi đến với nhau. Và giờ đây, chúng tôi sẵn sàng viết tiếp câu chuyện 
+              đều dẫn chúng mình đến với nhau. Và giờ đây, chúng mình sẵn sàng viết tiếp câu chuyện 
               với tư cách là vợ chồng, cùng nhau tạo nên những kỷ niệm đẹp mới.&rdquo;
             </p>
             <div className="flex items-center justify-center space-x-2 mt-4">
