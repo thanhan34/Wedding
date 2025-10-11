@@ -24,7 +24,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Thanh An & Thanh Ngân - Wedding",
+  title: "Thanh An 💞 Thanh Ngân- Wedding",
   description: "Trang web đám cưới của Thanh An và Thanh Ngân. Xem thông tin sự kiện, RSVP, và gửi lời chúc mừng.",
 };
 

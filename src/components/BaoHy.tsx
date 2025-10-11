@@ -12,7 +12,7 @@ export default function BaoHy() {
   // Single event data for Báo Hỷ
   const baoHyEvent = {
     title: "Tiệc Báo Hỷ",
-    coupleNames: "Thanh Ngân & Thanh An",
+    coupleNames: "Thanh Ngân 💞 Thanh An",
     date: "Saturday, 15 November, 2025",
     vietnameseDate: "Thứ Bảy, ngày 15.11.2025 (26.9 Ất Tỵ)",
     time: "16:00",
@@ -178,7 +178,7 @@ export default function BaoHy() {
                 />
                 <img
                   src="/Wedding/Doc/KTIU0157.jpg"
-                  alt="Thanh Ngân & Thanh An"
+                  alt="Thanh Ngân 💞 Thanh An"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <motion.div
@@ -362,7 +362,7 @@ export default function BaoHy() {
                   className="bg-gradient-to-r from-[#fc5d01]/10 to-[#fd7f33]/10 rounded-2xl p-6 border-2 border-[#fc5d01]/20"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <p className="text-xl font-bold text-[#fc5d01] mb-4">TRÂN TRỌNG KÍNH MỜI</p>
+                  <p className="text-xl font-bold text-[#fc5d01] mb-4">TRÂN TRỌNG KÍNH MỜI !</p>
                   <p className="text-gray-700 leading-relaxed mb-4 text-lg">
                     Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
                   </p>

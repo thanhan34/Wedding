@@ -134,15 +134,7 @@ export default function Home() {
           </div>
           
           {/* Chinese Decorative Elements */}
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-60 rotate-12">
-            <Image
-              src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807514.png"
-              alt="Chinese decoration"
-              width={128}
-              height={128}
-              className="w-full h-full object-contain drop-shadow-lg"
-            />
-          </div>
+       
           <div className="absolute top-1/3 right-1/4 w-28 h-28 opacity-60 -rotate-12">
             <Image
               src="/weddingchinese/—Pngtree—chinese wedding ancient wedding cartoon_3807515.png"
@@ -314,8 +306,8 @@ export default function Home() {
             
             <h2 className="text-4xl md:text-5xl text-elegant text-[#fc5d01] mb-6">Xác Nhận Tham Dự</h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Đám cưới sẽ trọn vẹn và ý nghĩa hơn khi có sự hiện diện và chúc phúc của bạn. 
-              Hãy xác nhận sự có mặt của bạn để Thanh An & Thanh Ngân chuẩn bị đón tiếp bạn chu đáo nhất nha ♥️
+              Niềm vui của ngày cưới sẽ trọn vẹn hơn khi có bạn chung vui và chúc phúc!
+              Hãy xác nhận tham dự để Thanh An & Thanh Ngân chuẩn bị đón tiếp bạn thật chu đáo nha. ♥️
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-[#fc5d01] to-[#fd7f33] mx-auto rounded-full"></div>
           </motion.div>
@@ -1520,7 +1512,7 @@ export default function Home() {
                   <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-2xl border-6 border-white">
                     <Image
                       src="/Wedding/Doc/z6735567987748_d7077417fb671d31654fd0bf9ae6ed0b.jpg"
-                      alt="Thanh An & Thanh Ngân"
+                      alt="Thanh An 💞 Thanh Ngân"
                       width={160}
                       height={160}
                       className="object-cover w-full h-full"
@@ -1602,12 +1594,10 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-8 border border-[#fedac2]/30">
                     <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                      Chúng tôi biết rằng mỗi người đều có những bận rộn riêng trong cuộc sống, 
-                      nhưng việc bạn dành thời gian để chia sẻ niềm vui này cùng chúng tôi thật sự là một món quà vô giá.
+                      Chúng mình hiểu rằng ai cũng có những lo toan và bận rộn riêng trong cuộc sống. Vì thế, việc bạn dành chút thời gian để quan tâm, chúc phúc hay cùng đến chung vui đã là điều vô cùng đáng quý. Dù bạn có mặt hay không, tình cảm của bạn vẫn luôn là niềm hạnh phúc lớn với chúng mình.
                     </p>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      Tình yêu và hạnh phúc sẽ nhân lên gấp bội khi được chia sẻ cùng những người thân yêu như bạn. 
-                      Cảm ơn bạn từ tận đáy lòng! 💕
+                      Cảm ơn bạn – từ tận đáy lòng – vì đã là một phần trong hành trình yêu thương này. 💕
                     </p>
                   </div>
                 </div>
@@ -1637,7 +1627,7 @@ export default function Home() {
                 </div>
                 
                 <div className="text-3xl font-light text-[#fc5d01] mb-8">
-                  Thanh An & Thanh Ngân
+                  Thanh An 💞 Thanh Ngân
                 </div>
 
                 {/* Decorative Elements */}
@@ -1782,8 +1772,8 @@ export default function Home() {
                   Thanh An & Thanh Ngân
                 </h3>
                 <p className="text-white/90 font-light leading-relaxed">
-                  Cảm ơn bạn đã là một phần trong hành trình tình yêu của chúng tôi. 
-                  Tình yêu thật sự bắt đầu khi không còn mong đợi gì từ đối phương.
+                  Cảm ơn bạn đã là một phần trong hành trình tình yêu của chúng mình. 
+                  Khi tình yêu đã trọn vẹn, chúng mình chọn viết tiếp câu chuyện ấy bằng một đám cưới – nơi tình yêu hóa thành hôn nhân và những ước nguyện trở thành hiện thực.
                 </p>
               </motion.div>
 

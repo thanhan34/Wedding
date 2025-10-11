@@ -18,13 +18,13 @@ export default function DetailedEventCards() {
           >
             <Card className="bg-gradient-to-br from-[#fedac2]/30 to-white border-2 border-[#fc5d01]/20 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
               {/* Title */}
-              <h3 className="text-xl font-bold text-center text-[#fc5d01] mb-3" style={{ fontFamily: 'serif' }}>
+              <h3 className="text-xl font-extrabold text-center text-[#fc5d01] mb-3" style={{ fontFamily: 'serif' }}>
                 Nhà Trai
               </h3>
 
               {/* Names */}
               <p className="text-center text-sm text-gray-800 mb-3">
-                Thanh Ngân & Thanh An
+                Thanh Ngân 💞 Thanh An
               </p>
 
               {/* Date - English */}
@@ -50,7 +50,7 @@ export default function DetailedEventCards() {
               {/* Invitation */}
               <div className="text-center">
                 <h4 className="text-sm font-bold text-[#fc5d01] mb-2">
-                  TRÂN TRỌNG KÍNH MỜI
+                  TRÂN TRỌNG KÍNH MỜI !
                 </h4>
                 <p className="text-[10px] text-gray-700 mb-2 leading-snug">
                   Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
@@ -103,7 +103,7 @@ export default function DetailedEventCards() {
               {/* Invitation */}
               <div className="text-center">
                 <h4 className="text-sm font-bold text-[#fc5d01] mb-2">
-                  TRÂN TRỌNG KÍNH MỜI
+                  TRÂN TRỌNG KÍNH MỜI !
                 </h4>
                 <p className="text-[10px] text-gray-700 mb-2 leading-snug">
                   Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
@@ -130,7 +130,7 @@ export default function DetailedEventCards() {
 
               {/* Names */}
               <p className="text-center text-sm text-gray-800 mb-3">
-                Thanh Ngân & Thanh An
+                Thanh Ngân 💞 Thanh An
               </p>
 
               {/* Date - English */}
@@ -156,7 +156,7 @@ export default function DetailedEventCards() {
               {/* Invitation */}
               <div className="text-center">
                 <h4 className="text-sm font-bold text-[#fc5d01] mb-2">
-                  TRÂN TRỌNG KÍNH MỜI
+                  TRÂN TRỌNG KÍNH MỜI !
                 </h4>
                 <p className="text-[10px] text-gray-700 mb-2 leading-snug">
                   Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng tôi

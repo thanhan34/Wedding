@@ -380,8 +380,8 @@ export default function PersonalizedWeddingPage() {
                 Kính gửi {guestInfo.title} <span className="font-semibold text-[#fc5d01]">{guestInfo.name}</span>,
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Đám cưới sẽ trọn vẹn và ý nghĩa hơn khi có sự hiện diện và chúc phúc của {guestInfo.title}. 
-                Hãy xác nhận sự có mặt để Thanh An & Thanh Ngân chuẩn bị đón tiếp {guestInfo.title} chu đáo nhất nha ♥️
+                Niềm vui của ngày cưới sẽ trọn vẹn hơn khi có bạn chung vui và chúc phúc của {guestInfo.title}. 
+                Hãy xác nhận tham dự để Thanh An & Thanh Ngân chuẩn bị đón tiếp {guestInfo.title} chu đáo nhất nha ♥️
               </p>
             </div>
             
@@ -547,12 +547,13 @@ export default function PersonalizedWeddingPage() {
                   
                   <div className="bg-gradient-to-r from-[#fedac2]/20 via-[#ffac7b]/20 to-[#fedac2]/20 rounded-2xl p-8 border border-[#fedac2]/30">
                     <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                      Chúng tôi biết rằng {guestInfo.title} có những bận rộn riêng trong cuộc sống, 
-                      nhưng việc {guestInfo.title} dành thời gian để chia sẻ niềm vui này cùng chúng tôi thật sự là một món quà vô giá.
+                      Chúng mình hiểu rằng ai cũng có những lo toan và bận rộn riêng trong cuộc sống. 
+                      Vì thế, việc {guestInfo.title} dành chút thời gian để quan tâm, chúc phúc hay cùng đến chung vui đã là điều vô cùng đáng quý. 
+                      Dù {guestInfo.title} có mặt hay không, tình cảm của {guestInfo.title} vẫn luôn là niềm hạnh phúc lớn với chúng mình.                  
+                      
                     </p>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      Tình yêu và hạnh phúc sẽ nhân lên gấp bội khi được chia sẻ cùng những người thân yêu như {guestInfo.title}. 
-                      Cảm ơn {guestInfo.title} từ tận đáy lòng! 💕
+                      Cảm ơn {guestInfo.title} – từ tận đáy lòng – vì đã là một phần trong hành trình yêu thương này 💕.                     
                     </p>
                   </div>
                 </div>
@@ -640,8 +641,8 @@ export default function PersonalizedWeddingPage() {
                   Thanh An & Thanh Ngân
                 </h3>
                 <p className="text-white/90 font-light leading-relaxed">
-                  Cảm ơn bạn đã là một phần trong hành trình tình yêu của chúng tôi. 
-                  Tình yêu thật sự bắt đầu khi không còn mong đợi gì từ đối phương.
+                  Cảm ơn bạn đã là một phần trong hành trình tình yêu của chúng mình. 
+                  Khi tình yêu đã trọn vẹn, chúng mình chọn viết tiếp câu chuyện ấy bằng một đám cưới – nơi tình yêu hóa thành hôn nhân và những ước nguyện trở thành hiện thực.
                 </p>
               </motion.div>
 

@@ -122,7 +122,7 @@ Nếu cần sửa thông tin khách:
 ```
 Xin chào Anh Nguyễn Văn A,
 
-Chúng tôi trân trọng kính mời anh tham dự lễ cưới của chúng tôi.
+Chúng tôi TRÂN TRỌNG KÍNH MỜI ! anh tham dự lễ cưới của chúng tôi.
 Vui lòng xem thiệp mời cá nhân tại:
 
 👉 https://your-domain.com/nguyen-van-a

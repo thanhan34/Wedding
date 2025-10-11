@@ -153,7 +153,7 @@ export default function WeddingInvitation() {
 
               <div className="relative z-10 text-center space-y-6">
                 <motion.h2 
-                  className="text-4xl font-light text-[#fc5d01] mb-6"
+                  className="text-4xl font-extrabold text-[#fc5d01] mb-6"
                   whileHover={{ scale: 1.05 }}
                 >
                   Nhà Trai
@@ -166,7 +166,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
                   >
-                    Thanh Ngân & Thanh An
+                    Thanh Ngân 💞 Thanh An
                   </motion.h3>
                   
                   <motion.p 
@@ -236,7 +236,7 @@ export default function WeddingInvitation() {
                   transition={{ delay: 1.5 }}
                 >
                   <p className="text-xl font-medium text-[#fc5d01]">
-                    TRÂN TRỌNG KÍNH MỜI
+                    TRÂN TRỌNG KÍNH MỜI !
                   </p>
                   <p className="text-gray-700 leading-relaxed">
                     Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
@@ -300,7 +300,7 @@ export default function WeddingInvitation() {
 
               <div className="relative z-10 text-center space-y-6">
                 <motion.h2 
-                  className="text-4xl font-light text-[#fc5d01] mb-6"
+                  className="text-4xl font-extrabold text-[#fc5d01] mb-6"
                   whileHover={{ scale: 1.05 }}
                 >
                   Nhà Gái
@@ -313,7 +313,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
                   >
-                    Thanh An & Thanh Ngân
+                    Thanh An 💞 Thanh Ngân
                   </motion.h3>
                   
                   <motion.p 
@@ -383,7 +383,7 @@ export default function WeddingInvitation() {
                   transition={{ delay: 1.7 }}
                 >
                   <p className="text-xl font-medium text-[#fc5d01]">
-                    TRÂN TRỌNG KÍNH MỜI
+                    TRÂN TRỌNG KÍNH MỜI !
                   </p>
                   <p className="text-gray-700 leading-relaxed">
                     Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
@@ -447,7 +447,7 @@ export default function WeddingInvitation() {
 
               <div className="relative z-10 text-center space-y-6">
                 <motion.h2 
-                  className="text-4xl font-light text-[#fc5d01] mb-6"
+                  className="text-4xl font-extrabold text-[#fc5d01] mb-6"
                   whileHover={{ scale: 1.05 }}
                 >
                   Tiệc Báo Hỷ
@@ -460,7 +460,7 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
                   >
-                    Thanh Ngân & Thanh An
+                    Thanh Ngân 💞 Thanh An
                   </motion.h3>
                   
                   <motion.p 
@@ -530,7 +530,7 @@ export default function WeddingInvitation() {
                   transition={{ delay: 1.9 }}
                 >
                   <p className="text-xl font-medium text-[#fc5d01]">
-                    TRÂN TRỌNG KÍNH MỜI
+                    TRÂN TRỌNG KÍNH MỜI !
                   </p>
                   <p className="text-gray-700 leading-relaxed">
                     Đến dự buổi tiệc báo hỷ chung vui cùng gia đình chúng tôi

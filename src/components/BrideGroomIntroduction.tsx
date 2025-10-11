@@ -198,7 +198,7 @@ export default function BrideGroomIntroduction() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light"
           >
-            Hãy cùng tìm hiểu về câu chuyện tình yêu và những con người đặc biệt trong ngày trọng đại này
+            Hãy cùng tìm hiểu về câu chuyện tình yêu và những người đặc biệt trong ngày trọng đại này!
           </motion.p>
           
           {/* Decorative Bottom Elements */}
@@ -769,7 +769,7 @@ export default function BrideGroomIntroduction() {
             className="mt-10"
           >
             <h4 className="text-3xl font-extralight text-transparent bg-clip-text bg-gradient-to-r from-[#fc5d01] via-[#fd7f33] to-[#ffac7b] mb-6">
-              Tình Yêu Đích Thực
+              Trái Tim Thổn Thức
             </h4>
             
             <motion.div
@@ -780,8 +780,7 @@ export default function BrideGroomIntroduction() {
             />
             
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-              Hai trái tim đã tìm thấy nhau trong cuộc đời này, và giờ đây họ sẽ bước vào hành trình mới 
-              với tình yêu, sự hiểu biết và cam kết trọn đời bên nhau.
+              Hai trái tim đã tìm thấy nhau giữa muôn vàn người, và hôm nay họ cùng bước vào hành trình mới – hành trình của tình yêu, sự thấu hiểu và lời cam kết trọn đời bên nhau.
             </p>
             
             {/* Final Decorative Elements */}
