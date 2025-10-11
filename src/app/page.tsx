@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Calendar, Gift, Play, Pause, User, User2, Wine } from 'lucide-react';
+import { Heart, Calendar, Gift, Play, Pause } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import Countdown from '../components/Countdown';
@@ -12,11 +12,9 @@ import FallingHearts from '../components/FallingHearts';
 import WeddingGallery from '../components/WeddingGallery';
 import ChineseDecorations from '../components/ChineseDecorations';
 import WeddingInvitation from '../components/WeddingInvitation';
-import BaoHy from '../components/BaoHy';
 import RandomHeroImage from '../components/RandomHeroImage';
 import WeddingMusic from '../components/WeddingMusic';
 import BrideGroomIntroduction from '../components/BrideGroomIntroduction';
-import DetailedEventCards from '../components/DetailedEventCards';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {

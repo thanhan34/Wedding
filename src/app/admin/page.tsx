@@ -190,6 +190,7 @@ export default function AdminPage() {
     if (isAuthenticated) {
       loadAllData();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
   const loadAllData = async () => {
@@ -1387,7 +1388,7 @@ export default function AdminPage() {
               <Card className="p-6">
                 <h3 className="text-xl font-medium text-gray-800 mb-4">Thông tin chi tiết</h3>
                 <div className="space-y-3 text-gray-700">
-                  <p>• Để xem danh sách chi tiết các món quà, vui lòng click vào nút "Xem chi tiết" ở trên.</p>
+                  <p>• Để xem danh sách chi tiết các món quà, vui lòng click vào nút &ldquo;Xem chi tiết&rdquo; ở trên.</p>
                   <p>• Trang chi tiết sẽ hiển thị thông tin đầy đủ về từng món quà bao gồm: tên khách, số tiền, lời chúc, và thời gian gửi.</p>
                   <p>• Bạn có thể tìm kiếm, lọc và xuất dữ liệu ra file CSV để quản lý dễ dàng hơn.</p>
                 </div>

@@ -348,7 +348,7 @@ export default function GiftsAdminPage() {
                           {gift.message && (
                             <div className="bg-[#fedac2]/10 rounded-lg p-4 mt-3">
                               <p className="text-gray-700 leading-relaxed italic">
-                                "{gift.message}"
+                                &ldquo;{gift.message}&rdquo;
                               </p>
                             </div>
                           )}

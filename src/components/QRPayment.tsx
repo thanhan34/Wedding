@@ -109,7 +109,15 @@ export default function QRPayment({ guestInfo }: QRPaymentProps) {
         : 'bride';
 
       // Tạo object gift, chỉ thêm các trường có giá trị
-      const giftData: any = {
+      const giftData: {
+        guestName: string;
+        amount: number;
+        recipient: 'groom' | 'bride';
+        createdAt: Date;
+        guestId?: string;
+        message?: string;
+        bankAccount?: string;
+      } = {
         guestName: guestInfo?.name || 'Khách mời',
         amount: parseInt(giftAmount),
         recipient,

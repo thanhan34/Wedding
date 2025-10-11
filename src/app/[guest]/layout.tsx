@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { getGuestInfo } from '../../lib/guestData';
 
 type Props = {
-  params: { guest: string };
+  params: Promise<{ guest: string }>;
   children: React.ReactNode;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const guestSlug = params.guest;
+  const { guest: guestSlug } = await params;
   
   try {
     const guestInfo = await getGuestInfo(guestSlug);
