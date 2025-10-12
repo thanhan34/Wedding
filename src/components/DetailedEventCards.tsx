@@ -43,7 +43,7 @@ export default function DetailedEventCards() {
                   Tại: Nhà Hàng Thắng Lợi 1
                 </p>
                 <p className="text-center text-[10px] text-gray-700 leading-snug">
-                  01 Lê Hồng Phong, Long Xuyên, An Giang
+                  01 Lê Hồng Phong, <p>Long Xuyên, An Giang</p>
                 </p>
               </div>
 

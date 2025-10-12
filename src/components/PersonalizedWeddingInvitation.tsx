@@ -226,7 +226,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.2 }}
                     >
-                      Thứ 6, ngày 24.10.2025 (4.9 Ất Tỵ)
+                      Thứ 6, ngày 24.10.2025 <p>(4.9 Ất Tỵ)</p>
                     </motion.p>
                   </div>
 
@@ -238,7 +238,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       Tại: Nhà Hàng Thắng Lợi 1
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      01 Lê Hồng Phong, Long Xuyên, An Giang
+                      01 Lê Hồng Phong, <p>Long Xuyên, An Giang</p>
                     </p>
                   </motion.div>
 
@@ -373,7 +373,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.4 }}
                     >
-                      Thứ 6, ngày 23.10.2025 (09.10 Ất Tỵ)
+                      Thứ 6, ngày 23.10.2025 <p>(09.10 Ất Tỵ)</p>
                     </motion.p>
                   </div>
 
@@ -385,7 +385,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       Tại: Nhà Hàng Thanh Tâm
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      90 Ấp An Phú, Kế Sách, Cần Thơ
+                      90 Ấp An Phú, <p>Kế Sách, Cần Thơ</p>
                     </p>
                   </motion.div>
 
@@ -520,7 +520,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.6 }}
                     >
-                      Thứ Bảy, ngày 15.11.2025 (26.9 Ất Tỵ)
+                      Thứ Bảy, ngày 15.11.2025 <p>(26.9 Ất Tỵ)</p>
                     </motion.p>
                   </div>
 
@@ -532,7 +532,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       Tại: Resort Cồn Khương
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                      99A, Võ Văn Tần, Cái Khế, Cần Thơ
+                      99A, Võ Văn Tần, <p>Cái Khế, Cần Thơ</p>
                     </p>
                   </motion.div>
 
