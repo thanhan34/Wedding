@@ -16,6 +16,7 @@ import PersonalizedWeddingInvitation from '../../components/PersonalizedWeddingI
 import RandomHeroImage from '../../components/RandomHeroImage';
 import BrideGroomIntroduction from '../../components/BrideGroomIntroduction';
 import Countdown from '../../components/Countdown';
+import FloatingLogo from '../../components/FloatingLogo';
 import { useWeddingData } from '../../hooks/useWeddingData';
 import { getGuestInfo, GuestInfo } from '../../lib/guestData';
 
@@ -118,6 +119,9 @@ export default function PersonalizedWeddingPage() {
       
       {/* Chinese Decorations */}
       <ChineseDecorations />
+      
+      {/* Floating Logo - Fixed at bottom left */}
+      <FloatingLogo />
       
 
       {/* Personalized Hero Section */}
@@ -720,11 +724,23 @@ export default function PersonalizedWeddingPage() {
                 <div className="space-y-3 text-white/90 font-light">
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Chú Rể</p>
-                    <p>Thanh An</p>
+                    <p className="font-medium">Thanh An</p>
+                    <a 
+                      href="tel:0349213852" 
+                      className="text-sm hover:text-white transition-colors duration-300 inline-block mt-1"
+                    >
+                      📞 0349 213 852
+                    </a>
                   </div>
                   <div className="bg-white/10 rounded-lg p-3 backdrop-blur-sm border border-white/20">
                     <p className="text-sm opacity-80">Cô Dâu</p>
-                    <p>Thanh Ngân</p>
+                    <p className="font-medium">Thanh Ngân</p>
+                    <a 
+                      href="tel:0399366668" 
+                      className="text-sm hover:text-white transition-colors duration-300 inline-block mt-1"
+                    >
+                      📞 0399 366 668
+                    </a>
                   </div>
                 </div>
               </motion.div>

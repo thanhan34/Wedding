@@ -12,24 +12,24 @@ const WeddingMusic: React.FC<WeddingMusicProps> = ({ className = "" }) => {
   // Danh sách nhạc cưới
   const musicList = [
     {
-      title: "Nơi Gió Lên",
-      src: "/music/NoiGioLen.mp3",
+      title: "Beautiful In White",
+      src: "/music/Beautiful In White.mp3",
       artist: "Nhạc cưới"
     },
     {
-      title: "Đám Cưới Nhà",
-      src: "/music/DamCuoiNha.mp3",
+      title: "Marry You",
+      src: "/music/Marry You.mp3",
       artist: "Nhạc cưới"
     },
     {
-      title: "Xin Mà Rước Dâu (EDM Version)",
-      src: "/music/XinMaRuocDauEDMVersion-DieuKien-7464291.mp3",
-      artist: "Điều Kiện"
+      title: "Perfect",
+      src: "/music/Perfect.mp3",
+      artist: "Nhạc cưới"
     },
     {
-      title: "Lệ Dương",
-      src: "/music/LeDuong-KaiDinh.mp3",
-      artist: "Kai Đinh"
+      title: "Until You",
+      src: "/music/Until You.mp3",
+      artist: "Nhạc cưới"
     }
   ];
 
