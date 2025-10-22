@@ -89,7 +89,7 @@ const defaultWeddingData: WeddingData = {
       name: 'Nhà Hàng Thanh Tâm',
       address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
       date: 'Thursday, 23 October, 2025',
-      vietnameseDate: 'Thứ 6, ngày 23.10.2025 (09.10 Ất Tỵ)'
+      vietnameseDate: 'Thứ 6, ngày 23.10.2025 (03.09 Ất Tỵ)'
     }
   },
   timeline: {

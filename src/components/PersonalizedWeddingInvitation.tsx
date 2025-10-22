@@ -373,7 +373,7 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.4 }}
                     >
-                      Thứ 6, ngày 23.10.2025 <p>(09.10 Ất Tỵ)</p>
+                      Thứ 6, ngày 23.10.2025 <p>(03.09 Ất Tỵ)</p>
                     </motion.p>
                   </div>
 
