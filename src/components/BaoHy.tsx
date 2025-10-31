@@ -4,7 +4,16 @@ import { motion } from 'framer-motion';
 import { Card } from './ui/card';
 import { Calendar, MapPin, Clock, Gift, Heart, Star, Sparkles, Users, Music, Camera, Utensils, Car, Phone, Mail } from 'lucide-react';
 
-export default function BaoHy() {
+interface BaoHyProps {
+  visibility?: boolean;
+}
+
+export default function BaoHy({ visibility = true }: BaoHyProps) {
+  // If not visible, return null
+  if (!visibility) {
+    return null;
+  }
+
   const openMap = () => {
     window.open('https://maps.google.com/?q=Victoria+Resort+Can+Tho+Cai+Khe+Ninh+Kieu', '_blank');
   };

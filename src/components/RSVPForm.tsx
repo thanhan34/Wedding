@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import { Send, Users, Heart, X, User, Phone, Calendar, MapPin, Sparkles, Gift, User2, Wine, Home } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
 import QRPayment from './QRPayment';
+import { useWeddingData } from '../hooks/useWeddingData';
 
 interface RSVPData {
   name: string;
@@ -24,6 +25,8 @@ interface RSVPFormProps {
 }
 
 export default function RSVPForm({ guestInfo }: RSVPFormProps) {
+  const { weddingData } = useWeddingData();
+  
   const [formData, setFormData] = useState<RSVPData>({
     name: guestInfo?.name || '',
     phone: '',
@@ -527,8 +530,8 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                       Bạn sẽ tham gia sự kiện nào?
                     </motion.h3>
                     
-                    <div className="grid md:grid-cols-3 gap-4">
-                      {[
+                    {(() => {
+                      const allEvents = [
                         { 
                           key: 'nha-gai', 
                           title: 'Nhà Gái', 
@@ -538,7 +541,8 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           color: 'from-pink-500 to-pink-600',
                           venue: 'Nhà Hàng Thanh Tâm',
                           address: '90 Ấp An Phú, Kế Sách, Cần Thơ',
-                          time: '16:00 - Chụp ảnh cùng Dâu & Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
+                          time: ['16:00 - Chụp ảnh cùng Dâu & Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc'],
+                          visible: weddingData.visibility?.brideSide ?? true
                         },
                         { 
                           key: 'nha-trai', 
@@ -549,7 +553,8 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           color: 'from-blue-500 to-blue-600',
                           venue: 'Nhà Hàng Thắng Lợi 1',
                           address: '01 Lê Hồng Phong, Long Xuyên, An Giang',
-                          time: '11:00 - Chụp ảnh cùng Dâu & Rể\n11:30 - Hôn Lễ Bắt Đầu\n12:00 - Khai tiệc'
+                          time: ['11:00 - Chụp ảnh cùng Dâu & Rể', '11:30 - Hôn Lễ Bắt Đầu', '12:00 - Khai tiệc'],
+                          visible: weddingData.visibility?.groomSide ?? true
                         },                        
                         { 
                           key: 'both', 
@@ -560,9 +565,23 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                           color: 'from-[#fc5d01] to-[#fd7f33]',
                           venue: 'Resort Cồn Khương',
                           address: '99A, Võ Văn Tần, Cái Khế, Cần Thơ',
-                          time: '16:00 - Chụp ảnh cùng Dâu & Rể\n16:30 - Hôn Lễ Bắt Đầu\n17:00 - Khai tiệc'
+                          time: ['16:00 - Chụp ảnh cùng Dâu & Rể', '16:30 - Hôn Lễ Bắt Đầu', '17:00 - Khai tiệc'],
+                          visible: weddingData.visibility?.baoHy ?? true
                         }
-                      ].map((event, index) => (
+                      ];
+                      
+                      const visibleEvents = allEvents.filter(event => event.visible);
+                      const eventCount = visibleEvents.length;
+                      
+                      const gridClass = eventCount === 1 
+                        ? "grid grid-cols-1 max-w-sm mx-auto"
+                        : eventCount === 2
+                        ? "grid grid-cols-1 md:grid-cols-2 max-w-2xl mx-auto"
+                        : "grid md:grid-cols-3";
+                      
+                      return (
+                        <div className={`${gridClass} gap-4`}>
+                          {visibleEvents.map((event, index) => (
                         <motion.button
                           key={event.key}
                           type="button"
@@ -593,9 +612,11 @@ export default function RSVPForm({ guestInfo }: RSVPFormProps) {
                             <p className="text-[#fc5d01] font-medium text-sm">{event.date}</p>
                             <p className="text-gray-600 text-xs">{event.location}</p>
                           </div>
-                        </motion.button>
-                      ))}
-                    </div>
+                          </motion.button>
+                          ))}
+                        </div>
+                      );
+                    })()}
 
                     {/* Venue Details - Shows when event is selected */}
                     <AnimatePresence mode="wait">

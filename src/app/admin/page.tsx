@@ -7,65 +7,12 @@ import { db } from '../../lib/firebase';
 import { doc, getDoc, setDoc, collection, getDocs, deleteDoc, query, orderBy } from 'firebase/firestore';
 import { getAllGuests, addGuest, updateGuest, deleteGuest, createSlug, GuestInfo } from '../../lib/guestData';
 import { getGiftStats, formatAmount, GiftStats } from '../../lib/giftData';
+import { WeddingData } from '../../hooks/useWeddingData';
 import { Input } from '../../components/ui/input';
 import { Textarea } from '../../components/ui/textarea';
 import { Button } from '../../components/ui/button';
 import { Card } from '../../components/ui/card';
 import { toast } from 'sonner';
-
-interface WeddingData {
-  coupleNames: {
-    groom: string;
-    bride: string;
-  };
-  weddingDates: {
-    groomSide: string;
-    brideSide: string;
-  };
-  venues: {
-    groomSide: {
-      name: string;
-      address: string;
-      date: string;
-      vietnameseDate: string;
-    };
-    brideSide: {
-      name: string;
-      address: string;
-      date: string;
-      vietnameseDate: string;
-    };
-  };
-  timeline: {
-    groomSide: Array<{
-      time: string;
-      event: string;
-    }>;
-    brideSide: Array<{
-      time: string;
-      event: string;
-    }>;
-  };
-  bankAccounts: Array<{
-    id: string;
-    name: string;
-    bank: string;
-    accountNumber: string;
-    accountName: string;
-  }>;
-  loveStory: {
-    groom: {
-      name: string;
-      description: string;
-      quote: string;
-    };
-    bride: {
-      name: string;
-      description: string;
-      quote: string;
-    };
-  };
-}
 
 interface GuestMessage {
   id: string;
@@ -106,6 +53,12 @@ export default function AdminPage() {
       groomSide: '24.10.2025',
       brideSide: '23.10.2025'
     },
+    visibility: {
+      groomSide: true,
+      brideSide: true,
+      baoHy: true
+    },
+    events: [],
     venues: {
       groomSide: {
         name: 'Nhà Hàng Thắng Lợi 1',
@@ -217,7 +170,16 @@ export default function AdminPage() {
       const docSnap = await getDoc(docRef);
       
       if (docSnap.exists()) {
-        setWeddingData(docSnap.data() as WeddingData);
+        const data = docSnap.data() as WeddingData;
+        // Merge với default values để đảm bảo visibility luôn tồn tại
+        setWeddingData({
+          ...data,
+          visibility: {
+            groomSide: data.visibility?.groomSide ?? true,
+            brideSide: data.visibility?.brideSide ?? true,
+            baoHy: data.visibility?.baoHy ?? true
+          }
+        });
       }
     } catch (error) {
       console.error('Error loading wedding data:', error);
@@ -1405,7 +1367,92 @@ export default function AdminPage() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              <h2 className="text-2xl font-light text-[#fc5d01]">Cài đặt hệ thống</h2>
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-light text-[#fc5d01]">Cài đặt hệ thống</h2>
+                <Button
+                  onClick={handleSaveWeddingData}
+                  disabled={loading}
+                  className="bg-[#fc5d01] hover:bg-[#e55401] text-white"
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  {loading ? 'Đang lưu...' : 'Lưu thay đổi'}
+                </Button>
+              </div>
+
+              {/* Visibility Settings */}
+              <Card className="p-6">
+                <h3 className="text-xl font-medium text-gray-800 mb-4">Hiển thị thiệp mời</h3>
+                <p className="text-gray-600 mb-6">
+                  Bật/tắt hiển thị các thiệp mời trên trang web. Khi tắt, section tương ứng sẽ hoàn toàn ẩn khỏi khách mời.
+                </p>
+                <div className="space-y-4">
+                  {/* Nhà Trai Toggle */}
+                  <div className="flex items-center justify-between p-4 bg-blue-50/50 rounded-lg border border-blue-100">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-800">Thiệp mời Nhà Trai</h4>
+                        <p className="text-sm text-gray-600">Hiển thị thông tin tiệc cưới bên nhà trai</p>
+                      </div>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={weddingData.visibility?.groomSide ?? true}
+                        onChange={(e) => updateNestedData(['visibility', 'groomSide'], e.target.checked)}
+                        className="sr-only peer"
+                      />
+                      <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#fc5d01]/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#fc5d01]"></div>
+                    </label>
+                  </div>
+
+                  {/* Nhà Gái Toggle */}
+                  <div className="flex items-center justify-between p-4 bg-pink-50/50 rounded-lg border border-pink-100">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-800">Thiệp mời Nhà Gái</h4>
+                        <p className="text-sm text-gray-600">Hiển thị thông tin tiệc cưới bên nhà gái</p>
+                      </div>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={weddingData.visibility?.brideSide ?? true}
+                        onChange={(e) => updateNestedData(['visibility', 'brideSide'], e.target.checked)}
+                        className="sr-only peer"
+                      />
+                      <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#fc5d01]/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#fc5d01]"></div>
+                    </label>
+                  </div>
+
+                  {/* Tiệc Báo Hỷ Toggle */}
+                  <div className="flex items-center justify-between p-4 bg-purple-50/50 rounded-lg border border-purple-100">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <Gift className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-medium text-gray-800">Tiệc Báo Hỷ</h4>
+                        <p className="text-sm text-gray-600">Hiển thị thông tin tiệc báo hỷ</p>
+                      </div>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={weddingData.visibility?.baoHy ?? true}
+                        onChange={(e) => updateNestedData(['visibility', 'baoHy'], e.target.checked)}
+                        className="sr-only peer"
+                      />
+                      <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#fc5d01]/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#fc5d01]"></div>
+                    </label>
+                  </div>
+                </div>
+              </Card>
               
               <Card className="p-6">
                 <h3 className="text-xl font-medium text-gray-800 mb-4">Thống kê tổng quan</h3>

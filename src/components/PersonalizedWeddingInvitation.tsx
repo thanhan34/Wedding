@@ -6,12 +6,14 @@ import { Heart, Star, Sparkles, Gift } from 'lucide-react';
 import { GuestInfo } from '../lib/guestData';
 import WeddingMusic from './WeddingMusic';
 import Image from 'next/image';
+import { useWeddingData } from '../hooks/useWeddingData';
 
 interface PersonalizedWeddingInvitationProps {
   guestInfo: GuestInfo;
 }
 
 export default function PersonalizedWeddingInvitation({ guestInfo }: PersonalizedWeddingInvitationProps) {
+  const { weddingData } = useWeddingData();
   return (
     <div className="py-20 px-4 bg-gradient-to-br from-[#fedac2]/20 via-[#fff5f0] to-[#fdbc94]/20 relative overflow-hidden">
       {/* Background Decorations */}
@@ -152,8 +154,23 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
         </motion.div>
 
         {/* Wedding Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Nhà Trai Card - Luôn hiển thị cho tất cả khách mời */}
+        {(() => {
+          const visibleCards = [
+            weddingData.visibility?.groomSide,
+            weddingData.visibility?.brideSide,
+            weddingData.visibility?.baoHy
+          ].filter(Boolean).length;
+          
+          const gridClass = visibleCards === 1 
+            ? "grid grid-cols-1 max-w-md mx-auto"
+            : visibleCards === 2
+            ? "grid grid-cols-1 lg:grid-cols-2 max-w-4xl mx-auto"
+            : "grid grid-cols-1 lg:grid-cols-3 max-w-7xl mx-auto";
+            
+          return (
+            <div className={`${gridClass} gap-8`}>
+              {/* Nhà Trai Card - Hiển thị theo visibility setting */}
+              {weddingData.visibility?.groomSide && (
           <motion.div
             initial={{ opacity: 0, x: -100, rotate: -5 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
@@ -299,8 +316,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                 </motion.div>
               </Card>
           </motion.div>
+          )}
 
-          {/* Nhà Gái Card - Luôn hiển thị cho tất cả khách mời */}
+          {/* Nhà Gái Card - Hiển thị theo visibility setting */}
+          {weddingData.visibility?.brideSide && (
           <motion.div
             initial={{ opacity: 0, x: 100, rotate: 5 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
@@ -446,8 +465,10 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                 </motion.div>
               </Card>
           </motion.div>
+          )}
 
-          {/* Tiệc Báo Hỷ Card */}
+          {/* Tiệc Báo Hỷ Card - Hiển thị theo visibility setting */}
+          {weddingData.visibility?.baoHy && (
           <motion.div
             initial={{ opacity: 0, y: 50, rotate: 0 }}
             animate={{ opacity: 1, y: 0, rotate: 0 }}
@@ -592,8 +613,11 @@ export default function PersonalizedWeddingInvitation({ guestInfo }: Personalize
                   <Gift className="w-6 h-6 text-[#fc5d01] opacity-30" />
                 </motion.div>
               </Card>
-          </motion.div>
-        </div>
+              </motion.div>
+              )}
+            </div>
+          );
+        })()}
 
         {/* Personalized Bottom Message */}
         <motion.div

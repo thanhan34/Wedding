@@ -15,6 +15,7 @@ import WeddingInvitation from '../components/WeddingInvitation';
 import RandomHeroImage from '../components/RandomHeroImage';
 import WeddingMusic from '../components/WeddingMusic';
 import BrideGroomIntroduction from '../components/BrideGroomIntroduction';
+import BaoHy from '../components/BaoHy';
 import { useWeddingData } from '../hooks/useWeddingData';
 
 export default function Home() {
@@ -275,8 +276,15 @@ export default function Home() {
 
       {/* Wedding Invitation Cards - THÔNG TIN CHÍNH */}
       <section id="invitation">
-        <WeddingInvitation />
+        <WeddingInvitation visibility={weddingData.visibility} />
       </section>
+
+      {/* Báo Hỷ Section */}
+      {weddingData.visibility?.baoHy && (
+        <section id="bao-hy">
+          <BaoHy visibility={weddingData.visibility.baoHy} />
+        </section>
+      )}
 
       {/* RSVP Section - XÁC NHẬN THAM DỰ (Priority #2 - Moved Up) */}
       <section id="rsvp" className="py-20 bg-gradient-to-br from-[#fedac2]/20 to-[#fdbc94]/20">

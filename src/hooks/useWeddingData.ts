@@ -13,6 +13,11 @@ export interface WeddingData {
     groomSide: string;
     brideSide: string;
   };
+  visibility: {
+    groomSide: boolean;
+    brideSide: boolean;
+    baoHy: boolean;
+  };
   venues: {
     groomSide: {
       name: string;
@@ -77,6 +82,11 @@ const defaultWeddingData: WeddingData = {
   weddingDates: {
     groomSide: '24.10.2025',
     brideSide: '23.10.2025'
+  },
+  visibility: {
+    groomSide: true,
+    brideSide: true,
+    baoHy: true
   },
   venues: {
     groomSide: {
@@ -195,8 +205,16 @@ export function useWeddingData() {
           }
         })();
         
-        const result = await Promise.race([dataPromise, timeoutPromise]);
-        setWeddingData(result as WeddingData);
+        const result = await Promise.race([dataPromise, timeoutPromise]) as WeddingData;
+        // Merge với default visibility để đảm bảo luôn có values
+        setWeddingData({
+          ...result,
+          visibility: {
+            groomSide: result.visibility?.groomSide ?? true,
+            brideSide: result.visibility?.brideSide ?? true,
+            baoHy: result.visibility?.baoHy ?? true
+          }
+        });
         
       } catch (err) {
         console.error('Error loading wedding data:', err);

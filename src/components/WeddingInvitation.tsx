@@ -4,7 +4,34 @@ import { motion } from 'framer-motion';
 import { Card } from './ui/card';
 import { Heart, Star, Sparkles, Gift, Clock } from 'lucide-react';
 
-export default function WeddingInvitation() {
+interface WeddingInvitationProps {
+  visibility?: {
+    groomSide: boolean;
+    brideSide: boolean;
+    baoHy: boolean;
+  };
+}
+
+export default function WeddingInvitation({ visibility = { groomSide: true, brideSide: true, baoHy: true } }: WeddingInvitationProps) {
+  // Count visible cards for grid layout
+  const visibleCardsCount = [
+    visibility.groomSide,
+    visibility.brideSide,
+    visibility.baoHy
+  ].filter(Boolean).length;
+
+  // If no cards are visible, return null
+  if (visibleCardsCount === 0) {
+    return null;
+  }
+
+  // Determine grid class based on visible cards
+  const gridClass = visibleCardsCount === 1 
+    ? 'grid grid-cols-1 max-w-md mx-auto'
+    : visibleCardsCount === 2
+    ? 'grid grid-cols-1 lg:grid-cols-2'
+    : 'grid grid-cols-1 lg:grid-cols-3';
+
   return (
     <div className="py-20 px-4 bg-gradient-to-br from-[#fedac2]/20 via-[#fff5f0] to-[#fdbc94]/20 relative overflow-hidden">
       {/* Background Decorations */}
@@ -110,8 +137,9 @@ export default function WeddingInvitation() {
         </motion.div>
 
         {/* Wedding Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className={`${gridClass} gap-8 max-w-7xl mx-auto`}>
           {/* Nhà Trai Card */}
+          {visibility.groomSide && (
           <motion.div
             initial={{ opacity: 0, x: -100, rotate: -5 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
@@ -257,8 +285,10 @@ export default function WeddingInvitation() {
               </motion.div>
             </Card>
           </motion.div>
+          )}
 
           {/* Nhà Gái Card */}
+          {visibility.brideSide && (
           <motion.div
             initial={{ opacity: 0, x: 100, rotate: 5 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
@@ -404,8 +434,10 @@ export default function WeddingInvitation() {
               </motion.div>
               </Card>
           </motion.div>
+          )}
 
           {/* Tiệc Báo Hỷ Card */}
+          {visibility.baoHy && (
           <motion.div
             initial={{ opacity: 0, y: 50, rotate: 0 }}
             animate={{ opacity: 1, y: 0, rotate: 0 }}
@@ -551,6 +583,7 @@ export default function WeddingInvitation() {
               </motion.div>
             </Card>
           </motion.div>
+          )}
         </div>
 
 
